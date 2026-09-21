@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Compare EVs — EVSelect.ca</title>
+  <meta name="description" content="Side-by-side EV comparison with winter range, specs, rebates, and animated performance bars."/>
+  <meta name="author" content="EVSelect.ca"/>
+  <meta property="og:title" content="Compare EVs — EVSelect.ca"/>
+  <meta property="og:description" content="Side-by-side EV comparison with winter range, specs, rebates, and animated performance bars."/>
+  <meta property="og:type" content="website"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="icon" type="image/png" href="evcarslogo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared/style.css"/>
+  <script>if(localStorage.getItem('evs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body class="page-compare">
+<nav id="evs-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="EVSelect home">evselect<span>.ca</span></a>
+    <div class="nav-search-wrap">
+      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search models&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown-wrap" id="modelsDropdown">
+        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false" id="modelsBtn">
+          Models
+          <svg class="nav-dropdown-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" id="modelsMenu">
+          <div class="nav-dropdown-section">Browse All</div>
+          <a href="vehicles.html" class="nav-dropdown-item" role="menuitem">All Electric Vehicles</a>
+          <div class="nav-dropdown-divider"></div>
+          <div class="nav-dropdown-section">Models</div>
+          <a href="vehicles.html?q=Tesla+Model+Y" class="nav-dropdown-item" role="menuitem">Tesla Model Y</a>
+          <a href="vehicles.html?q=Tesla+Model+3" class="nav-dropdown-item" role="menuitem">Tesla Model 3</a>
+          <a href="vehicles.html?q=Hyundai+IONIQ+6" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 6</a>
+          <a href="vehicles.html?q=Hyundai+IONIQ+5" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 5</a>
+          <a href="vehicles.html?q=Kia+EV6" class="nav-dropdown-item" role="menuitem">Kia EV6</a>
+          <a href="vehicles.html?q=Kia+EV9" class="nav-dropdown-item" role="menuitem">Kia EV9</a>
+          <a href="vehicles.html?q=Chevrolet+Bolt" class="nav-dropdown-item" role="menuitem">Chevrolet Bolt EV</a>
+          <a href="vehicles.html?q=Chevrolet+Equinox" class="nav-dropdown-item" role="menuitem">Chevrolet Equinox EV</a>
+          <a href="vehicles.html?q=Ford+Mustang" class="nav-dropdown-item" role="menuitem">Ford Mustang Mach-E</a>
+          <a href="vehicles.html?q=Volkswagen+ID.4" class="nav-dropdown-item" role="menuitem">Volkswagen ID.4</a>
+          <a href="vehicles.html?q=Nissan+Ariya" class="nav-dropdown-item" role="menuitem">Nissan Ariya</a>
+          <a href="vehicles.html?q=Nissan+LEAF" class="nav-dropdown-item" role="menuitem">Nissan LEAF</a>
+          <a href="vehicles.html?q=BMW+i4" class="nav-dropdown-item" role="menuitem">BMW i4</a>
+          <a href="vehicles.html?q=BMW+iX" class="nav-dropdown-item" role="menuitem">BMW iX</a>
+          <a href="vehicles.html?q=Polestar+2" class="nav-dropdown-item" role="menuitem">Polestar 2</a>
+          <a href="vehicles.html?q=Hyundai+Kona" class="nav-dropdown-item" role="menuitem">Hyundai Kona Electric</a>
+          <a href="vehicles.html?q=Rivian+R1T" class="nav-dropdown-item" role="menuitem">Rivian R1T</a>
+          <a href="vehicles.html?q=Subaru+Solterra" class="nav-dropdown-item" role="menuitem">Subaru Solterra</a>
+          <a href="vehicles.html?q=Toyota+bZ4X" class="nav-dropdown-item" role="menuitem">Toyota bZ4X</a>
+          <a href="vehicles.html?q=Volvo+EX40" class="nav-dropdown-item" role="menuitem">Volvo EX40</a>
+          <a href="vehicles.html" class="nav-see-all">See all models &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown-wrap">
+        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          Tools
+          <svg class="nav-dropdown-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div class="nav-dropdown-section">EV Tools</div>
+          <a href="tools.html" class="nav-dropdown-item" role="menuitem">All Tools</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">❄️ Winter Range Calculator</a>
+          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 Rebate Calculator</a>
+          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Route Planner</a>
+        </div>
+      </div><a href="compare.html" class="active">Compare</a>
+      <a href="vehicles.html" class="nav-cta">Browse EVs</a>
+    </div>
+    <button class="nav-theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="nav-mob" id="mobBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="pg-header">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>Head-to-Head</span>
+    <h1 class="section-title" data-reveal data-delay="1">Compare EVs</h1>
+    <p class="fg2" style="margin-top:16px;font-size:17px;max-width:500px" data-reveal data-delay="2">Place any two Canadian-market EVs side-by-side. Winter range updates live.</p>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="wrap">
+    <!-- PICKERS -->
+    <div class="compare-grid" data-reveal>
+      <div class="cmp-picker-card">
+        <div class="cmp-picker-label">Vehicle A</div>
+        <div class="select-wrap">
+          <select id="pickA" class="evs-select" aria-label="Select first vehicle to compare">
+            <option value="">-- Select a vehicle --</option>
+          </select>
+        </div>
+        <div id="cardA" class="cmp-preview" hidden></div>
+      </div>
+      <div class="cmp-picker-card">
+        <div class="cmp-picker-label">Vehicle B</div>
+        <div class="select-wrap">
+          <select id="pickB" class="evs-select" aria-label="Select second vehicle to compare">
+            <option value="">-- Select a vehicle --</option>
+          </select>
+        </div>
+        <div id="cardB" class="cmp-preview" hidden></div>
+      </div>
+    </div>
+
+    <!-- TEMP STRIP -->
+    <div class="cmp-temp-strip" data-reveal>
+      <label for="cmpTemp" style="font-size:14px;color:var(--fg2);font-weight:500">Winter temperature:</label>
+      <input type="range" id="cmpTemp" min="-30" max="20" value="0" step="1" style="flex:1;max-width:240px" aria-label="Temperature for winter range comparison"/>
+      <span id="cmpTempVal" class="accent" style="font-weight:700;font-size:16px;min-width:48px">0&deg;C</span>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div id="cmpTable" hidden style="margin-top:40px" data-reveal>
+      <div class="cmp-table-header">
+        <div></div>
+        <div id="cmpHdrA" class="cmp-hdr-name">Vehicle A</div>
+        <div id="cmpHdrB" class="cmp-hdr-name">Vehicle B</div>
+      </div>
+      <div id="cmpRows"></div>
+    </div>
+
+    <div id="cmpEmpty" style="text-align:center;padding:80px 0;color:var(--fg3)">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 16px;opacity:.3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+      <p style="font-size:17px">Select two vehicles above to begin comparing</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.cmp-picker-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:16px;
+  box-shadow:var(--shadow-sm);
+}
+.cmp-picker-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
+.cmp-preview{display:flex;align-items:center;gap:16px;padding-top:4px}
+.cmp-preview-img{width:80px;height:52px;object-fit:cover;border-radius:var(--r-sm);background:var(--bg2);flex-shrink:0;border:1px solid var(--border)}
+.cmp-preview-name{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--navy)}
+.cmp-preview-price{font-size:14px;color:var(--fg2);margin-top:2px}
+.cmp-temp-strip{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:20px;padding:16px 20px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  box-shadow:var(--shadow-sm);
+}
+.cmp-table-header{
+  display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;
+  padding:0 0 12px;border-bottom:2px solid var(--border2);margin-bottom:4px;
+}
+.cmp-hdr-name{font-size:16px;font-weight:700;letter-spacing:-.025em;color:var(--navy)}
+.cmp-row{
+  display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;align-items:center;
+  padding:14px 0;border-bottom:1px solid var(--border);
+}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row-label{font-size:13px;color:var(--fg3);font-weight:500}
+.cmp-val{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--navy)}
+.cmp-val-wrap{display:flex;flex-direction:column;gap:4px}
+.cmp-bar-track{height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+.cmp-bar-fill{height:100%;border-radius:99px;background:var(--accent);transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+.cmp-better{color:var(--accent)}
+.cmp-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;background:var(--accent-d);color:var(--navy);border:1px solid var(--accent-g);margin-top:3px}
+@media(max-width:640px){
+  .cmp-table-header,.cmp-row{grid-template-columns:120px 1fr 1fr;gap:12px}
+  .cmp-hdr-name,.cmp-val{font-size:14px}
+  .cmp-row-label{font-size:12px}
+}
+</style>
+
+<script>
+'use strict';
+var cmpVehicles = [], cmpTemp = 0;
+
+function setSliderPct(el) {
+  var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+  el.style.setProperty('--pct', pct + '%');
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+  cmpVehicles = await EVS.loadVehicles();
+  var pickA = document.getElementById('pickA');
+  var pickB = document.getElementById('pickB');
+  var tempSl = document.getElementById('cmpTemp');
+  var tempVal = document.getElementById('cmpTempVal');
+
+  setSliderPct(tempSl);
+
+  var opts = '<option value="">-- Select --</option>' +
+    cmpVehicles.map(function(v) {
+      return '<option value="' + v.id + '">' + (v.name||'Unknown') + '</option>';
+    }).join('');
+  pickA.innerHTML = opts;
+  pickB.innerHTML = opts;
+
+  function getV(id) { return cmpVehicles.find(function(v){ return v.id === id; }); }
+
+  function renderPreview(el, v) {
+    if (!v) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = '<img src="' + (v.img||'evcarslogo.png') + '" alt="' + (v.name||'') + '" class="cmp-preview-img"' +
+      ' onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'8px\';this.style.opacity=\'.3\'"/>' +
+      '<div><div class="cmp-preview-name">' + (v.name||'Unknown') + '</div>' +
+      '<div class="cmp-preview-price">' + (v.msrp ? 'From $' + v.msrp.toLocaleString('en-CA') : 'TBD') + '</div></div>';
+  }
+
+  function renderTable() {
+    var va = getV(pickA.value);
+    var vb = getV(pickB.value);
+    renderPreview(document.getElementById('cardA'), va);
+    renderPreview(document.getElementById('cardB'), vb);
+    if (!va || !vb) {
+      document.getElementById('cmpTable').hidden = true;
+      document.getElementById('cmpEmpty').hidden = false;
+      return;
+    }
+    document.getElementById('cmpTable').hidden = false;
+    document.getElementById('cmpEmpty').hidden = true;
+    document.getElementById('cmpHdrA').textContent = va.name||'A';
+    document.getElementById('cmpHdrB').textContent = vb.name||'B';
+
+    var wra = EVS.winterRange(va.range||0, cmpTemp);
+    var wrb = EVS.winterRange(vb.range||0, cmpTemp);
+
+    var rows = [
+      { label: 'MSRP (CAD)', valA: va.msrp ? '$' + va.msrp.toLocaleString('en-CA') : '--', valB: vb.msrp ? '$' + vb.msrp.toLocaleString('en-CA') : '--', better: va.msrp && vb.msrp ? (va.msrp < vb.msrp ? 'A' : vb.msrp < va.msrp ? 'B' : '') : '', bar: false },
+      { label: 'NRCan Range', valA: (va.range||0) + ' km', valB: (vb.range||0) + ' km', numA: va.range||0, numB: vb.range||0, better: (va.range||0) > (vb.range||0) ? 'A' : (vb.range||0) > (va.range||0) ? 'B' : '', bar: true },
+      { label: 'Winter Range\n(' + (cmpTemp>0?'+':'') + cmpTemp + '\u00b0C)', valA: wra + ' km', valB: wrb + ' km', numA: wra, numB: wrb, better: wra > wrb ? 'A' : wrb > wra ? 'B' : '', bar: true },
+      { label: 'Battery', valA: (va.battery||0) + ' kWh', valB: (vb.battery||0) + ' kWh', numA: va.battery||0, numB: vb.battery||0, better: (va.battery||0) > (vb.battery||0) ? 'A' : (vb.battery||0) > (va.battery||0) ? 'B' : '', bar: true },
+      { label: 'DC Fast Charge', valA: (va.dc||0) + ' kW', valB: (vb.dc||0) + ' kW', numA: va.dc||0, numB: vb.dc||0, better: (va.dc||0) > (vb.dc||0) ? 'A' : (vb.dc||0) > (va.dc||0) ? 'B' : '', bar: true },
+      { label: '0\u2013100 km/h', valA: va.acc ? va.acc + 's' : '--', valB: vb.acc ? vb.acc + 's' : '--', numA: va.acc||0, numB: vb.acc||0, better: va.acc && vb.acc ? (va.acc < vb.acc ? 'A' : vb.acc < va.acc ? 'B' : '') : '', bar: false, lowerBetter: true },
+      { label: 'iZEV Rebate', valA: va.rebate ? '$' + va.rebate.toLocaleString('en-CA') : 'Not eligible', valB: vb.rebate ? '$' + vb.rebate.toLocaleString('en-CA') : 'Not eligible', better: (va.rebate||0) > (vb.rebate||0) ? 'A' : (vb.rebate||0) > (va.rebate||0) ? 'B' : '', bar: false },
+      { label: 'Heat Pump', valA: va.hp ? '\u2713 Included' : '\u2715 No', valB: vb.hp ? '\u2713 Included' : '\u2715 No', better: va.hp && !vb.hp ? 'A' : vb.hp && !va.hp ? 'B' : '', bar: false },
+      { label: 'Made in Canada', valA: va.ca ? '\u2713 Yes' : '\u2715 No', valB: vb.ca ? '\u2713 Yes' : '\u2715 No', better: '', bar: false }
+    ];
+
+    var maxAll = Math.max(va.range||0, vb.range||0, wra, wrb, va.battery||0, vb.battery||0, va.dc||0, vb.dc||0);
+
+    document.getElementById('cmpRows').innerHTML = rows.map(function(r) {
+      var aClass = r.better === 'A' ? ' cmp-better' : '';
+      var bClass = r.better === 'B' ? ' cmp-better' : '';
+      var aBadge = r.better === 'A' ? '<span class="cmp-badge">\u2191 Better</span>' : '';
+      var bBadge = r.better === 'B' ? '<span class="cmp-badge">\u2191 Better</span>' : '';
+      var aBar = '', bBar = '';
+      if (r.bar && r.numA !== undefined && maxAll) {
+        var pctA = Math.round((r.numA / maxAll) * 100);
+        var pctB = Math.round((r.numB / maxAll) * 100);
+        aBar = '<div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:' + pctA + '%"></div></div>';
+        bBar = '<div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:' + pctB + '%"></div></div>';
+      }
+      return '<div class="cmp-row">' +
+        '<div class="cmp-row-label">' + r.label.replace('\n','<br>') + '</div>' +
+        '<div class="cmp-val-wrap"><div class="cmp-val' + aClass + '">' + r.valA + aBadge + '</div>' + aBar + '</div>' +
+        '<div class="cmp-val-wrap"><div class="cmp-val' + bClass + '">' + r.valB + bBadge + '</div>' + bBar + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  pickA.addEventListener('change', renderTable);
+  pickB.addEventListener('change', renderTable);
+  tempSl.addEventListener('input', function() {
+    cmpTemp = +this.value;
+    setSliderPct(this);
+    tempVal.textContent = (cmpTemp > 0 ? '+' : '') + cmpTemp + '\u00b0C';
+    renderTable();
+  });
+});
+</script>
+<footer>
+  <div class="wrap-wide footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">evselect<span>.ca</span></div>
+        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real winters.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="vehicles.html">Browse EVs</a>
+          <a href="tools.html">Tools</a>
+          <a href="compare.html">Compare</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <div class="footer-links">
+          <a href="tools.html#winter">Winter Range</a>
+          <a href="tools.html#rebate">Rebate Calculator</a>
+          <a href="tools.html#route">Route Planner</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <button onclick="openPolicy('terms')">Terms &amp; Conditions</button>
+          <button onclick="openPolicy('privacy')">Privacy Policy</button>
+          <button onclick="openPolicy('cookie')">Cookie Policy</button>
+          <button onclick="openPolicy('disclaimer')">Data Disclaimer</button>
+          <button onclick="openPolicy('accessibility')">Accessibility</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Not affiliated with any manufacturer. Informational purposes only.</span>
+      <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank" rel="noopener" class="footer-copy" style="display:flex;align-items:center;gap:6px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div id="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+  <div class="modal-backdrop" onclick="closePolicy()"></div>
+  <div class="modal-box">
+    <div class="modal-hd">
+      <h2 id="policyTitle"></h2>
+      <button class="modal-close" onclick="closePolicy()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="policyBody"></div>
+    <div class="modal-ft">
+      <button class="btn btn-primary btn-sm" onclick="closePolicy()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="shared/data.js"></script>
+<script src="shared/chat.js"></script>
+<script>
+// Theme toggle
+(function(){
+  var saved = localStorage.getItem('evs-theme');
+  if(saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  var btn = document.getElementById('themeToggle');
+  if(btn) btn.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('evs-theme', isDark ? 'light' : 'dark');
+  });
+})();
+
+// Nav scroll + mobile
+(function(){
+  var nav = document.getElementById('evs-nav');
+  var links = document.getElementById('navLinks');
+  var btn = document.getElementById('mobBtn');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+  if(btn) btn.addEventListener('click', function(){
+    var o = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', o);
+  });
+  var path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(function(a){
+    if(a.getAttribute('href') === path) a.classList.add('active');
+  });
+  var fy = document.getElementById('footerYear');
+  if(fy) fy.textContent = new Date().getFullYear();
+
+  // Nav search bar
+  var navSearch = document.getElementById('navSearchInput');
+  if(navSearch){
+    navSearch.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && this.value.trim()){
+        window.location.href = 'vehicles.html?q=' + encodeURIComponent(this.value.trim());
+      }
+    });
+  }
+})();
+
+// Scroll reveal
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, {threshold:0.08});
+  function init(){ document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+
+// Policies
+var POLICIES = {
+  terms:{title:'Terms & Conditions',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Data Accuracy</h3><p>Vehicle range figures are NRCan official ratings. Winter range estimates use a simplified thermal degradation model. <strong>Do not rely solely on these estimates for critical journey safety decisions.</strong></p><h3>3. Rebate Information</h3><p>Based on publicly available government data and may be outdated. Always verify directly with Transport Canada or your provincial ministry before purchasing.</p><h3>4. No Financial Advice</h3><p>All content is for informational purposes only and does not constitute financial, legal, or purchasing advice.</p><h3>5. Limitation of Liability</h3><p>EVSelect is not liable for any damages resulting from platform use, including range errors, rebate inaccuracies, or service interruptions.</p><h3>6. Governing Law</h3><p>Governed by the laws of Alberta, Canada.</p>'},
+  privacy:{title:'Privacy Policy',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; PIPEDA Compliant</p><h3>What We Collect</h3><ul><li>Anonymised usage data via server logs (consent-based analytics only)</li><li>AI assistant chat messages (processed by Hugging Face free API)</li><li>Cookie consent preference stored in browser localStorage</li></ul><h3>What We Do NOT Collect</h3><p>We do not collect names, emails, payment info, or government IDs. We do not sell your data.</p><h3>Your PIPEDA Rights</h3><p>You may access information we hold, request corrections, withdraw consent, or file a complaint with the Office of the Privacy Commissioner of Canada.</p>'},
+  cookie:{title:'Cookie Policy',body:'<h3>Cookies We Use</h3><table><thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead><tbody><tr><td>evs_consent</td><td>Consent preference</td><td>Essential</td></tr><tr><td>_ga, _gid</td><td>Analytics (if enabled)</td><td>Optional</td></tr></tbody></table><h3>localStorage</h3><p>We use browser localStorage for your preference. This is not transmitted to our servers.</p>'},
+  disclaimer:{title:'Data Disclaimer',body:'<h3>Vehicle Range</h3><p>NRCan official ratings for the best available trim. Real-world range varies by temperature, speed, cargo, HVAC, and battery age.</p><h3>Winter Range Calculator</h3><p>Uses a simplified linear model (0% loss at 0&deg;C, 35% at &minus;30&deg;C). <strong>Do not use as your only planning tool for critical winter journeys.</strong></p><h3>Rebate Information</h3><p>Verify directly with: <a href="https://tc.canada.ca" target="_blank">Transport Canada iZEV</a>, <a href="https://goelectricbc.gov.bc.ca" target="_blank">Go Electric BC</a>, <a href="https://vehiculeselectriques.gouv.qc.ca" target="_blank">Roulez Vert QC</a>.</p>'},
+  accessibility:{title:'Accessibility Statement',body:'<p>EVSelect strives to conform to WCAG 2.1 Level AA.</p><h3>Features Implemented</h3><ul><li>Semantic HTML5 heading hierarchy</li><li>ARIA labels on all interactive elements</li><li>Full keyboard navigability</li><li>High-contrast dark mode</li><li>Focus-visible styles</li><li>Alt text on all images</li><li>aria-live regions on dynamic content</li></ul><h3>Feedback</h3><p>Report issues via <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>. We respond within 5 business days.</p>'}
+};
+function openPolicy(k){
+  var p=POLICIES[k]; if(!p) return;
+  document.getElementById('policyTitle').textContent=p.title;
+  document.getElementById('policyBody').innerHTML=p.body;
+  document.getElementById('policy-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePolicy(){
+  document.getElementById('policy-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePolicy(); });
+</script>
+</body>
+</html>
