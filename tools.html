@@ -99,167 +99,239 @@
     <p class="pg-sub">
       Honest winter range calculations based on verified NRCan data, 2026 Federal EVAP rebate stacking for all 13 provinces/territories, and nationwide Canadian route planning.
     </p>
-    <div class="tools-nav">
-      <a href="#winter">❄️ Winter Range Calculator</a>
-      <a href="#rebate">💰 2026 Rebate Stacker</a>
-      <a href="#route">🗺️ Canada Route Planner</a>
+    <div class="tool-tabs-bar" role="tablist" aria-label="EV Tools Navigation">
+      <button type="button" class="tool-tab-btn active" id="tab-btn-winter" role="tab" aria-selected="true" aria-controls="pane-winter" data-tab="winter">
+        <span class="tool-tab-icon">❄️</span>
+        <span class="tool-tab-text">
+          <span class="tool-tab-name">Winter Range</span>
+          <span class="tool-tab-desc">Sub-zero thermal degradation</span>
+        </span>
+      </button>
+      <button type="button" class="tool-tab-btn" id="tab-btn-rebate" role="tab" aria-selected="false" aria-controls="pane-rebate" data-tab="rebate">
+        <span class="tool-tab-icon">💰</span>
+        <span class="tool-tab-text">
+          <span class="tool-tab-name">2026 Rebate Stacker</span>
+          <span class="tool-tab-desc">Federal EVAP &amp; 13 provinces</span>
+        </span>
+      </button>
+      <button type="button" class="tool-tab-btn" id="tab-btn-route" role="tab" aria-selected="false" aria-controls="pane-route" data-tab="route">
+        <span class="tool-tab-icon">🗺️</span>
+        <span class="tool-tab-text">
+          <span class="tool-tab-name">Canada Route Planner</span>
+          <span class="tool-tab-desc">Highway corridors &amp; charging</span>
+        </span>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- ── TOOL 1: WINTER RANGE CALCULATOR ───────────────────── -->
-<section class="tool-section" id="winter" aria-labelledby="winterTitle">
+<!-- ── TOOL 1: WINTER RANGE CALCULATOR (PANE 1) ────────────── -->
+<section class="tool-pane active" id="pane-winter" role="tabpanel" aria-labelledby="tab-btn-winter">
   <div class="wrap">
     <div class="tool-inner">
+      <!-- Left Column: Controls -->
       <div class="tool-controls">
-        <span class="eyebrow">Tool 1 &bull; Temperature Physics Model</span>
-        <h2 id="winterTitle" class="section-title" style="margin-bottom:12px">Winter Range Calculator</h2>
-        <p class="fg2" style="font-size:16px;line-height:1.6">
-          NRCan rates EVs in mild conditions (~20&deg;C). In real Canadian winters, sub-zero temperatures, cabin heating, and electrolyte viscosity degrade available range.
-        </p>
-        <div class="ctrl-row" style="margin-top:28px">
-          <label class="ctrl-label" for="winterVehicle">Select Electric Vehicle</label>
-          <select id="winterVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for winter test">
+        <div class="tool-header-block">
+          <h2 id="winterTitle" class="tool-title">Winter Range Calculator</h2>
+          <p class="tool-sub">See how freezing Canadian temperatures affect real battery range.</p>
+        </div>
+
+        <!-- 1. Select Vehicle -->
+        <div class="tool-input-card">
+          <label class="tool-input-label" for="winterVehicle">1. Select Electric Vehicle</label>
+          <select id="winterVehicle" class="tool-select" aria-label="Select vehicle for winter test">
             <option value="" disabled selected>Loading vehicle database...</option>
           </select>
-        </div>
-        <div class="ctrl-row" style="margin-top:24px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-            <label class="ctrl-label" for="tempSlider" style="margin:0">Ambient Temperature</label>
-            <span id="tempDisplay" style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.02em">0&deg;C</span>
-          </div>
-          <input type="range" id="tempSlider" min="-30" max="20" step="1" value="0"
-                 aria-label="Ambient Temperature in Celsius"
-                 aria-valuemin="-30" aria-valuemax="20" aria-valuenow="0"
-                 style="width:100%"/>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--fg3);margin-top:8px">
-            <span>&minus;30&deg;C (Severe Prairie Winter)</span>
-            <span>0&deg;C (Freezing Point)</span>
-            <span>+20&deg;C (Ideal Lab Test)</span>
+          <div class="tool-veh-chip" id="winterVehChip">
+            <img id="winterVehImg" src="evcarslogo.png" alt="Car thumbnail" class="tool-veh-thumb"/>
+            <div class="tool-veh-meta">
+              <span class="tool-veh-name" id="winterVehName">Loading...</span>
+              <span class="tool-veh-sub" id="winterVehSub">Starting MSRP: --</span>
+            </div>
           </div>
         </div>
-        <div class="winter-alert" id="winterAlert">
-          <strong>Cold Weather Insight:</strong> At &minus;20&deg;C or colder, cabin heat draw and battery heating consume significant energy. Vehicles equipped with standard heat pumps retain 10&ndash;15% more range than resistive-heater vehicles.
+
+        <!-- 2. Select Temperature -->
+        <div class="tool-input-card">
+          <div class="tool-temp-header">
+            <label class="tool-input-label" for="tempSlider" style="margin:0">2. Outside Temperature</label>
+            <span id="tempDisplay" class="tool-temp-badge">0&deg;C</span>
+          </div>
+
+          <!-- Tactile Temperature Presets -->
+          <div class="tool-temp-presets">
+            <button type="button" class="temp-btn" data-temp="20">
+              <span class="temp-icon">☀️</span>
+              <span class="temp-name">+20&deg;C</span>
+              <span class="temp-desc">Mild / Summer</span>
+            </button>
+            <button type="button" class="temp-btn active" data-temp="0">
+              <span class="temp-icon">🧊</span>
+              <span class="temp-name">0&deg;C</span>
+              <span class="temp-desc">Freezing</span>
+            </button>
+            <button type="button" class="temp-btn" data-temp="-20">
+              <span class="temp-icon">❄️</span>
+              <span class="temp-name">&minus;20&deg;C</span>
+              <span class="temp-desc">Deep Freeze</span>
+            </button>
+          </div>
+
+          <div style="margin-top:16px">
+            <input type="range" id="tempSlider" min="-30" max="20" step="1" value="0"
+                   aria-label="Ambient Temperature in Celsius"
+                   aria-valuemin="-30" aria-valuemax="20" aria-valuenow="0"/>
+          </div>
         </div>
       </div>
+
+      <!-- Right Column: Hero Result -->
       <div class="tool-result">
-        <div class="tool-result-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-            <span class="badge badge-b">Verified Empirical Model</span>
-            <span class="fg3" style="font-size:12px">Updated Sep 2026</span>
-          </div>
-          <div class="wr-grid">
-            <div class="wr-block">
-              <div class="wr-label">Official NRCan Range</div>
-              <div class="wr-num fg" id="wrBase">-- km</div>
-            </div>
-            <div class="wr-block wr-block-accent">
-              <div class="wr-label" style="color:var(--accent)">Real Winter Range</div>
-              <div class="wr-num" style="color:var(--accent)" id="wrWinter">-- km</div>
+        <div class="tool-hero-card">
+          <div class="tool-card-tag">REAL-WORLD WINTER ESTIMATE</div>
+
+          <div class="tool-hero-stat">
+            <div class="tool-hero-val" id="wrWinter">-- km</div>
+            <div class="tool-hero-baseline">
+              Normal official range: <strong id="wrBase" style="color:var(--navy)">-- km</strong> &bull; <span id="wrLossPct" style="font-weight:700">0% thermal drop</span>
             </div>
           </div>
-          <div class="wr-loss-row">
-            <span class="wr-loss-label">Estimated Cold Weather Degradation:</span>
-            <span class="wr-loss-pct" id="wrLossPct">0%</span>
+
+          <!-- Retention Bar -->
+          <div class="tool-bar-section">
+            <div class="tool-bar-meta">
+              <span style="font-weight:600">Battery Efficiency Retained</span>
+              <strong id="wrRetentionLabel">100% Retained</strong>
+            </div>
+            <div class="tool-bar-track">
+              <div class="tool-bar-fill" id="wrRetentionBar" style="width:100%;background:#10b981"></div>
+            </div>
           </div>
-          <div class="wr-breakdown">
-            <div class="wr-bd-row"><span>Aerodynamic Air Density Increase:</span><span>~4&ndash;8%</span></div>
-            <div class="wr-bd-row"><span>Battery Internal Resistance:</span><span>~10&ndash;18%</span></div>
-            <div class="wr-bd-row"><span>Cabin HVAC &amp; Seat Heating:</span><span>~8&ndash;14%</span></div>
+
+          <!-- Status Indicators -->
+          <div class="tool-status-pills">
+            <div class="tool-pill" id="winterHpIndicator">
+              <span class="tool-pill-icon">✓</span>
+              <span>Heat Pump Equipped</span>
+            </div>
+            <div class="tool-pill" id="winterEvapIndicator">
+              <span class="tool-pill-icon">✓</span>
+              <span>2026 EVAP Eligible</span>
+            </div>
           </div>
-          <p class="wr-tip">
-            💡 <strong>Winter Commuting Tip:</strong> Always precondition the battery and cabin while plugged into Level 2 charging before departing to maximize driving distance.
-          </p>
+
+          <!-- CTAs -->
+          <div class="tool-cta-row">
+            <button type="button" class="btn btn-primary" id="winterCompareCta" style="flex:1">Compare Range &rarr;</button>
+            <button type="button" class="btn btn-ghost" id="winterViewSpecsBtn">View Full Specs</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TOOL 2: 2026 REBATE CALCULATOR (ALL 13 PROVINCES) ──── -->
-<section class="tool-section" id="rebate" aria-labelledby="rebateTitle">
+<!-- ── TOOL 2: 2026 REBATE CALCULATOR (PANE 2) ────────────── -->
+<section class="tool-pane" id="pane-rebate" role="tabpanel" aria-labelledby="tab-btn-rebate">
   <div class="wrap">
     <div class="tool-inner">
+      <!-- Left Column: Controls -->
       <div class="tool-controls">
-        <span class="eyebrow">Tool 2 &bull; 2026 Incentive Rules</span>
-        <h2 id="rebateTitle" class="section-title" style="margin-bottom:12px">2026 EV Rebate Stacker</h2>
-        <p class="fg2" style="font-size:16px;line-height:1.6">
-          <strong>Important 2026 Update:</strong> The Federal iZEV program ran out of funding on January 12, 2025. It was replaced on <strong>February 16, 2026</strong> by the <strong>Electric Vehicle Affordability Program (EVAP)</strong>, which caps eligibility by final transaction value ($50,000 maximum) and requires Canadian/free-trade partner assembly.
-        </p>
-        <div class="ctrl-row" style="margin-top:24px">
-          <label class="ctrl-label" for="rebateVehicle">Select Vehicle</label>
-          <select id="rebateVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for rebate evaluation">
+        <div class="tool-header-block">
+          <h2 id="rebateTitle" class="tool-title">2026 EV Rebate Stacker</h2>
+          <p class="tool-sub">Stack Federal EVAP with your provincial discounts to calculate your net price.</p>
+        </div>
+
+        <!-- 1. Select Vehicle -->
+        <div class="tool-input-card">
+          <label class="tool-input-label" for="rebateVehicle">1. Select Electric Vehicle</label>
+          <select id="rebateVehicle" class="tool-select" aria-label="Select vehicle for rebate evaluation">
             <option value="" disabled selected>Select an EV...</option>
           </select>
+          <div class="tool-veh-chip" id="rebateVehChip">
+            <img id="rebateVehImg" src="evcarslogo.png" alt="Car thumbnail" class="tool-veh-thumb"/>
+            <div class="tool-veh-meta">
+              <span class="tool-veh-name" id="rebateVehName">Loading...</span>
+              <span class="tool-veh-sub" id="rebateVehSub">Starting MSRP: --</span>
+            </div>
+          </div>
         </div>
-        <div class="ctrl-row" style="margin-top:20px">
-          <label class="ctrl-label" for="rebateProvince">Select Province / Territory (All 13 Covered)</label>
-          <select id="rebateProvince" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select province or territory">
+
+        <!-- 2. Select Province -->
+        <div class="tool-input-card">
+          <label class="tool-input-label" for="rebateProvince">2. Select Province / Territory</label>
+          <select id="rebateProvince" class="tool-select" style="margin-bottom:12px">
             <option value="AB">Alberta (AB)</option>
-            <option value="BC">British Columbia (BC) — [CleanBC Paused]</option>
-            <option value="MB">Manitoba (MB) — [Up to $4,000]</option>
-            <option value="NB">New Brunswick (NB) — [Up to $5,000]</option>
-            <option value="NL">Newfoundland &amp; Labrador (NL) — [Up to $2,500]</option>
-            <option value="NS">Nova Scotia (NS) — [Up to $3,000]</option>
-            <option value="NT">Northwest Territories (NT) — [Up to $5,000]</option>
-            <option value="NU">Nunavut (NU) — [No Rebate]</option>
-            <option value="ON">Ontario (ON) — [No Provincial Rebate]</option>
-            <option value="PE">Prince Edward Island (PE) — [Up to $5,000]</option>
-            <option value="QC">Quebec (QC) — [Roulez Vert Phasing Down]</option>
-            <option value="SK">Saskatchewan (SK) — [No Rebate]</option>
-            <option value="YT">Yukon (YT) — [Up to $5,000]</option>
+            <option value="BC">British Columbia (BC)</option>
+            <option value="MB">Manitoba (MB)</option>
+            <option value="NB">New Brunswick (NB)</option>
+            <option value="NL">Newfoundland &amp; Labrador (NL)</option>
+            <option value="NS">Nova Scotia (NS)</option>
+            <option value="NT">Northwest Territories (NT)</option>
+            <option value="NU">Nunavut (NU)</option>
+            <option value="ON">Ontario (ON)</option>
+            <option value="PE">Prince Edward Island (PE)</option>
+            <option value="QC">Quebec (QC)</option>
+            <option value="SK">Saskatchewan (SK)</option>
+            <option value="YT">Yukon (YT)</option>
           </select>
-        </div>
-        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
-          <span style="font-size:12px;color:var(--fg3);width:100%;margin-bottom:2px">Quick select province:</span>
-          <button class="prov-pill" data-p="AB">AB</button>
-          <button class="prov-pill" data-p="BC">BC</button>
-          <button class="prov-pill" data-p="MB">MB</button>
-          <button class="prov-pill" data-p="NB">NB</button>
-          <button class="prov-pill" data-p="NL">NL</button>
-          <button class="prov-pill" data-p="NS">NS</button>
-          <button class="prov-pill" data-p="NT">NT</button>
-          <button class="prov-pill" data-p="NU">NU</button>
-          <button class="prov-pill" data-p="ON">ON</button>
-          <button class="prov-pill" data-p="PE">PE</button>
-          <button class="prov-pill" data-p="QC">QC</button>
-          <button class="prov-pill" data-p="SK">SK</button>
-          <button class="prov-pill" data-p="YT">YT</button>
+
+          <!-- Clean 13-Province Quick Select Pills -->
+          <div class="tool-prov-grid">
+            <button type="button" class="prov-pill" data-p="AB">AB</button>
+            <button type="button" class="prov-pill" data-p="BC">BC</button>
+            <button type="button" class="prov-pill" data-p="MB">MB</button>
+            <button type="button" class="prov-pill" data-p="NB">NB</button>
+            <button type="button" class="prov-pill" data-p="NL">NL</button>
+            <button type="button" class="prov-pill" data-p="NS">NS</button>
+            <button type="button" class="prov-pill" data-p="NT">NT</button>
+            <button type="button" class="prov-pill" data-p="NU">NU</button>
+            <button type="button" class="prov-pill" data-p="ON">ON</button>
+            <button type="button" class="prov-pill" data-p="PE">PE</button>
+            <button type="button" class="prov-pill" data-p="QC">QC</button>
+            <button type="button" class="prov-pill" data-p="SK">SK</button>
+            <button type="button" class="prov-pill" data-p="YT">YT</button>
+          </div>
         </div>
       </div>
+
+      <!-- Right Column: Hero Result -->
       <div class="tool-result">
-        <div class="tool-result-card" id="rebateResultCard">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div class="tool-hero-card">
+          <div class="tool-card-tag">TOTAL ESTIMATED SAVINGS</div>
+
+          <!-- Hero Number -->
+          <div class="tool-hero-stat">
+            <div class="tool-hero-val green" id="rebateTotal">$0</div>
+            <div class="tool-hero-sub" id="rebateNetPrice">Estimated Net Vehicle Price: --</div>
+          </div>
+
+          <!-- Clean 2-Row Stack Breakdown -->
+          <div class="tool-stack-list">
+            <div class="tool-stack-row">
+              <div class="tool-stack-info">
+                <span class="tool-stack-title">Federal EVAP (2026)</span>
+                <span class="tool-stack-desc" id="rebateEvapNote">Under $50k transaction cap</span>
+              </div>
+              <div class="tool-stack-val" id="rebateEvapAmt">$0</div>
+            </div>
+            <div class="tool-stack-row">
+              <div class="tool-stack-info">
+                <span class="tool-stack-title" id="provProgramName">Provincial Incentive</span>
+                <span class="tool-stack-desc" id="provProgramNote">Provincial incentive program</span>
+              </div>
+              <div class="tool-stack-val" id="provProgramAmt">$0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px">
             <span class="badge badge-g" id="rebateStatusBadge">EVAP 2026 Eligible</span>
-            <span class="fg3" style="font-size:12px" id="rebateVerifiedDate">Last verified: September 2026</span>
           </div>
-          <div style="margin-bottom:24px">
-            <div class="wr-label">Total Incentive Stack</div>
-            <div class="big-num" id="rebateTotal">$0</div>
-            <div class="fg2" style="font-size:14px;margin-top:4px" id="rebateNetPrice">Estimated net vehicle price: --</div>
-          </div>
-          <div class="rebate-line">
-            <div>
-              <div style="font-weight:600;color:var(--navy)">Federal EVAP (2026)</div>
-              <div class="fg3" style="font-size:12px" id="rebateEvapNote">Final transaction cap $50k &bull; Assembly rules apply</div>
-            </div>
-            <div class="rebate-amt" id="rebateEvapAmt">$0</div>
-          </div>
-          <div class="rebate-line">
-            <div>
-              <div style="font-weight:600;color:var(--navy)" id="provProgramName">Provincial Incentive</div>
-              <div class="fg3" style="font-size:12px" id="provProgramNote">Select your province</div>
-            </div>
-            <div class="rebate-amt" id="provProgramAmt">$0</div>
-          </div>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-            <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px">
-              <span class="fg3">Official Ministry Source:</span>
-              <a href="https://tc.canada.ca/en/road-transportation/innovative-technologies/zero-emission-vehicles"
-                 target="_blank" rel="noopener" id="rebateSourceLink" style="font-weight:600;color:var(--accent)">
-                Transport Canada EVAP Portal &rarr;
-              </a>
-            </div>
+
+          <!-- CTAs -->
+          <div class="tool-cta-row">
+            <button type="button" class="btn btn-primary" id="rebateCompareCta" style="flex:1">Compare Net Price &rarr;</button>
+            <button type="button" class="btn btn-ghost" id="rebateViewSpecsBtn">View Full Specs</button>
           </div>
         </div>
       </div>
@@ -267,133 +339,100 @@
   </div>
 </section>
 
-<!-- ── TOOL 3: CANADA-WIDE ROUTE PLANNER ─────────────────── -->
-<section class="tool-section" id="route" aria-labelledby="routeTitle">
+<!-- ── TOOL 3: CANADA ROUTE PLANNER (PANE 3) ──────────────── -->
+<section class="tool-pane" id="pane-route" role="tabpanel" aria-labelledby="tab-btn-route">
   <div class="wrap">
     <div class="tool-inner">
+      <!-- Left Column: Controls -->
       <div class="tool-controls">
-        <span class="eyebrow">Tool 3 &bull; Canada-Wide Cross-Country</span>
-        <h2 id="routeTitle" class="section-title" style="margin-bottom:12px">Canada EV Route Planner</h2>
-        <p class="fg2" style="font-size:16px;line-height:1.6">
-          Plan trips across major Canadian highway corridors or input any custom journey distance with real-world winter degradation modeling.
-        </p>
-        <div class="ctrl-row" style="margin-top:20px">
-          <label class="ctrl-label" for="routeVehicle">Select Vehicle</label>
-          <select id="routeVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for route calculation">
+        <div class="tool-header-block">
+          <h2 id="routeTitle" class="tool-title">Canada Route Planner</h2>
+          <p class="tool-sub">Estimate fast charging stops and trip duration across major Canadian corridors.</p>
+        </div>
+
+        <!-- 1. Select Vehicle -->
+        <div class="tool-input-card">
+          <label class="tool-input-label" for="routeVehicle">1. Select Electric Vehicle</label>
+          <select id="routeVehicle" class="tool-select" aria-label="Select vehicle for route calculation">
             <option value="" disabled selected>Select EV...</option>
           </select>
-        </div>
-        <div class="ctrl-row" style="margin-top:20px">
-          <label class="ctrl-label">Choose Nationwide Corridor</label>
-          <div style="display:flex;flex-direction:column;gap:8px" id="corridorButtons">
-            <button class="route-btn active" data-route="trans-canada">
-              <span class="route-tag">Trans-Canada Highway 1</span>
-              <span class="route-name">Calgary, AB &harr; Vancouver, BC</span>
-              <span class="route-sub">970 km &bull; Rogers Pass Mountain Grade</span>
-            </button>
-            <button class="route-btn" data-route="coquihalla">
-              <span class="route-tag">BC Mountain Highway</span>
-              <span class="route-name">Hope, BC &harr; Kamloops, BC (Coquihalla)</span>
-              <span class="route-sub">205 km &bull; High Elevation Pass</span>
-            </button>
-            <button class="route-btn" data-route="ontario-quebec">
-              <span class="route-tag">Ontario &ndash; Quebec 401 Corridor</span>
-              <span class="route-name">Toronto, ON &harr; Montreal, QC</span>
-              <span class="route-sub">540 km &bull; Dense ONroute Fast Charging</span>
-            </button>
-            <button class="route-btn" data-route="alberta-highway2">
-              <span class="route-tag">Alberta Highway 2 Corridor</span>
-              <span class="route-name">Edmonton, AB &harr; Calgary, AB</span>
-              <span class="route-sub">300 km &bull; Red Deer Midpoint Charging</span>
-            </button>
-            <button class="route-btn" data-route="rockies-pass">
-              <span class="route-tag">Canadian Rockies</span>
-              <span class="route-name">Calgary, AB &harr; Jasper, AB</span>
-              <span class="route-sub">415 km &bull; Icefields Parkway Cold Run</span>
-            </button>
-            <button class="route-btn" data-route="atlantic-corridor">
-              <span class="route-tag">Atlantic Trans-Canada</span>
-              <span class="route-name">Moncton, NB &harr; Halifax, NS</span>
-              <span class="route-sub">260 km &bull; Cobequid Pass Corridor</span>
-            </button>
-            <button class="route-btn" data-route="custom">
-              <span class="route-tag">Custom Trip Anywhere in Canada</span>
-              <span class="route-name">Custom Distance Route Planner</span>
-              <span class="route-sub">Enter your exact route distance in km</span>
-            </button>
+          <div class="tool-veh-chip" id="routeVehChip">
+            <img id="routeVehImg" src="evcarslogo.png" alt="Car thumbnail" class="tool-veh-thumb"/>
+            <div class="tool-veh-meta">
+              <span class="tool-veh-name" id="routeVehName">Loading...</span>
+              <span class="tool-veh-sub" id="routeVehSub">Starting MSRP: --</span>
+            </div>
           </div>
         </div>
-        <!-- Custom Distance Input Section (shown when custom route is active) -->
-        <div id="customDistanceRow" style="display:none;margin-top:20px;padding:16px;background:var(--card);border:1.5px solid var(--accent);border-radius:var(--r-sm)">
-          <label class="ctrl-label" for="customKmInput">Route Distance (km)</label>
-          <input type="number" id="customKmInput" min="10" max="5000" value="450" class="nav-search" style="height:44px;padding:0 14px;border-radius:var(--r-sm);width:100%" aria-label="Custom distance in kilometers"/>
-          <div class="ctrl-note">Enter your custom one-way or round-trip driving distance across Canada.</div>
+
+        <!-- 2. Select Route -->
+        <div class="tool-input-card">
+          <label class="tool-input-label">2. Select Canadian Highway Corridor</label>
+          <div class="tool-route-list" id="corridorButtons">
+            <button type="button" class="route-btn active" data-route="ontario-quebec">
+              <span class="route-btn-title">Toronto &harr; Montreal</span>
+              <span class="route-btn-meta">540 km &bull; Hwy 401 Corridor</span>
+            </button>
+            <button type="button" class="route-btn" data-route="trans-canada">
+              <span class="route-btn-title">Calgary &harr; Vancouver</span>
+              <span class="route-btn-meta">970 km &bull; Trans-Canada 1</span>
+            </button>
+            <button type="button" class="route-btn" data-route="alberta-highway2">
+              <span class="route-btn-title">Edmonton &harr; Calgary</span>
+              <span class="route-btn-meta">300 km &bull; Alberta Hwy 2</span>
+            </button>
+            <button type="button" class="route-btn" data-route="coquihalla">
+              <span class="route-btn-title">Hope &harr; Kamloops</span>
+              <span class="route-btn-meta">205 km &bull; Coquihalla Pass</span>
+            </button>
+            <button type="button" class="route-btn" data-route="custom">
+              <span class="route-btn-title">Custom Trip Distance</span>
+              <span class="route-btn-meta">Set custom kilometers</span>
+            </button>
+          </div>
+
+          <div id="customDistanceRow" style="display:none;margin-top:14px;padding:12px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm)">
+            <label class="tool-input-label" for="customKmInput">Custom Distance (km)</label>
+            <input type="number" id="customKmInput" min="20" max="4000" value="450" class="tool-select"/>
+          </div>
         </div>
       </div>
+
+      <!-- Right Column: Hero Result -->
       <div class="tool-result">
-        <div class="tool-result-card" id="routeCard">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-            <span class="badge badge-b" id="routeBadge">Trans-Canada Highway 1</span>
-            <span class="fg3" style="font-size:12px" id="routeTempStatus">At 0&deg;C</span>
+        <div class="tool-hero-card">
+          <div class="tool-card-tag" id="routeBadge">HIGHWAY 401 CORRIDOR</div>
+          <h3 style="font-size:22px;font-weight:700;color:var(--navy);margin-bottom:4px" id="routeTitleText">Toronto, ON &harr; Montreal, QC</h3>
+          <div style="font-size:13px;color:var(--fg2);margin-bottom:20px" id="routeDistanceText">540 km highway journey</div>
+
+          <!-- 3 Hero Metric Blocks in a Row -->
+          <div class="tool-metrics-row">
+            <div class="tool-metric-box">
+              <span class="tool-metric-val" id="routeStopsCount">1 Stop</span>
+              <span class="tool-metric-label">Fast Charge Stops</span>
+            </div>
+            <div class="tool-metric-box">
+              <span class="tool-metric-val" id="routeChargeTime">~25 min</span>
+              <span class="tool-metric-label">Total Charge Time</span>
+            </div>
+            <div class="tool-metric-box">
+              <span class="tool-metric-val" id="routeTotalTime">~5h 45m</span>
+              <span class="tool-metric-label">Est. Travel Time</span>
+            </div>
           </div>
-          <h3 style="font-size:22px;color:var(--navy);margin-bottom:4px" id="routeTitleText">Calgary, AB &harr; Vancouver, BC</h3>
-          <div class="fg2" style="font-size:14px;margin-bottom:20px" id="routeStats">Total Distance: 970 km &bull; Required Stops: 3&ndash;4 stops</div>
-          <div class="timeline" id="routeTimeline">
-            <!-- Timeline points rendered by JavaScript -->
+
+          <!-- Clean Stop Progression -->
+          <div class="timeline" id="routeTimeline" style="margin-top:16px"></div>
+
+          <!-- CTAs -->
+          <div class="tool-cta-row">
+            <button type="button" class="btn btn-primary" id="routeCompareCta" style="flex:1">Compare Route Range &rarr;</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-.tools-nav{
-  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;
-}
-.tools-nav a{
-  font-size:14px;font-weight:600;padding:10px 22px;border-radius:99px;
-  border:1.5px solid var(--border2);color:var(--fg2);transition:all .2s;text-decoration:none;
-}
-.tools-nav a:hover{color:var(--navy);border-color:var(--accent);background:var(--accent-d)}
-.ctrl-row{margin-top:20px}
-.ctrl-label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--fg2);display:block;margin-bottom:8px}
-.ctrl-note{font-size:12px;color:var(--fg3);margin-top:6px;line-height:1.5}
-.winter-alert{
-  margin-top:20px;padding:16px;border-radius:var(--r-sm);
-  font-size:14px;line-height:1.6;
-  background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);color:#92400e;
-}
-.wr-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.wr-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px}
-.wr-block-accent{background:var(--accent-d);border:1px solid var(--accent-g)}
-.wr-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--fg3);margin-bottom:8px}
-.wr-num{font-size:clamp(24px,3.5vw,32px);font-weight:700;letter-spacing:-.04em}
-.fg{color:var(--navy)}
-.wr-loss-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:14px}
-.wr-loss-label{color:var(--fg2)}
-.wr-loss-pct{font-weight:700;font-size:16px}
-.wr-breakdown{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.wr-bd-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:var(--fg2)}
-.wr-tip{font-size:13px;color:var(--fg3);margin-top:16px;line-height:1.55}
-
-/* Province pill tags */
-.prov-pill{
-  font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;
-  background:var(--card);border:1px solid var(--border2);color:var(--fg2);
-  cursor:pointer;transition:all .15s;
-}
-.prov-pill:hover,.prov-pill.active{
-  border-color:var(--accent);color:var(--navy);background:var(--accent-d);
-}
-.status-tag{
-  font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;text-transform:uppercase;
-}
-.status-tag.active{background:rgba(34,197,94,0.12);color:#16a34a;border:1px solid rgba(34,197,94,0.25)}
-.status-tag.paused{background:rgba(234,179,8,0.12);color:#ca8a04;border:1px solid rgba(234,179,8,0.25)}
-.status-tag.phasing_down{background:rgba(249,115,22,0.12);color:#ea580c;border:1px solid rgba(249,115,22,0.25)}
-.status-tag.none{background:var(--navy-lt);color:var(--fg3);border:1px solid var(--border)}
-</style>
 
 <script>
 'use strict';
@@ -402,6 +441,26 @@ var toolVehicles = [], toolTemp = 0, activeProv = 'AB', activeRoute = 'trans-can
 function setSliderPct(el) {
   var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
   el.style.setProperty('--pct', pct + '%');
+}
+
+// ── Tab Switching Logic ──
+function switchToolTab(tab) {
+  var valid = ['winter', 'rebate', 'route'];
+  if (!valid.includes(tab)) tab = 'winter';
+
+  document.querySelectorAll('.tool-tab-btn').forEach(function(b) {
+    var match = b.dataset.tab === tab;
+    b.classList.toggle('active', match);
+    b.setAttribute('aria-selected', match);
+  });
+
+  document.querySelectorAll('.tool-pane').forEach(function(p) {
+    p.classList.toggle('active', p.id === 'pane-' + tab);
+  });
+
+  try {
+    history.replaceState(null, null, '#' + tab);
+  } catch(e) {}
 }
 
 // ── Winter Range Logic ──
@@ -414,16 +473,66 @@ function updateWinter() {
   tempSl.setAttribute('aria-valuenow', toolTemp);
   tempDisp.textContent = (toolTemp > 0 ? '+' : '') + toolTemp + '°C';
 
+  // Highlight active preset button if matches
+  document.querySelectorAll('.temp-btn').forEach(function(btn) {
+    btn.classList.toggle('active', +btn.dataset.temp === toolTemp);
+  });
+
   var sel = document.getElementById('winterVehicle');
-  var base = +(sel.options[sel.selectedIndex] && sel.options[sel.selectedIndex].dataset.range) || 0;
+  var vIndex = sel.selectedIndex;
+  var vehicle = toolVehicles[vIndex] || toolVehicles[0];
+
+  // Update live vehicle mini-chip
+  if (vehicle) {
+    var imgEl = document.getElementById('winterVehImg');
+    if (imgEl) imgEl.src = vehicle.img;
+    var nameEl = document.getElementById('winterVehName');
+    if (nameEl) nameEl.textContent = vehicle.name;
+    var subEl = document.getElementById('winterVehSub');
+    if (subEl) subEl.textContent = 'NRCan Base: ' + vehicle.range + ' km • From $' + vehicle.msrp.toLocaleString('en-CA') + ' CAD';
+  }
+
+  var base = vehicle ? vehicle.range : 0;
   var loss = EVS.thermalLoss(toolTemp);
-  var lossR = Math.round(loss * 10) / 10;
   var wr = base ? EVS.winterRange(base, toolTemp) : 0;
+  var retainedPct = base ? Math.round((wr / base) * 100) : 100;
+  var lossR = Math.round(loss * 10) / 10;
 
   document.getElementById('wrBase').textContent = base ? base + ' km' : '-- km';
   document.getElementById('wrWinter').textContent = base ? wr + ' km' : '-- km';
-  document.getElementById('wrLossPct').textContent = lossR + '%';
-  document.getElementById('wrLossPct').style.color = loss > 20 ? '#f43f5e' : loss > 10 ? '#f59e0b' : 'var(--accent)';
+
+  var retBar = document.getElementById('wrRetentionBar');
+  var retLabel = document.getElementById('wrRetentionLabel');
+  var lossPctEl = document.getElementById('wrLossPct');
+  if (retBar && retLabel) {
+    retBar.style.width = Math.min(100, Math.max(15, retainedPct)) + '%';
+    retBar.style.background = retainedPct >= 85 ? '#10b981' : retainedPct >= 70 ? 'var(--accent)' : '#d97706';
+    retLabel.textContent = retainedPct + '% Retained';
+    retLabel.style.color = retainedPct >= 85 ? '#10b981' : retainedPct >= 70 ? 'var(--accent)' : '#d97706';
+  }
+  if (lossPctEl) {
+    lossPctEl.textContent = lossR > 0 ? '-' + lossR + '% in cold' : '0% thermal drop';
+    lossPctEl.style.color = lossR > 20 ? '#d97706' : 'var(--accent)';
+  }
+
+  var hpInd = document.getElementById('winterHpIndicator');
+  if (hpInd && vehicle) {
+    if (vehicle.hp) {
+      hpInd.innerHTML = '<span class="tool-pill-icon" style="color:#10b981">✓</span><span>Standard Heat Pump Equipped</span>';
+    } else {
+      hpInd.innerHTML = '<span class="tool-pill-icon" style="color:#d97706">⚠</span><span>Resistive PTC Cabin Heater</span>';
+    }
+  }
+
+  var evapInd = document.getElementById('winterEvapIndicator');
+  if (evapInd && vehicle) {
+    if (vehicle.evap_eligible) {
+      evapInd.innerHTML = '<span class="tool-pill-icon" style="color:#10b981">✓</span><span>2026 EVAP Eligible ($5,000)</span>';
+    } else {
+      evapInd.innerHTML = '<span class="tool-pill-icon" style="color:var(--fg3)">•</span><span>Exceeds $50k EVAP Cap</span>';
+    }
+  }
+
   updateRoute();
 }
 
@@ -435,44 +544,47 @@ function updateRebate() {
   var vIndex = vSel.selectedIndex;
   var vehicle = toolVehicles[vIndex] || toolVehicles[0];
 
+  // Update live vehicle mini-chip
+  if (vehicle) {
+    var imgEl = document.getElementById('rebateVehImg');
+    if (imgEl) imgEl.src = vehicle.img;
+    var nameEl = document.getElementById('rebateVehName');
+    if (nameEl) nameEl.textContent = vehicle.name;
+    var subEl = document.getElementById('rebateVehSub');
+    if (subEl) subEl.textContent = 'MSRP: $' + vehicle.msrp.toLocaleString('en-CA') + ' CAD • ' + (vehicle.evap_eligible ? 'EVAP Eligible' : 'Over $50k Cap');
+  }
+
   var evapAmt = vehicle ? EVS.calculateEvap(vehicle, 2026) : 0;
   var provAmt = (pData.status === 'active' || pData.status === 'phasing_down') ? pData.amount : 0;
   var totalRebate = evapAmt + provAmt;
 
-  document.getElementById('rebateTotal').textContent = '$' + totalRebate.toLocaleString('en-CA');
+  document.getElementById('rebateTotal').textContent = '$' + totalRebate.toLocaleString('en-CA') + ' CAD';
   document.getElementById('rebateEvapAmt').textContent = evapAmt > 0 ? '+$' + evapAmt.toLocaleString('en-CA') : '$0';
   document.getElementById('provProgramAmt').textContent = provAmt > 0 ? '+$' + provAmt.toLocaleString('en-CA') : '$0';
 
   if (pData.status === 'paused') {
-    document.getElementById('provProgramAmt').innerHTML = '<span style="text-decoration:line-through;opacity:.4">$' + pData.amount.toLocaleString('en-CA') + '</span> <span class="status-tag paused">Paused</span>';
+    document.getElementById('provProgramAmt').innerHTML = '<span style="text-decoration:line-through;opacity:.4">$' + pData.amount.toLocaleString('en-CA') + '</span> <span class="badge badge-o" style="font-size:10px">Paused</span>';
   } else if (pData.status === 'none') {
-    document.getElementById('provProgramAmt').innerHTML = '<span class="status-tag none">No Provincial Rebate</span>';
+    document.getElementById('provProgramAmt').innerHTML = '<span class="fg3" style="font-size:13px">No Provincial Rebate</span>';
   }
 
-  document.getElementById('provProgramName').textContent = pData.name + ' (' + provCode + ') Incentive';
+  document.getElementById('provProgramName').textContent = pData.name + ' (' + provCode + ')';
   document.getElementById('provProgramNote').textContent = pData.notes;
-  document.getElementById('rebateVerifiedDate').textContent = 'Last verified: ' + pData.lastVerified;
-
-  if (pData.sourceUrl) {
-    var sLink = document.getElementById('rebateSourceLink');
-    sLink.href = pData.sourceUrl;
-    sLink.textContent = pData.name + ' Official Source \u2192';
-  }
 
   var statusBadge = document.getElementById('rebateStatusBadge');
   if (vehicle && vehicle.evap_eligible) {
     statusBadge.className = 'badge badge-g';
-    statusBadge.textContent = 'EVAP 2026 Eligible ($5,000)';
-    document.getElementById('rebateEvapNote').textContent = 'Transaction cap $50k verified \u2022 Canadian/Trade Partner assembled';
+    statusBadge.textContent = '✓ Eligible for 2026 Federal EVAP ($5,000)';
+    document.getElementById('rebateEvapNote').textContent = 'Final transaction under $50,000 threshold';
   } else if (vehicle) {
     statusBadge.className = 'badge badge-o';
-    statusBadge.textContent = 'MSRP Over $50k EVAP Cap';
-    document.getElementById('rebateEvapNote').textContent = 'Vehicle transaction value exceeds 2026 EVAP $50,000 threshold';
+    statusBadge.textContent = '⚠️ Exceeds 2026 EVAP $50k Transaction Cap';
+    document.getElementById('rebateEvapNote').textContent = 'Base price exceeds $50,000 federal program limit';
   }
 
   if (vehicle && vehicle.msrp) {
     var net = Math.max(0, vehicle.msrp - totalRebate);
-    document.getElementById('rebateNetPrice').textContent = 'Est. Net: $' + net.toLocaleString('en-CA') + ' (MSRP: $' + vehicle.msrp.toLocaleString('en-CA') + ')';
+    document.getElementById('rebateNetPrice').innerHTML = 'Estimated Net Cost: <strong style="color:var(--navy)">$' + net.toLocaleString('en-CA') + ' CAD</strong> <span class="fg3">(MSRP: $' + vehicle.msrp.toLocaleString('en-CA') + ')</span>';
   } else {
     document.getElementById('rebateNetPrice').textContent = 'Select a vehicle to calculate net price';
   }
@@ -480,40 +592,26 @@ function updateRebate() {
 
 // ── Nationwide Routes Configuration ──
 var ROUTES = {
-  'trans-canada': {
-    title: 'Calgary, AB \u2194 Vancouver, BC',
-    badge: 'Trans-Canada Highway 1',
-    distance: 970,
-    stops: [
-      { name: 'Calgary, AB', type: 'origin', note: 'Full departure charge (100%)' },
-      { name: 'Lake Louise / Golden, BC', type: 'charge', note: '180 km \u2022 BC Hydro Fast Charger' },
-      { name: 'Revelstoke, BC', type: 'charge', note: '150 km \u2022 Rogers Pass Summit descent' },
-      { name: 'Kamloops, BC', type: 'charge', note: '215 km \u2022 Trans-Canada Hub' },
-      { name: 'Hope, BC', type: 'charge', note: '200 km \u2022 Fraser Valley entrance' },
-      { name: 'Vancouver, BC', type: 'dest', note: 'Arrival destination \u2022 150 km' }
-    ]
-  },
-  'coquihalla': {
-    title: 'Hope, BC \u2194 Kamloops, BC (Coquihalla)',
-    badge: 'BC Highway 5 Mountain Run',
-    distance: 205,
-    stops: [
-      { name: 'Hope, BC', type: 'origin', note: 'Base elevation departure' },
-      { name: 'Britton Creek Rest Area', type: 'charge', note: '65 km \u2022 1,244m Summit elevation gain' },
-      { name: 'Merritt, BC', type: 'charge', note: '50 km \u2022 Fast charge waypoint' },
-      { name: 'Kamloops, BC', type: 'dest', note: 'Arrival destination \u2022 90 km' }
-    ]
-  },
   'ontario-quebec': {
     title: 'Toronto, ON \u2194 Montreal, QC',
     badge: 'Highway 401 Corridor',
     distance: 540,
     stops: [
-      { name: 'Toronto, ON', type: 'origin', note: 'Departure charge' },
-      { name: 'ONroute Port Hope', type: 'charge', note: '105 km \u2022 Ivy Charging Network' },
-      { name: 'ONroute Kingston', type: 'charge', note: '160 km \u2022 150kW DC Fast Charging' },
-      { name: 'ONroute Cornwall', type: 'charge', note: '175 km \u2022 St. Lawrence Valley' },
-      { name: 'Montreal, QC', type: 'dest', note: 'Arrival destination \u2022 100 km' }
+      { name: 'Toronto, ON', type: 'origin', note: 'Departure with 100% battery' },
+      { name: 'ONroute Kingston Fast Hub', type: 'charge', note: 'Midpoint DC Fast Charge • 20–30 min' },
+      { name: 'Montreal, QC', type: 'dest', note: 'Arrival destination (~35% buffer remaining)' }
+    ]
+  },
+  'trans-canada': {
+    title: 'Calgary, AB \u2194 Vancouver, BC',
+    badge: 'Trans-Canada Highway 1',
+    distance: 970,
+    stops: [
+      { name: 'Calgary, AB', type: 'origin', note: 'Departure • 100% preheated battery' },
+      { name: 'Golden, BC', type: 'charge', note: 'Rocky Mountains stop • 25 min' },
+      { name: 'Revelstoke, BC', type: 'charge', note: 'Rogers Pass descent • 25 min' },
+      { name: 'Kamloops, BC', type: 'charge', note: 'Trans-Canada fast hub • 25 min' },
+      { name: 'Vancouver, BC', type: 'dest', note: 'Arrival destination' }
     ]
   },
   'alberta-highway2': {
@@ -521,36 +619,24 @@ var ROUTES = {
     badge: 'Alberta Highway 2 Corridor',
     distance: 300,
     stops: [
-      { name: 'Edmonton, AB', type: 'origin', note: 'Departure with preheated battery' },
-      { name: 'Red Deer (Gasoline Alley)', type: 'charge', note: '150 km \u2022 FLO / Electrify Canada fast charging midpoint' },
-      { name: 'Calgary, AB', type: 'dest', note: 'Arrival destination \u2022 150 km' }
+      { name: 'Edmonton, AB', type: 'origin', note: 'Departure point' },
+      { name: 'Red Deer (Gasoline Alley)', type: 'charge', note: 'Highway 2 Fast Hub • 15–20 min top-up' },
+      { name: 'Calgary, AB', type: 'dest', note: 'Arrival destination' }
     ]
   },
-  'rockies-pass': {
-    title: 'Calgary, AB \u2194 Jasper, AB',
-    badge: 'Canadian Rockies Run',
-    distance: 415,
+  'coquihalla': {
+    title: 'Hope, BC \u2194 Kamloops, BC',
+    badge: 'BC Highway 5 Mountain Run',
+    distance: 205,
     stops: [
-      { name: 'Calgary, AB', type: 'origin', note: 'Departure point' },
-      { name: 'Lake Louise, AB', type: 'charge', note: '180 km \u2022 Parks Canada Fast Charger' },
-      { name: 'Saskatchewan River Crossing', type: 'charge', note: '80 km \u2022 Remote Icefields Parkway stop' },
-      { name: 'Jasper, AB', type: 'dest', note: 'Arrival destination \u2022 155 km' }
-    ]
-  },
-  'atlantic-corridor': {
-    title: 'Moncton, NB \u2194 Halifax, NS',
-    badge: 'Atlantic Trans-Canada Corridor',
-    distance: 260,
-    stops: [
-      { name: 'Moncton, NB', type: 'origin', note: 'NB Power Hub departure' },
-      { name: 'Amherst / Cobequid Pass, NS', type: 'charge', note: '70 km \u2022 Nova Scotia border waypoint' },
-      { name: 'Truro, NS', type: 'charge', note: '95 km \u2022 Central junction fast charger' },
-      { name: 'Halifax, NS', type: 'dest', note: 'Arrival destination \u2022 95 km' }
+      { name: 'Hope, BC', type: 'origin', note: 'Departure at base elevation' },
+      { name: 'Britton Creek / Merritt', type: 'charge', note: 'Summit rest stop • 15 min' },
+      { name: 'Kamloops, BC', type: 'dest', note: 'Arrival destination' }
     ]
   },
   'custom': {
     title: 'Custom Distance Route Planner',
-    badge: 'Custom Canadian Journey',
+    badge: 'Custom Journey Across Canada',
     distance: 450,
     stops: []
   }
@@ -560,17 +646,37 @@ function updateRoute() {
   var rSel = document.getElementById('routeVehicle');
   var vIndex = rSel.selectedIndex;
   var vehicle = toolVehicles[vIndex] || toolVehicles[0];
-  var rData = ROUTES[activeRoute] || ROUTES['trans-canada'];
+  var rData = ROUTES[activeRoute] || ROUTES['ontario-quebec'];
+
+  // Update live vehicle mini-chip
+  if (vehicle) {
+    var imgEl = document.getElementById('routeVehImg');
+    if (imgEl) imgEl.src = vehicle.img;
+    var nameEl = document.getElementById('routeVehName');
+    if (nameEl) nameEl.textContent = vehicle.name;
+    var subEl = document.getElementById('routeVehSub');
+    if (subEl) subEl.textContent = 'Winter Range: ~' + EVS.winterRange(vehicle.range, toolTemp) + ' km at ' + toolTemp + '°C';
+  }
 
   var distance = activeRoute === 'custom' ? (+document.getElementById('customKmInput').value || 450) : rData.distance;
-  var winterRange = vehicle ? EVS.winterRange(vehicle.range, toolTemp) : 350;
-  var safeLeg = Math.round(winterRange * 0.75); // 75% usable battery window
+  var winterRange = vehicle ? EVS.winterRange(vehicle.range, toolTemp) : 320;
+  var safeLeg = Math.round(winterRange * 0.75); // 75% highway battery window
   var reqStops = Math.max(1, Math.ceil(distance / safeLeg) - 1);
+  var chargePerStop = (vehicle && vehicle.fast_charge_min) ? vehicle.fast_charge_min : 25;
+  var totalChargeMin = reqStops * chargePerStop;
+  var driveHours = distance / 95; // avg 95 km/h
+  var totalHours = driveHours + (totalChargeMin / 60);
+  var hPart = Math.floor(totalHours);
+  var mPart = Math.round((totalHours - hPart) * 60);
 
   document.getElementById('routeBadge').textContent = rData.badge;
   document.getElementById('routeTitleText').textContent = activeRoute === 'custom' ? 'Custom Route (' + distance + ' km)' : rData.title;
-  document.getElementById('routeTempStatus').textContent = 'Modeled at ' + (toolTemp > 0 ? '+' : '') + toolTemp + '°C';
-  document.getElementById('routeStats').textContent = 'Total Distance: ' + distance + ' km \u2022 Usable Winter Range: ~' + safeLeg + ' km/leg \u2022 Recommended Stops: ' + reqStops + ' stop' + (reqStops > 1 ? 's' : '');
+  document.getElementById('routeDistanceText').textContent = distance + ' km total journey modeled at ' + (toolTemp > 0 ? '+' : '') + toolTemp + '°C';
+
+  // 3 Hero Metric Blocks
+  document.getElementById('routeStopsCount').textContent = reqStops + ' Stop' + (reqStops > 1 ? 's' : '');
+  document.getElementById('routeChargeTime').textContent = '~' + totalChargeMin + ' min';
+  document.getElementById('routeTotalTime').textContent = '~' + hPart + 'h ' + (mPart < 10 ? '0' : '') + mPart + 'm';
 
   var tl = document.getElementById('routeTimeline');
   tl.innerHTML = '';
@@ -579,7 +685,7 @@ function updateRoute() {
     var legDistance = Math.round(distance / (reqStops + 1));
     var stopsList = [{ name: 'Custom Origin', note: 'Departure with 100% preheated charge' }];
     for (var i = 1; i <= reqStops; i++) {
-      stopsList.push({ name: 'Fast Charging Stop #' + i, note: 'Waypoint at ~' + (legDistance * i) + ' km \u2022 20&ndash;35 min DC top-up' });
+      stopsList.push({ name: 'Fast Charging Stop #' + i, note: 'Waypoint at ~' + (legDistance * i) + ' km • ~' + chargePerStop + ' min DC fast charge' });
     }
     stopsList.push({ name: 'Custom Destination', note: 'Arrival at ' + distance + ' km' });
     stopsList.forEach(function(s, idx) {
@@ -612,25 +718,66 @@ async function init() {
   rSel.innerHTML = '';
   rtSel.innerHTML = '';
 
+  // Check URL query param for pre-selected vehicle
+  var urlParams = new URLSearchParams(window.location.search);
+  var targetVehId = urlParams.get('v');
+
   toolVehicles.forEach(function(v) {
     var opt1 = document.createElement('option');
     opt1.value = v.id;
     opt1.dataset.range = v.range;
     opt1.textContent = v.name + ' (' + v.range + ' km NRCan)';
+    if (targetVehId && (v.id === targetVehId || v.name.toLowerCase() === targetVehId.toLowerCase())) {
+      opt1.selected = true;
+    }
     wSel.appendChild(opt1);
 
     var opt2 = document.createElement('option');
     opt2.value = v.id;
     opt2.textContent = v.name + ' (From $' + v.msrp.toLocaleString('en-CA') + ')';
+    if (targetVehId && (v.id === targetVehId || v.name.toLowerCase() === targetVehId.toLowerCase())) {
+      opt2.selected = true;
+    }
     rSel.appendChild(opt2);
 
     var opt3 = document.createElement('option');
     opt3.value = v.id;
     opt3.textContent = v.name;
+    if (targetVehId && (v.id === targetVehId || v.name.toLowerCase() === targetVehId.toLowerCase())) {
+      opt3.selected = true;
+    }
     rtSel.appendChild(opt3);
   });
 
+  // Tab buttons wire
+  document.querySelectorAll('.tool-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchToolTab(this.dataset.tab);
+    });
+  });
+
+  // Check initial hash
+  var initialHash = (window.location.hash || '').replace('#', '');
+  if (['winter', 'rebate', 'route'].includes(initialHash)) {
+    switchToolTab(initialHash);
+  }
+
+  window.addEventListener('hashchange', function() {
+    var h = (window.location.hash || '').replace('#', '');
+    if (['winter', 'rebate', 'route'].includes(h)) {
+      switchToolTab(h);
+    }
+  });
+
+  // Temperature slider & tactile presets
   tempSl.addEventListener('input', updateWinter);
+  document.querySelectorAll('.temp-btn').forEach(function(p) {
+    p.addEventListener('click', function() {
+      tempSl.value = +this.dataset.temp;
+      updateWinter();
+    });
+  });
+
   wSel.addEventListener('change', updateWinter);
   rSel.addEventListener('change', updateRebate);
   rtSel.addEventListener('change', updateRoute);
@@ -663,6 +810,44 @@ async function init() {
   var customInput = document.getElementById('customKmInput');
   if (customInput) {
     customInput.addEventListener('input', updateRoute);
+  }
+
+  // Stats Sheet & Compare CTA buttons
+  var wSpecsBtn = document.getElementById('winterViewSpecsBtn');
+  if (wSpecsBtn) {
+    wSpecsBtn.addEventListener('click', function() {
+      var vId = wSel.value;
+      if (window.openStatsSheet) window.openStatsSheet(vId);
+    });
+  }
+
+  var rSpecsBtn = document.getElementById('rebateViewSpecsBtn');
+  if (rSpecsBtn) {
+    rSpecsBtn.addEventListener('click', function() {
+      var vId = rSel.value;
+      if (window.openStatsSheet) window.openStatsSheet(vId);
+    });
+  }
+
+  var wCmpBtn = document.getElementById('winterCompareCta');
+  if (wCmpBtn) {
+    wCmpBtn.addEventListener('click', function() {
+      window.location.href = 'compare.html?a=' + encodeURIComponent(wSel.value);
+    });
+  }
+
+  var rCmpBtn = document.getElementById('rebateCompareCta');
+  if (rCmpBtn) {
+    rCmpBtn.addEventListener('click', function() {
+      window.location.href = 'compare.html?a=' + encodeURIComponent(rSel.value);
+    });
+  }
+
+  var rtCmpBtn = document.getElementById('routeCompareCta');
+  if (rtCmpBtn) {
+    rtCmpBtn.addEventListener('click', function() {
+      window.location.href = 'compare.html?a=' + encodeURIComponent(rtSel.value);
+    });
   }
 
   updateProvPills();
@@ -745,6 +930,7 @@ if (document.readyState === 'loading') {
 </div>
 
 <script src="shared/data.js"></script>
+<script src="shared/stats-sheet.js"></script>
 <script src="shared/chat.js"></script>
 <script>
 // Theme toggle

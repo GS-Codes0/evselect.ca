@@ -155,6 +155,7 @@
 <!-- ── VEHICLES GRID ──────────────────────────────────────── -->
 <main class="section-sm">
   <div class="wrap">
+    <div id="spotlightBanner" style="display:none" class="spotlight-banner"></div>
     <div id="loading" class="grid-3" aria-live="polite">
       <!-- 4 Skeleton Shimmer Cards -->
       <div class="skeleton-card"><div class="skeleton-img shimmer"></div><div class="skeleton-title shimmer"></div><div class="skeleton-text shimmer"></div><div class="skeleton-grid"><div class="skeleton-cell shimmer"></div><div class="skeleton-cell shimmer"></div></div></div>
@@ -273,8 +274,20 @@ function render() {
   var grid = document.getElementById('grid');
   var noRes = document.getElementById('noResults');
   var countEl = document.getElementById('vehicleCount');
+  var banner = document.getElementById('spotlightBanner');
 
   countEl.textContent = list.length + ' of ' + allVehicles.length + ' vehicles shown';
+
+  if (banner) {
+    if (q && list.length > 0) {
+      banner.style.display = 'flex';
+      banner.innerHTML = 
+        '<div><strong>Model Focus:</strong> Showing <strong>' + (list.length === 1 ? list[0].name : q) + '</strong> &bull; <span style="opacity:.85">Click the vehicle card or button below to expand the complete Canadian stats sheet.</span></div>' +
+        '<button type="button" class="btn btn-ghost btn-sm" onclick="resetFilters()" style="padding:4px 12px;font-size:12px">Show All 20 Vehicles</button>';
+    } else {
+      banner.style.display = 'none';
+    }
+  }
 
   if (!list.length) {
     grid.style.display = 'none';
@@ -292,13 +305,13 @@ function render() {
     if (v.ca) badges.push('<span class="badge badge-p">Made in Canada</span>');
 
     return '<div class="ev-card" role="listitem">' +
-      '<div class="ev-card-img-wrap">' +
+      '<div class="ev-card-img-wrap" style="cursor:pointer" onclick="openStatsSheet(\'' + v.id + '\')">' +
         '<img src="' + v.img + '" alt="' + v.name + '" class="ev-card-img" loading="lazy" onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'32px\';this.style.opacity=\'.3\'"/>' +
       '</div>' +
       '<div class="ev-card-body">' +
         '<div style="display:flex;gap:6px;flex-wrap:wrap">' + badges.join('') + '</div>' +
-        '<h3 class="card-title">' + v.name + '</h3>' +
-        '<div class="fg2" style="font-size:14px;margin-top:-4px">From $' + v.msrp.toLocaleString('en-CA') + '</div>' +
+        '<h3 class="card-title" style="cursor:pointer" onclick="openStatsSheet(\'' + v.id + '\')">' + v.name + '</h3>' +
+        '<div class="fg2" style="font-size:14px;margin-top:-4px">From $' + v.msrp.toLocaleString('en-CA') + ' CAD</div>' +
         '<div class="stat-grid" style="margin-top:6px">' +
           '<div class="stat-cell"><div class="stat-label">NRCan Range</div><div class="stat-val">' + v.range + ' km</div></div>' +
           '<div class="stat-cell" style="border-color:var(--accent-g)"><div class="stat-label" style="color:var(--accent)">Winter (&minus;15&deg;C)</div><div class="stat-val" style="color:var(--accent)">' + wr + ' km</div></div>' +
@@ -306,8 +319,8 @@ function render() {
           '<div class="stat-cell"><div class="stat-label">0&ndash;100 km/h</div><div class="stat-val">' + (v.acc ? v.acc + 's' : '&mdash;') + '</div></div>' +
         '</div>' +
         '<div class="card-ctas" style="margin-top:8px">' +
-          '<a href="compare.html?a=' + v.id + '" class="card-cta-p">Compare &rarr;</a>' +
-          '<a href="tools.html#winter" class="card-cta-s">Winter Tool</a>' +
+          '<button type="button" class="card-cta-p" onclick="openStatsSheet(\'' + v.id + '\')">View Full Stats &rarr;</button>' +
+          '<a href="compare.html?a=' + v.id + '" class="card-cta-s">Compare</a>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -327,9 +340,16 @@ async function init() {
     var urlQ = new URLSearchParams(location.search).get('q');
     if (urlQ) {
       document.getElementById('pageSearch').value = urlQ;
+      render();
+      setTimeout(function() {
+        var banner = document.getElementById('spotlightBanner');
+        if (banner && banner.style.display !== 'none') {
+          banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 120);
+    } else {
+      render();
     }
-
-    render();
   } catch(err) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('errorState').style.display = 'block';
@@ -412,6 +432,7 @@ if (document.readyState === 'loading') {
 </div>
 
 <script src="shared/data.js"></script>
+<script src="shared/stats-sheet.js"></script>
 <script src="shared/chat.js"></script>
 <script>
 // Theme toggle
