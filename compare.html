@@ -4,10 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Compare EVs — EVSelect.ca</title>
-  <meta name="description" content="Side-by-side EV comparison with winter range, specs, rebates, and animated performance bars."/>
+  <meta name="description" content="Side-by-side 2-way and 3-way EV comparison with real-world Canadian winter range, 2026 Federal EVAP rebate status, and shareable links."/>
   <meta name="author" content="EVSelect.ca"/>
   <meta property="og:title" content="Compare EVs — EVSelect.ca"/>
-  <meta property="og:description" content="Side-by-side EV comparison with winter range, specs, rebates, and animated performance bars."/>
+  <meta property="og:description" content="Side-by-side 2-way and 3-way EV comparison with real-world Canadian winter range, 2026 Federal EVAP rebate status, and shareable links."/>
   <meta property="og:type" content="website"/>
   <meta name="robots" content="index,follow"/>
   <link rel="icon" type="image/png" href="evcarslogo.png"/>
@@ -22,8 +22,8 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="EVSelect home">evselect<span>.ca</span></a>
     <div class="nav-search-wrap">
-      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search models&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
+      <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search EV make or model&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
     </div>
     <div class="nav-links" id="navLinks">
       <div class="nav-dropdown-wrap" id="modelsDropdown">
@@ -35,7 +35,7 @@
           <div class="nav-dropdown-section">Browse All</div>
           <a href="vehicles.html" class="nav-dropdown-item" role="menuitem">All Electric Vehicles</a>
           <div class="nav-dropdown-divider"></div>
-          <div class="nav-dropdown-section">Models</div>
+          <div class="nav-dropdown-section">Popular Models</div>
           <a href="vehicles.html?q=Tesla+Model+Y" class="nav-dropdown-item" role="menuitem">Tesla Model Y</a>
           <a href="vehicles.html?q=Tesla+Model+3" class="nav-dropdown-item" role="menuitem">Tesla Model 3</a>
           <a href="vehicles.html?q=Hyundai+IONIQ+6" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 6</a>
@@ -69,12 +69,14 @@
           <a href="tools.html" class="nav-dropdown-item" role="menuitem">All Tools</a>
           <div class="nav-dropdown-divider"></div>
           <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">❄️ Winter Range Calculator</a>
-          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 Rebate Calculator</a>
-          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Route Planner</a>
+          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 2026 Rebate Stacker</a>
+          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Canada Route Planner</a>
         </div>
-      </div><a href="compare.html" class="active">Compare</a>
+      </div>
+      <a href="compare.html" class="active">Compare</a>
       <a href="vehicles.html" class="nav-cta">Browse EVs</a>
     </div>
+    <!-- Top-Right Corner Theme Toggle Button -->
     <button class="nav-theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">
       <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -85,207 +87,331 @@
   </div>
 </nav>
 
-<section class="pg-header">
+<!-- ── PAGE HEADER (Centered) ────────────────────────────── -->
+<header class="pg-header">
   <div class="wrap">
-    <span class="eyebrow" data-reveal>Head-to-Head</span>
-    <h1 class="section-title" data-reveal data-delay="1">Compare EVs</h1>
-    <p class="fg2" style="margin-top:16px;font-size:17px;max-width:500px" data-reveal data-delay="2">Place any two Canadian-market EVs side-by-side. Winter range updates live.</p>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span aria-current="page">Compare EVs</span>
+    </nav>
+    <h1 class="pg-title">Compare Electric Vehicles</h1>
+    <p class="pg-sub">
+      Side-by-side 2-way and 3-way EV comparison with real-world Canadian winter range degradation, 2026 Federal EVAP rebate status, and shareable URLs.
+    </p>
+    <div style="margin-top:20px">
+      <button class="btn btn-ghost" id="shareBtn" onclick="copyShareLink()">
+        <span>🔗 Share Comparison</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── SELECTOR ROW (3 Vehicles) ─────────────────────────── -->
+<div class="selector-strip">
+  <div class="wrap">
+    <div class="selector-grid">
+      <!-- Vehicle A -->
+      <div class="selector-col">
+        <label class="ctrl-label" for="pickA">Vehicle A</label>
+        <select id="pickA" class="filter-select" style="width:100%" aria-label="Select first vehicle to compare"></select>
+      </div>
+      <!-- Vehicle B -->
+      <div class="selector-col">
+        <label class="ctrl-label" for="pickB">Vehicle B</label>
+        <select id="pickB" class="filter-select" style="width:100%" aria-label="Select second vehicle to compare"></select>
+      </div>
+      <!-- Vehicle C (Optional 3-Way Comparison) -->
+      <div class="selector-col">
+        <label class="ctrl-label" for="pickC">Vehicle C (Optional 3-Way)</label>
+        <select id="pickC" class="filter-select" style="width:100%" aria-label="Select third vehicle to compare">
+          <option value="">-- None (2-Way Compare) --</option>
+        </select>
+      </div>
+    </div>
+    <!-- Shared Temperature Control -->
+    <div class="cmp-temp-bar">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span class="ctrl-label" style="margin:0">Comparison Temperature: <strong id="cmpTempLabel" style="color:var(--navy);font-size:16px">&minus;15&deg;C</strong></span>
+        <span class="fg3" style="font-size:12px">Adjust to simulate real winter conditions</span>
+      </div>
+      <input type="range" id="cmpTemp" min="-30" max="20" step="5" value="-15"
+             aria-label="Comparison temperature in Celsius"
+             aria-valuemin="-30" aria-valuemax="20" aria-valuenow="-15"/>
+    </div>
+  </div>
+</div>
+
+<!-- ── VEHICLE PREVIEW CARDS ──────────────────────────────── -->
+<section class="section-sm" style="padding-top:40px;padding-bottom:20px">
+  <div class="wrap">
+    <div class="card-columns" id="cardColumns">
+      <!-- Vehicle A Card -->
+      <div class="ev-card" id="cardA"></div>
+      <!-- Vehicle B Card -->
+      <div class="ev-card" id="cardB"></div>
+      <!-- Vehicle C Card (rendered if selected) -->
+      <div class="ev-card" id="cardC" style="display:none"></div>
+    </div>
   </div>
 </section>
 
-<section class="section-sm">
+<!-- ── COMPARISON TABLE ───────────────────────────────────── -->
+<section class="section-sm" style="padding-top:0">
   <div class="wrap">
-    <!-- PICKERS -->
-    <div class="compare-grid" data-reveal>
-      <div class="cmp-picker-card">
-        <div class="cmp-picker-label">Vehicle A</div>
-        <div class="select-wrap">
-          <select id="pickA" class="evs-select" aria-label="Select first vehicle to compare">
-            <option value="">-- Select a vehicle --</option>
-          </select>
-        </div>
-        <div id="cardA" class="cmp-preview" hidden></div>
-      </div>
-      <div class="cmp-picker-card">
-        <div class="cmp-picker-label">Vehicle B</div>
-        <div class="select-wrap">
-          <select id="pickB" class="evs-select" aria-label="Select second vehicle to compare">
-            <option value="">-- Select a vehicle --</option>
-          </select>
-        </div>
-        <div id="cardB" class="cmp-preview" hidden></div>
-      </div>
-    </div>
-
-    <!-- TEMP STRIP -->
-    <div class="cmp-temp-strip" data-reveal>
-      <label for="cmpTemp" style="font-size:14px;color:var(--fg2);font-weight:500">Winter temperature:</label>
-      <input type="range" id="cmpTemp" min="-30" max="20" value="0" step="1" style="flex:1;max-width:240px" aria-label="Temperature for winter range comparison"/>
-      <span id="cmpTempVal" class="accent" style="font-weight:700;font-size:16px;min-width:48px">0&deg;C</span>
-    </div>
-
-    <!-- COMPARISON TABLE -->
-    <div id="cmpTable" hidden style="margin-top:40px" data-reveal>
-      <div class="cmp-table-header">
-        <div></div>
-        <div id="cmpHdrA" class="cmp-hdr-name">Vehicle A</div>
-        <div id="cmpHdrB" class="cmp-hdr-name">Vehicle B</div>
-      </div>
-      <div id="cmpRows"></div>
-    </div>
-
-    <div id="cmpEmpty" style="text-align:center;padding:80px 0;color:var(--fg3)">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 16px;opacity:.3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-      <p style="font-size:17px">Select two vehicles above to begin comparing</p>
+    <div class="compare-table-wrap">
+      <div class="compare-table" id="cmpTable"></div>
     </div>
   </div>
 </section>
 
 <style>
-.cmp-picker-card{
+.selector-strip{
+  background:var(--bg2);border-bottom:1px solid var(--border);padding:24px 0;
+}
+.selector-grid{
+  display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;
+}
+@media(max-width:768px){.selector-grid{grid-template-columns:1fr}}
+.cmp-temp-bar{
+  margin-top:20px;padding:16px 20px;background:var(--card);
+  border:1px solid var(--border);border-radius:var(--r-sm);
+}
+.card-columns{
+  display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;
+}
+.card-columns.three-cols{
+  grid-template-columns:repeat(3, 1fr);
+}
+@media(max-width:840px){
+  .card-columns,.card-columns.three-cols{grid-template-columns:1fr}
+}
+.compare-table-wrap{
   background:var(--card);border:1px solid var(--border);
-  border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:16px;
-  box-shadow:var(--shadow-sm);
+  border-radius:var(--r);padding:24px 28px;box-shadow:var(--shadow-sm);
 }
-.cmp-picker-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
-.cmp-preview{display:flex;align-items:center;gap:16px;padding-top:4px}
-.cmp-preview-img{width:80px;height:52px;object-fit:cover;border-radius:var(--r-sm);background:var(--bg2);flex-shrink:0;border:1px solid var(--border)}
-.cmp-preview-name{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--navy)}
-.cmp-preview-price{font-size:14px;color:var(--fg2);margin-top:2px}
-.cmp-temp-strip{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  margin-top:20px;padding:16px 20px;
-  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  box-shadow:var(--shadow-sm);
-}
-.cmp-table-header{
-  display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;
-  padding:0 0 12px;border-bottom:2px solid var(--border2);margin-bottom:4px;
-}
-.cmp-hdr-name{font-size:16px;font-weight:700;letter-spacing:-.025em;color:var(--navy)}
 .cmp-row{
-  display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;align-items:center;
-  padding:14px 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:220px 1fr 1fr;
+  align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);
+}
+.cmp-row.three-cols{
+  grid-template-columns:220px 1fr 1fr 1fr;
 }
 .cmp-row:last-child{border-bottom:none}
-.cmp-row-label{font-size:13px;color:var(--fg3);font-weight:500}
-.cmp-val{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--navy)}
-.cmp-val-wrap{display:flex;flex-direction:column;gap:4px}
-.cmp-bar-track{height:3px;background:var(--border);border-radius:99px;overflow:hidden}
-.cmp-bar-fill{height:100%;border-radius:99px;background:var(--accent);transition:width 1.1s cubic-bezier(.16,1,.3,1)}
-.cmp-better{color:var(--accent)}
-.cmp-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;background:var(--accent-d);color:var(--navy);border:1px solid var(--accent-g);margin-top:3px}
-@media(max-width:640px){
-  .cmp-table-header,.cmp-row{grid-template-columns:120px 1fr 1fr;gap:12px}
-  .cmp-hdr-name,.cmp-val{font-size:14px}
-  .cmp-row-label{font-size:12px}
+.cmp-row-label{font-size:13px;font-weight:700;color:var(--fg2);text-transform:uppercase;letter-spacing:.05em}
+.cmp-val{font-size:15px;font-weight:600;color:var(--navy)}
+.cmp-val.better{color:var(--accent);font-weight:700}
+.cmp-bar-bg{height:5px;background:var(--border);border-radius:99px;margin-top:6px;overflow:hidden}
+.cmp-bar{height:100%;background:var(--accent);border-radius:99px;transition:width .8s cubic-bezier(.16,1,.3,1)}
+@media(max-width:768px){
+  .cmp-row,.cmp-row.three-cols{grid-template-columns:1fr;gap:8px}
+  .cmp-row-label{margin-bottom:4px}
 }
 </style>
 
 <script>
 'use strict';
-var cmpVehicles = [], cmpTemp = 0;
+var cmpVehicles = [];
+var curTemp = -15;
 
 function setSliderPct(el) {
   var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
   el.style.setProperty('--pct', pct + '%');
 }
 
-document.addEventListener('DOMContentLoaded', async function() {
-  cmpVehicles = await EVS.loadVehicles();
-  var pickA = document.getElementById('pickA');
-  var pickB = document.getElementById('pickB');
-  var tempSl = document.getElementById('cmpTemp');
-  var tempVal = document.getElementById('cmpTempVal');
+function updateParams(idA, idB, idC) {
+  var params = new URLSearchParams();
+  if (idA) params.set('a', idA);
+  if (idB) params.set('b', idB);
+  if (idC) params.set('c', idC);
+  var newUrl = window.location.pathname + '?' + params.toString();
+  window.history.replaceState(null, '', newUrl);
+}
 
-  setSliderPct(tempSl);
-
-  var opts = '<option value="">-- Select --</option>' +
-    cmpVehicles.map(function(v) {
-      return '<option value="' + v.id + '">' + (v.name||'Unknown') + '</option>';
-    }).join('');
-  pickA.innerHTML = opts;
-  pickB.innerHTML = opts;
-
-  function getV(id) { return cmpVehicles.find(function(v){ return v.id === id; }); }
-
-  function renderPreview(el, v) {
-    if (!v) { el.hidden = true; return; }
-    el.hidden = false;
-    el.innerHTML = '<img src="' + (v.img||'evcarslogo.png') + '" alt="' + (v.name||'') + '" class="cmp-preview-img"' +
-      ' onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'8px\';this.style.opacity=\'.3\'"/>' +
-      '<div><div class="cmp-preview-name">' + (v.name||'Unknown') + '</div>' +
-      '<div class="cmp-preview-price">' + (v.msrp ? 'From $' + v.msrp.toLocaleString('en-CA') : 'TBD') + '</div></div>';
-  }
-
-  function renderTable() {
-    var va = getV(pickA.value);
-    var vb = getV(pickB.value);
-    renderPreview(document.getElementById('cardA'), va);
-    renderPreview(document.getElementById('cardB'), vb);
-    if (!va || !vb) {
-      document.getElementById('cmpTable').hidden = true;
-      document.getElementById('cmpEmpty').hidden = false;
-      return;
-    }
-    document.getElementById('cmpTable').hidden = false;
-    document.getElementById('cmpEmpty').hidden = true;
-    document.getElementById('cmpHdrA').textContent = va.name||'A';
-    document.getElementById('cmpHdrB').textContent = vb.name||'B';
-
-    var wra = EVS.winterRange(va.range||0, cmpTemp);
-    var wrb = EVS.winterRange(vb.range||0, cmpTemp);
-
-    var rows = [
-      { label: 'MSRP (CAD)', valA: va.msrp ? '$' + va.msrp.toLocaleString('en-CA') : '--', valB: vb.msrp ? '$' + vb.msrp.toLocaleString('en-CA') : '--', better: va.msrp && vb.msrp ? (va.msrp < vb.msrp ? 'A' : vb.msrp < va.msrp ? 'B' : '') : '', bar: false },
-      { label: 'NRCan Range', valA: (va.range||0) + ' km', valB: (vb.range||0) + ' km', numA: va.range||0, numB: vb.range||0, better: (va.range||0) > (vb.range||0) ? 'A' : (vb.range||0) > (va.range||0) ? 'B' : '', bar: true },
-      { label: 'Winter Range\n(' + (cmpTemp>0?'+':'') + cmpTemp + '\u00b0C)', valA: wra + ' km', valB: wrb + ' km', numA: wra, numB: wrb, better: wra > wrb ? 'A' : wrb > wra ? 'B' : '', bar: true },
-      { label: 'Battery', valA: (va.battery||0) + ' kWh', valB: (vb.battery||0) + ' kWh', numA: va.battery||0, numB: vb.battery||0, better: (va.battery||0) > (vb.battery||0) ? 'A' : (vb.battery||0) > (va.battery||0) ? 'B' : '', bar: true },
-      { label: 'DC Fast Charge', valA: (va.dc||0) + ' kW', valB: (vb.dc||0) + ' kW', numA: va.dc||0, numB: vb.dc||0, better: (va.dc||0) > (vb.dc||0) ? 'A' : (vb.dc||0) > (va.dc||0) ? 'B' : '', bar: true },
-      { label: '0\u2013100 km/h', valA: va.acc ? va.acc + 's' : '--', valB: vb.acc ? vb.acc + 's' : '--', numA: va.acc||0, numB: vb.acc||0, better: va.acc && vb.acc ? (va.acc < vb.acc ? 'A' : vb.acc < va.acc ? 'B' : '') : '', bar: false, lowerBetter: true },
-      { label: 'iZEV Rebate', valA: va.rebate ? '$' + va.rebate.toLocaleString('en-CA') : 'Not eligible', valB: vb.rebate ? '$' + vb.rebate.toLocaleString('en-CA') : 'Not eligible', better: (va.rebate||0) > (vb.rebate||0) ? 'A' : (vb.rebate||0) > (va.rebate||0) ? 'B' : '', bar: false },
-      { label: 'Heat Pump', valA: va.hp ? '\u2713 Included' : '\u2715 No', valB: vb.hp ? '\u2713 Included' : '\u2715 No', better: va.hp && !vb.hp ? 'A' : vb.hp && !va.hp ? 'B' : '', bar: false },
-      { label: 'Made in Canada', valA: va.ca ? '\u2713 Yes' : '\u2715 No', valB: vb.ca ? '\u2713 Yes' : '\u2715 No', better: '', bar: false }
-    ];
-
-    var maxAll = Math.max(va.range||0, vb.range||0, wra, wrb, va.battery||0, vb.battery||0, va.dc||0, vb.dc||0);
-
-    document.getElementById('cmpRows').innerHTML = rows.map(function(r) {
-      var aClass = r.better === 'A' ? ' cmp-better' : '';
-      var bClass = r.better === 'B' ? ' cmp-better' : '';
-      var aBadge = r.better === 'A' ? '<span class="cmp-badge">\u2191 Better</span>' : '';
-      var bBadge = r.better === 'B' ? '<span class="cmp-badge">\u2191 Better</span>' : '';
-      var aBar = '', bBar = '';
-      if (r.bar && r.numA !== undefined && maxAll) {
-        var pctA = Math.round((r.numA / maxAll) * 100);
-        var pctB = Math.round((r.numB / maxAll) * 100);
-        aBar = '<div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:' + pctA + '%"></div></div>';
-        bBar = '<div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:' + pctB + '%"></div></div>';
-      }
-      return '<div class="cmp-row">' +
-        '<div class="cmp-row-label">' + r.label.replace('\n','<br>') + '</div>' +
-        '<div class="cmp-val-wrap"><div class="cmp-val' + aClass + '">' + r.valA + aBadge + '</div>' + aBar + '</div>' +
-        '<div class="cmp-val-wrap"><div class="cmp-val' + bClass + '">' + r.valB + bBadge + '</div>' + bBar + '</div>' +
-        '</div>';
-    }).join('');
-  }
-
-  pickA.addEventListener('change', renderTable);
-  pickB.addEventListener('change', renderTable);
-  tempSl.addEventListener('input', function() {
-    cmpTemp = +this.value;
-    setSliderPct(this);
-    tempVal.textContent = (cmpTemp > 0 ? '+' : '') + cmpTemp + '\u00b0C';
-    renderTable();
+function copyShareLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var btn = document.getElementById('shareBtn');
+    btn.innerHTML = '<span>✅ Link Copied!</span>';
+    setTimeout(function() {
+      btn.innerHTML = '<span>🔗 Share Comparison</span>';
+    }, 2000);
   });
-});
+}
+
+function renderCard(v, cardEl) {
+  var wr = EVS.winterRange(v.range, curTemp);
+  var badges = [];
+  if (v.evap_eligible) badges.push('<span class="badge badge-g">EVAP $5k</span>');
+  if (v.hp) badges.push('<span class="badge badge-b">Heat Pump</span>');
+
+  cardEl.innerHTML =
+    '<div class="ev-card-img-wrap">' +
+      '<img src="' + v.img + '" alt="' + v.name + '" class="ev-card-img" loading="lazy" onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'32px\';this.style.opacity=\'.3\'"/>' +
+    '</div>' +
+    '<div class="ev-card-body">' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap">' + badges.join('') + '</div>' +
+      '<h3 class="card-title">' + v.name + '</h3>' +
+      '<div class="fg2" style="font-size:14px;margin-top:-4px">From $' + v.msrp.toLocaleString('en-CA') + '</div>' +
+      '<div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">' +
+        '<div><div class="fg3" style="font-size:11px;text-transform:uppercase;font-weight:700">NRCan Range</div><div style="font-size:18px;font-weight:700;color:var(--navy)">' + v.range + ' km</div></div>' +
+        '<div style="text-align:right"><div class="fg3" style="font-size:11px;text-transform:uppercase;font-weight:700">Winter (' + (curTemp > 0 ? '+' : '') + curTemp + '&deg;C)</div><div style="font-size:18px;font-weight:700;color:var(--accent)">' + wr + ' km</div></div>' +
+      '</div>' +
+    '</div>';
+}
+
+function renderTable(vList) {
+  var isThree = vList.length === 3;
+  var rows = [
+    { label: 'Base MSRP', key: 'msrp', fmt: function(v){ return '$' + v.msrp.toLocaleString('en-CA'); }, better: 'min', barMax: 110000 },
+    { label: '2026 Federal EVAP', key: 'rebate', fmt: function(v){ return v.evap_eligible ? '$5,000 (Eligible)' : 'Not Eligible (>$50k cap)'; }, better: 'max', barMax: 5000 },
+    { label: 'NRCan Official Range', key: 'range', fmt: function(v){ return v.range + ' km'; }, better: 'max', barMax: 650 },
+    { label: 'Winter Range (' + (curTemp > 0 ? '+' : '') + curTemp + '°C)', key: 'wRange', fmt: function(v){ return EVS.winterRange(v.range, curTemp) + ' km'; }, better: 'max', barMax: 650 },
+    { label: 'Usable Battery', key: 'battery', fmt: function(v){ return v.battery + ' kWh'; }, better: 'max', barMax: 140 },
+    { label: 'Max DC Fast Charge', key: 'dc', fmt: function(v){ return v.dc + ' kW'; }, better: 'max', barMax: 270 },
+    { label: '0–100 km/h', key: 'acc', fmt: function(v){ return v.acc ? v.acc + 's' : 'N/A'; }, better: 'min', barMax: 8 },
+    { label: 'Cold Weather Heat Pump', key: 'hp', fmt: function(v){ return v.hp ? '✅ Standard' : '❌ Resistive Only'; }, better: 'bool', barMax: 1 }
+  ];
+
+  var html = rows.map(function(r) {
+    // Find best value
+    var vals = vList.map(function(v) {
+      if (r.key === 'wRange') return EVS.winterRange(v.range, curTemp);
+      return v[r.key];
+    });
+
+    var bestVal;
+    if (r.better === 'max') bestVal = Math.max.apply(null, vals);
+    else if (r.better === 'min') {
+      var posVals = vals.filter(function(x){ return x > 0; });
+      bestVal = Math.min.apply(null, posVals);
+    }
+
+    var cells = vList.map(function(v) {
+      var numVal = r.key === 'wRange' ? EVS.winterRange(v.range, curTemp) : v[r.key];
+      var isBest = false;
+      if (r.better === 'max' && numVal === bestVal && numVal > 0) isBest = true;
+      if (r.better === 'min' && numVal === bestVal && numVal > 0) isBest = true;
+      if (r.better === 'bool' && numVal === true) isBest = true;
+
+      var barPct = r.barMax ? Math.min(100, Math.round((typeof numVal === 'number' ? numVal : 1) / r.barMax * 100)) : 0;
+      return '<div class="cmp-col-val">' +
+        '<div class="cmp-val ' + (isBest ? 'better' : '') + '">' + r.fmt(v) + (isBest ? ' ★' : '') + '</div>' +
+        (typeof numVal === 'number' && r.barMax ? '<div class="cmp-bar-bg"><div class="cmp-bar" style="width:' + barPct + '%"></div></div>' : '') +
+      '</div>';
+    }).join('');
+
+    return '<div class="cmp-row ' + (isThree ? 'three-cols' : '') + '">' +
+      '<div class="cmp-row-label">' + r.label + '</div>' +
+      cells +
+    '</div>';
+  }).join('');
+
+  document.getElementById('cmpTable').innerHTML = html;
+}
+
+function updateComparison() {
+  var selA = document.getElementById('pickA').value;
+  var selB = document.getElementById('pickB').value;
+  var selC = document.getElementById('pickC').value;
+
+  var vA = cmpVehicles.find(function(v){ return v.id === selA; }) || cmpVehicles[0];
+  var vB = cmpVehicles.find(function(v){ return v.id === selB; }) || cmpVehicles[1];
+  var vC = cmpVehicles.find(function(v){ return v.id === selC; });
+
+  var vList = [vA, vB];
+  if (vC && vC.id !== vA.id && vC.id !== vB.id) {
+    vList.push(vC);
+  }
+
+  var cardCols = document.getElementById('cardColumns');
+  var cardC = document.getElementById('cardC');
+
+  renderCard(vA, document.getElementById('cardA'));
+  renderCard(vB, document.getElementById('cardB'));
+
+  if (vList.length === 3) {
+    cardCols.classList.add('three-cols');
+    cardC.style.display = 'flex';
+    renderCard(vList[2], cardC);
+    updateParams(vA.id, vB.id, vList[2].id);
+  } else {
+    cardCols.classList.remove('three-cols');
+    cardC.style.display = 'none';
+    updateParams(vA.id, vB.id, '');
+  }
+
+  renderTable(vList);
+}
+
+async function init() {
+  cmpVehicles = await EVS.loadVehicles();
+
+  var selA = document.getElementById('pickA');
+  var selB = document.getElementById('pickB');
+  var selC = document.getElementById('pickC');
+
+  selA.innerHTML = '';
+  selB.innerHTML = '';
+  selC.innerHTML = '<option value="">-- None (2-Way Compare) --</option>';
+
+  cmpVehicles.forEach(function(v) {
+    var o1 = document.createElement('option');
+    o1.value = v.id; o1.textContent = v.name + ' ($' + v.msrp.toLocaleString('en-CA') + ')';
+    selA.appendChild(o1);
+
+    var o2 = document.createElement('option');
+    o2.value = v.id; o2.textContent = v.name + ' ($' + v.msrp.toLocaleString('en-CA') + ')';
+    selB.appendChild(o2);
+
+    var o3 = document.createElement('option');
+    o3.value = v.id; o3.textContent = v.name + ' ($' + v.msrp.toLocaleString('en-CA') + ')';
+    selC.appendChild(o3);
+  });
+
+  // Query parameter support (?a=...&b=...&c=...)
+  var params = new URLSearchParams(location.search);
+  var pA = params.get('a');
+  var pB = params.get('b');
+  var pC = params.get('c');
+
+  if (pA && cmpVehicles.some(function(v){ return v.id === pA; })) selA.value = pA;
+  else selA.value = cmpVehicles[0] ? cmpVehicles[0].id : '';
+
+  if (pB && cmpVehicles.some(function(v){ return v.id === pB; })) selB.value = pB;
+  else selB.value = cmpVehicles[1] ? cmpVehicles[1].id : (cmpVehicles[0] ? cmpVehicles[0].id : '');
+
+  if (pC && cmpVehicles.some(function(v){ return v.id === pC; })) selC.value = pC;
+
+  var tempEl = document.getElementById('cmpTemp');
+  setSliderPct(tempEl);
+  tempEl.addEventListener('input', function() {
+    curTemp = +this.value;
+    setSliderPct(this);
+    this.setAttribute('aria-valuenow', curTemp);
+    document.getElementById('cmpTempLabel').textContent = (curTemp > 0 ? '+' : '') + curTemp + '°C';
+    updateComparison();
+  });
+
+  selA.addEventListener('change', updateComparison);
+  selB.addEventListener('change', updateComparison);
+  selC.addEventListener('change', updateComparison);
+
+  updateComparison();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
+
 <footer>
   <div class="wrap-wide footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">evselect<span>.ca</span></div>
-        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real winters.</p>
+        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real Canadian winters.</p>
       </div>
       <div>
         <div class="footer-col-title">Platform</div>
@@ -294,29 +420,31 @@ document.addEventListener('DOMContentLoaded', async function() {
           <a href="vehicles.html">Browse EVs</a>
           <a href="tools.html">Tools</a>
           <a href="compare.html">Compare</a>
+          <button onclick="openPolicy('methodology')">About the Data &amp; Methodology</button>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Tools</div>
+        <div class="footer-col-title">EV Tools</div>
         <div class="footer-links">
-          <a href="tools.html#winter">Winter Range</a>
-          <a href="tools.html#rebate">Rebate Calculator</a>
-          <a href="tools.html#route">Route Planner</a>
+          <a href="tools.html#winter">Winter Range Calculator</a>
+          <a href="tools.html#rebate">2026 Rebate Stacker</a>
+          <a href="tools.html#route">Canada Route Planner</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Legal</div>
+        <div class="footer-col-title">Legal &amp; Compliance</div>
         <div class="footer-links">
           <button onclick="openPolicy('terms')">Terms &amp; Conditions</button>
-          <button onclick="openPolicy('privacy')">Privacy Policy</button>
+          <button onclick="openPolicy('privacy')">Privacy Policy (PIPEDA &amp; Law 25)</button>
           <button onclick="openPolicy('cookie')">Cookie Policy</button>
-          <button onclick="openPolicy('disclaimer')">Data Disclaimer</button>
+          <button onclick="openPolicy('disclaimer')">Data &amp; Rebate Disclaimer</button>
+          <button onclick="openPolicy('trademarks')">Trademarks &amp; Non-Affiliation</button>
           <button onclick="openPolicy('accessibility')">Accessibility</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Not affiliated with any manufacturer. Informational purposes only.</span>
+      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Vehicle names, logos, and images are trademarks and property of their respective manufacturers. Not affiliated with or endorsed by any automotive manufacturer.</span>
       <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank" rel="noopener" class="footer-copy" style="display:flex;align-items:center;gap:6px">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
         GitHub
@@ -382,23 +510,49 @@ document.addEventListener('DOMContentLoaded', async function() {
   }
 })();
 
-// Scroll reveal
-(function(){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, {threshold:0.08});
-  function init(){ document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
-})();
-
-// Policies
+// Comprehensive Policy Content (PIPEDA, Quebec Law 25, Methodology, Trademarks)
 var POLICIES = {
-  terms:{title:'Terms & Conditions',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Data Accuracy</h3><p>Vehicle range figures are NRCan official ratings. Winter range estimates use a simplified thermal degradation model. <strong>Do not rely solely on these estimates for critical journey safety decisions.</strong></p><h3>3. Rebate Information</h3><p>Based on publicly available government data and may be outdated. Always verify directly with Transport Canada or your provincial ministry before purchasing.</p><h3>4. No Financial Advice</h3><p>All content is for informational purposes only and does not constitute financial, legal, or purchasing advice.</p><h3>5. Limitation of Liability</h3><p>EVSelect is not liable for any damages resulting from platform use, including range errors, rebate inaccuracies, or service interruptions.</p><h3>6. Governing Law</h3><p>Governed by the laws of Alberta, Canada.</p>'},
-  privacy:{title:'Privacy Policy',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; PIPEDA Compliant</p><h3>What We Collect</h3><ul><li>Anonymised usage data via server logs (consent-based analytics only)</li><li>AI assistant chat messages (processed by Hugging Face free API)</li><li>Cookie consent preference stored in browser localStorage</li></ul><h3>What We Do NOT Collect</h3><p>We do not collect names, emails, payment info, or government IDs. We do not sell your data.</p><h3>Your PIPEDA Rights</h3><p>You may access information we hold, request corrections, withdraw consent, or file a complaint with the Office of the Privacy Commissioner of Canada.</p>'},
-  cookie:{title:'Cookie Policy',body:'<h3>Cookies We Use</h3><table><thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead><tbody><tr><td>evs_consent</td><td>Consent preference</td><td>Essential</td></tr><tr><td>_ga, _gid</td><td>Analytics (if enabled)</td><td>Optional</td></tr></tbody></table><h3>localStorage</h3><p>We use browser localStorage for your preference. This is not transmitted to our servers.</p>'},
-  disclaimer:{title:'Data Disclaimer',body:'<h3>Vehicle Range</h3><p>NRCan official ratings for the best available trim. Real-world range varies by temperature, speed, cargo, HVAC, and battery age.</p><h3>Winter Range Calculator</h3><p>Uses a simplified linear model (0% loss at 0&deg;C, 35% at &minus;30&deg;C). <strong>Do not use as your only planning tool for critical winter journeys.</strong></p><h3>Rebate Information</h3><p>Verify directly with: <a href="https://tc.canada.ca" target="_blank">Transport Canada iZEV</a>, <a href="https://goelectricbc.gov.bc.ca" target="_blank">Go Electric BC</a>, <a href="https://vehiculeselectriques.gouv.qc.ca" target="_blank">Roulez Vert QC</a>.</p>'},
-  accessibility:{title:'Accessibility Statement',body:'<p>EVSelect strives to conform to WCAG 2.1 Level AA.</p><h3>Features Implemented</h3><ul><li>Semantic HTML5 heading hierarchy</li><li>ARIA labels on all interactive elements</li><li>Full keyboard navigability</li><li>High-contrast dark mode</li><li>Focus-visible styles</li><li>Alt text on all images</li><li>aria-live regions on dynamic content</li></ul><h3>Feedback</h3><p>Report issues via <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>. We respond within 5 business days.</p>'}
+  methodology:{
+    title:'About the Data & Methodology',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
+      '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
+      '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
+  },
+  terms:{
+    title:'Terms & Conditions',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Informational Purpose</h3><p>All estimates (winter range, charging duration, and incentive eligibility) are provided strictly for educational comparison. <strong>Do not rely solely on automated calculations for mission-critical travel safety or financial purchasing commitments.</strong></p><h3>3. Rebate Accuracy Disclaimer</h3><p>Government rebate allocations, rules, and eligibility caps change frequently without prior notice. Always verify directly with Transport Canada or your provincial ministry before signing a vehicle purchase agreement.</p><h3>4. Limitation of Liability</h3><p>EVSelect and its contributors are not liable for damages or losses resulting from platform use, range deviations, or incentive disqualifications.</p><h3>5. Governing Law</h3><p>Governed by the laws of the Province of Alberta and the federal laws of Canada applicable therein.</p>'
+  },
+  privacy:{
+    title:'Privacy Policy (PIPEDA & Quebec Law 25)',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; Compliant with PIPEDA &amp; Qu&eacute;bec Law 25</p>' +
+      '<h3>1. Scope &amp; Commitment</h3><p>EVSelect.ca is committed to protecting the privacy of Canadian users under the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and Qu&eacute;bec <em>Law 25 (An Act to modernize legislative provisions as regards the protection of personal information)</em>.</p>' +
+      '<h3>2. What We Collect</h3><ul><li><strong>Anonymized server log telemetry</strong> (IP address masked, browser type, page visits) for site reliability and performance monitoring.</li><li><strong>Client-side state</strong> (dark/light theme choice, cookie preferences) stored strictly in local browser <code>localStorage</code> without transmission to our servers.</li><li><strong>Chat queries</strong> submitted to the interactive assistant (processed ephemerally via secure API without linking to personal identities).</li></ul>' +
+      '<h3>3. What We Do NOT Collect</h3><p>We do not collect names, phone numbers, home addresses, driver\'s licenses, credit card data, or VIN numbers. <strong>We do not sell, rent, or trade user data to third parties or automotive dealerships.</strong></p>' +
+      '<h3>4. Retention &amp; Deletion Rights</h3><p>Under PIPEDA and Law 25, you have the right to request access to or deletion of any stored data. Because all personal state remains exclusively in your own local device storage, clearing your browser cache/cookies instantly destroys all local data.</p>' +
+      '<h3>5. Privacy Officer Contact</h3><p>For inquiries regarding privacy or compliance, contact the privacy team via our public repository issue tracker at <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>.</p>'
+  },
+  cookie:{
+    title:'Cookie Policy',
+    body:'<h3>Essential Local Storage</h3><p>EVSelect uses browser <code>localStorage</code> strictly for functional preferences (e.g. keeping your dark/light mode preference across sessions). No cross-site advertising or behavioral tracking cookies are utilized.</p>'
+  },
+  disclaimer:{
+    title:'Data & Rebate Disclaimer',
+    body:'<h3>1. Real-World Driving Variations</h3><p>Actual electric vehicle range differs significantly from official ratings based on driving speed, cabin temperature settings, precipitation, tire type (winter vs. all-season), terrain elevation, and payload.</p>' +
+      '<h3>2. Regulatory &amp; Incentive Notice</h3><p>Government incentive programs (including Federal EVAP, Roulez Vert, CleanBC, and provincial rebates) are governed exclusively by their official respective government ministries. Funding caps, program eligibility, and qualification windows are subject to termination or alteration without notice.</p>'
+  },
+  trademarks:{
+    title:'Trademarks & Non-Affiliation',
+    body:'<h3>Trademark Notice</h3><p>All vehicle brand names, model names, badges, logos, and images referenced on this platform (including Tesla, Hyundai, Kia, Chevrolet, Ford, Volkswagen, Nissan, BMW, Polestar, Rivian, Subaru, Toyota, and Volvo) are trademarks and registered property of their respective manufacturer owners.</p>' +
+      '<h3>Non-Affiliation</h3><p>EVSelect.ca is an independent Canadian consumer informational resource. EVSelect.ca is not affiliated with, sponsored by, or endorsed by any vehicle manufacturer, automotive dealer association, or government agency.</p>'
+  },
+  accessibility:{
+    title:'Accessibility Statement (WCAG 2.1 AA)',
+    body:'<p>EVSelect.ca is designed to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. Key implementations include semantic heading structure, high-contrast dark and light themes, keyboard navigability, ARIA landmarks, and descriptive screen-reader alternatives.</p>'
+  }
 };
+
 function openPolicy(k){
   var p=POLICIES[k]; if(!p) return;
   document.getElementById('policyTitle').textContent=p.title;

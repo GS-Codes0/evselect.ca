@@ -2,7 +2,7 @@
 'use strict';
 (function() {
   var HF = 'mistralai/Mistral-7B-Instruct-v0.3';
-  var SYS = 'You are EVSelect.ca\'s assistant for Canadian EV buyers. Answer concisely about: EV winter range in Canada, federal iZEV rebate ($5000, under $55k), BC rebate ($4000 CEV), QC rebate ($4000 Roulez Vert), AB/ON (no provincial rebate), Edmonton-Calgary charging (QCEW Red Deer), heat pumps, and EVSelect platform navigation. Keep responses under 3 sentences.';
+  var SYS = 'You are EVSelect.ca\'s assistant for Canadian EV buyers. Answer concisely about: EV winter range in Canada, 2026 Federal EVAP rebate ($5000 BEV, under $50k transaction value), BC rebate (currently paused since May 2025), QC rebate (Roulez Vert phasing down, $2000 in 2026), provincial stacking across all 13 provinces/territories, nationwide charging routes, heat pumps, and EVSelect platform tools. Keep responses under 3 sentences.';
   var history = [];
   var open = false;
 
@@ -18,17 +18,17 @@
     q = q.toLowerCase();
     if (q.includes('winter') || q.includes('cold') || q.includes('range'))
       return 'In Canadian winters expect 20\u201335% range loss below \u221210\u00b0C. Heat-pump equipped EVs (IONIQ 6, Tesla, BMW i4) perform best. Pre-condition while plugged in to recover 10\u201315%.';
-    if (q.includes('rebate') || q.includes('izev') || q.includes('incentive'))
-      return 'Federal iZEV: $5,000 for EVs under $55k CAD. BC adds $4,000 (CEV for BC). QC adds $4,000 (Roulez Vert). AB and ON have no provincial EV rebate. Max stack: $9,000.';
-    if (q.includes('calgary') || q.includes('edmonton') || q.includes('hwy 2') || q.includes('highway 2'))
-      return 'Edmonton to Calgary (~300 km) has great EV coverage. QCEW fast chargers at Red Deer Gasoline Alley are the standard midpoint stop (~150 km each way). Allow 25\u201340 min.';
+    if (q.includes('rebate') || q.includes('evap') || q.includes('izev') || q.includes('incentive'))
+      return 'Federal iZEV is closed. The new Federal EVAP program (launched Feb 2026) offers $5,000 for BEVs under a $50k transaction value cap. BC CleanBC is currently paused, QC Roulez Vert is phasing down ($2,000), and PEI/NB/Yukon offer $5,000. Max stack is $10,000.';
+    if (q.includes('calgary') || q.includes('edmonton') || q.includes('hwy 2') || q.includes('route'))
+      return 'Check out our nationwide Route Planner for cross-Canada corridors (Trans-Canada, Coquihalla, 401 Corridor, Alberta Highway 2, and Custom Distance) with winter degradation modeling.';
     if (q.includes('heat pump'))
       return 'Heat pumps use 60\u201370% less battery energy than resistive heaters in cold weather. IONIQ 5/6, Tesla, BMW i4, Polestar 2, VW ID.4, and most modern EVs include them.';
     if (q.includes('compare'))
-      return 'Head to the Compare page to place any two EVs side-by-side with spec bars and winter range at your selected temperature.';
+      return 'Head to the Compare page to place up to 3 EVs side-by-side with spec comparisons, winter range ratings, and shareable URLs.';
     if (q.includes('navigate') || q.includes('where') || q.includes('page') || q.includes('find'))
-      return 'Use the quick links above to navigate! Browse all EVs, use the Tools page for winter range and rebate calculations, or Compare two vehicles directly.';
-    return 'I can help with Canadian EV winter range, iZEV rebates, charging networks, and navigating evselect.ca. What would you like to know?';
+      return 'Use the quick links above to navigate! Browse all EVs, use the Tools page for winter range and 2026 rebate calculations, or Compare up to three vehicles.';
+    return 'I can help with Canadian EV winter range, 2026 Federal EVAP & provincial rebates, cross-Canada routes, and navigating evselect.ca. What would you like to know?';
   }
 
   function buildUI() {

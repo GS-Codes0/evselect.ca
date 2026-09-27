@@ -4,10 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Browse EVs — EVSelect.ca</title>
-  <meta name="description" content="Browse all Canadian EVs with real-time winter range, iZEV rebate filter, and NRCan data."/>
+  <meta name="description" content="Browse and filter Canadian electric vehicles with real-time winter range, 2026 Federal EVAP rebate eligibility, body styles, and NRCan ratings."/>
   <meta name="author" content="EVSelect.ca"/>
   <meta property="og:title" content="Browse EVs — EVSelect.ca"/>
-  <meta property="og:description" content="Browse all Canadian EVs with real-time winter range, iZEV rebate filter, and NRCan data."/>
+  <meta property="og:description" content="Browse and filter Canadian electric vehicles with real-time winter range, 2026 Federal EVAP rebate eligibility, body styles, and NRCan ratings."/>
   <meta property="og:type" content="website"/>
   <meta name="robots" content="index,follow"/>
   <link rel="icon" type="image/png" href="evcarslogo.png"/>
@@ -22,8 +22,8 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="EVSelect home">evselect<span>.ca</span></a>
     <div class="nav-search-wrap">
-      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search models&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
+      <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search EV make or model&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
     </div>
     <div class="nav-links" id="navLinks">
       <div class="nav-dropdown-wrap" id="modelsDropdown">
@@ -35,7 +35,7 @@
           <div class="nav-dropdown-section">Browse All</div>
           <a href="vehicles.html" class="nav-dropdown-item" role="menuitem">All Electric Vehicles</a>
           <div class="nav-dropdown-divider"></div>
-          <div class="nav-dropdown-section">Models</div>
+          <div class="nav-dropdown-section">Popular Models</div>
           <a href="vehicles.html?q=Tesla+Model+Y" class="nav-dropdown-item" role="menuitem">Tesla Model Y</a>
           <a href="vehicles.html?q=Tesla+Model+3" class="nav-dropdown-item" role="menuitem">Tesla Model 3</a>
           <a href="vehicles.html?q=Hyundai+IONIQ+6" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 6</a>
@@ -69,12 +69,14 @@
           <a href="tools.html" class="nav-dropdown-item" role="menuitem">All Tools</a>
           <div class="nav-dropdown-divider"></div>
           <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">❄️ Winter Range Calculator</a>
-          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 Rebate Calculator</a>
-          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Route Planner</a>
+          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 2026 Rebate Stacker</a>
+          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Canada Route Planner</a>
         </div>
-      </div><a href="compare.html">Compare</a>
+      </div>
+      <a href="compare.html">Compare</a>
       <a href="vehicles.html" class="nav-cta">Browse EVs</a>
     </div>
+    <!-- Top-Right Corner Theme Toggle Button -->
     <button class="nav-theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">
       <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -85,196 +87,275 @@
   </div>
 </nav>
 
-<section class="pg-header">
+<!-- ── PAGE HEADER (Centered) ────────────────────────────── -->
+<header class="pg-header">
   <div class="wrap">
-    <span class="eyebrow" data-reveal>Live Database &mdash; AWS Lambda + DynamoDB</span>
-    <h1 class="section-title" data-reveal data-delay="1">Browse Electric Vehicles</h1>
-    <p class="fg2" style="margin-top:16px;font-size:17px;max-width:500px" data-reveal data-delay="2">20 Canadian-market EVs with NRCan ranges, winter projections, and real pricing.</p>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span aria-current="page">Browse EVs</span>
+    </nav>
+    <h1 class="pg-title">All Electric Vehicles</h1>
+    <p class="pg-sub">
+      Compare official NRCan range, cold-weather thermal loss, DC fast charging rates, and 2026 Federal EVAP rebate qualifications for every model sold in Canada.
+    </p>
   </div>
-</section>
+</header>
 
-<section class="section-sm">
+<!-- ── SEARCH, FILTERS & CONTROLS ────────────────────────── -->
+<div class="filter-bar">
   <div class="wrap">
-    <!-- FILTER BAR -->
-    <div class="filter-bar" role="search" aria-label="Vehicle filters">
-      <div class="filter-search-wrap">
-        <svg class="filter-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="searchInput" type="search" placeholder="Search by name or make&#x2026;" class="filter-search" autocomplete="off" aria-label="Search vehicles"/>
+    <div class="filter-row">
+      <!-- Search Input -->
+      <div class="filter-search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="pageSearch" placeholder="Filter by brand or model..." aria-label="Filter vehicles by brand or model"/>
       </div>
-      <div class="select-wrap filter-sel-wrap">
-        <select id="sortSelect" class="evs-select filter-sel" aria-label="Sort order">
-          <option value="name">Name A&#x2013;Z</option>
-          <option value="range_desc">Best Range</option>
-          <option value="price_asc">Price Low&#x2013;High</option>
-          <option value="price_desc">Price High&#x2013;Low</option>
-          <option value="winter_desc">Best Winter Range</option>
-        </select>
+      <!-- Body Style Dropdown Filter -->
+      <select id="bodyFilter" class="filter-select" aria-label="Filter by body style">
+        <option value="all">All Body Types</option>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV / Crossover</option>
+        <option value="hatchback">Hatchback</option>
+        <option value="truck">Truck</option>
+      </select>
+      <!-- Price Range Dropdown Filter -->
+      <select id="priceFilter" class="filter-select" aria-label="Filter by price range">
+        <option value="all">Any Price</option>
+        <option value="under50">Under $50,000</option>
+        <option value="50to70">$50,000 &ndash; $70,000</option>
+        <option value="over70">$70,000+</option>
+      </select>
+      <!-- Sort Order Dropdown -->
+      <select id="sortSelect" class="filter-select" aria-label="Sort vehicles">
+        <option value="range-desc">NRCan Range: Highest</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="winter-desc">Winter Range (&minus;15&deg;C): Highest</option>
+      </select>
+      <!-- Toggles -->
+      <div class="filter-toggles">
+        <label class="toggle-label" title="Show only vehicles eligible for the 2026 Federal EVAP rebate">
+          <input type="checkbox" id="evapOnly" />
+          <span>2026 EVAP Eligible</span>
+        </label>
+        <label class="toggle-label" title="Show only vehicles with heat pump standard">
+          <input type="checkbox" id="hpOnly" />
+          <span>Heat Pump</span>
+        </label>
       </div>
-      <label class="filter-toggle" for="rebateFilter">
-        <input type="checkbox" id="rebateFilter" aria-label="Show iZEV eligible only"/>
-        <span class="ft-track"><span class="ft-thumb"></span></span>
-        <span class="ft-label">iZEV eligible only</span>
-      </label>
-      <div class="filter-temp-wrap">
-        <label for="gridTempSlider" class="ft-label">Winter temp: <span id="gridTempVal" class="accent" style="font-weight:700">0&deg;C</span></label>
-        <input type="range" id="gridTempSlider" min="-30" max="20" value="0" step="1" style="width:120px" aria-label="Temperature for winter range" aria-valuemin="-30" aria-valuemax="20"/>
-      </div>
-      <span id="resultsCount" class="filter-count" aria-live="polite"></span>
     </div>
-
-    <!-- GRID -->
-    <div id="vehicleGrid" class="grid-4" style="margin-top:36px" role="list" aria-label="Vehicle listings" aria-live="polite">
-      <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:16px;padding:80px 0" id="loadingState">
-        <div class="spinner"></div>
-        <p class="fg3" style="font-size:15px">Loading vehicles&hellip;</p>
-      </div>
+    <div class="filter-meta">
+      <span class="fg3" id="vehicleCount">Loading vehicles...</span>
+      <span class="fg3" style="font-size:12px">Winter estimates modeled at &minus;15&deg;C</span>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ── VEHICLES GRID ──────────────────────────────────────── -->
+<main class="section-sm">
+  <div class="wrap">
+    <div id="loading" class="grid-3" aria-live="polite">
+      <!-- 4 Skeleton Shimmer Cards -->
+      <div class="skeleton-card"><div class="skeleton-img shimmer"></div><div class="skeleton-title shimmer"></div><div class="skeleton-text shimmer"></div><div class="skeleton-grid"><div class="skeleton-cell shimmer"></div><div class="skeleton-cell shimmer"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img shimmer"></div><div class="skeleton-title shimmer"></div><div class="skeleton-text shimmer"></div><div class="skeleton-grid"><div class="skeleton-cell shimmer"></div><div class="skeleton-cell shimmer"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img shimmer"></div><div class="skeleton-title shimmer"></div><div class="skeleton-text shimmer"></div><div class="skeleton-grid"><div class="skeleton-cell shimmer"></div><div class="skeleton-cell shimmer"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img shimmer"></div><div class="skeleton-title shimmer"></div><div class="skeleton-text shimmer"></div><div class="skeleton-grid"><div class="skeleton-cell shimmer"></div><div class="skeleton-cell shimmer"></div></div></div>
+    </div>
+    <div id="errorState" class="error-state" style="display:none" role="alert">
+      <h3>Couldn't load vehicle data</h3>
+      <p>There was a network or server communication issue loading the vehicle catalogue.</p>
+      <button class="btn btn-primary" onclick="init()">Retry Loading</button>
+    </div>
+    <div id="grid" class="grid-3" role="list" aria-label="Electric vehicle catalogue" style="display:none"></div>
+    <div id="noResults" style="display:none;text-align:center;padding:80px 0">
+      <p class="fg2" style="font-size:18px">No electric vehicles match your active filters.</p>
+      <button class="btn btn-ghost" style="margin-top:16px" onclick="resetFilters()">Reset All Filters</button>
+    </div>
+  </div>
+</main>
 
 <style>
 .filter-bar{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--r);padding:14px 20px;
-  box-shadow:var(--shadow-sm);
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:20px 0;position:sticky;top:var(--nav-h);z-index:100;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
-.filter-search-wrap{position:relative;flex:1;min-width:180px}
-.filter-search-icon{position:absolute;left:12px;top:50%;translate:0 -50%;color:var(--fg3);pointer-events:none}
-.filter-search{
-  background:var(--bg);border:1.5px solid var(--border);
-  border-radius:var(--r-sm);color:var(--navy);font-size:14px;
-  padding:9px 12px 9px 36px;outline:none;width:100%;transition:border-color .2s;
+.filter-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.filter-search-box{
+  flex:1;min-width:200px;position:relative;display:flex;align-items:center;
 }
-.filter-search:focus{border-color:var(--accent)}
-.filter-search::placeholder{color:var(--fg3)}
-.filter-sel-wrap{flex-shrink:0}
-.filter-sel{font-size:14px;padding:9px 34px 9px 12px;width:auto}
-.filter-toggle{display:flex;align-items:center;gap:8px;cursor:pointer;flex-shrink:0}
-.filter-toggle input{display:none}
-.ft-track{
-  width:36px;height:20px;border-radius:99px;background:var(--border2);
-  position:relative;transition:background .2s;flex-shrink:0;
+.filter-search-box svg{
+  position:absolute;left:14px;color:var(--fg3);pointer-events:none;
 }
-.filter-toggle input:checked + .ft-track{background:var(--accent)}
-.ft-thumb{
-  position:absolute;top:2px;left:2px;width:16px;height:16px;
-  border-radius:50%;background:#fff;transition:translate .2s;
+.filter-search-box input{
+  width:100%;height:40px;background:var(--card);border:1.5px solid var(--border);
+  border-radius:99px;padding:0 14px 0 38px;color:var(--fg);font-size:13px;
+  outline:none;transition:border-color .2s;
 }
-.filter-toggle input:checked + .ft-track .ft-thumb{translate:16px 0}
-.ft-label{font-size:13px;color:var(--fg2);white-space:nowrap}
-.filter-temp-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.filter-count{font-size:13px;color:var(--fg3);margin-left:auto;white-space:nowrap}
-@media(max-width:680px){
-  .filter-temp-wrap{display:none}
-  .filter-count{margin-left:0;width:100%}
+.filter-search-box input:focus{border-color:var(--accent)}
+.filter-select{
+  height:40px;padding:0 14px;border-radius:99px;border:1.5px solid var(--border);
+  background:var(--card);color:var(--fg);font-size:13px;font-weight:500;
+  outline:none;cursor:pointer;transition:border-color .2s;
 }
+.filter-select:focus{border-color:var(--accent)}
+.filter-toggles{display:flex;gap:14px;align-items:center}
+.toggle-label{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;
+  font-weight:600;color:var(--fg2);cursor:pointer;user-select:none;
+}
+.toggle-label input{accent-color:var(--accent);width:16px;height:16px;cursor:pointer}
+.filter-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:12px;font-size:13px;
+}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-cell{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 10px}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:2px}
+.stat-val{font-size:14px;font-weight:700;color:var(--navy)}
+.card-ctas{display:flex;gap:8px;margin-top:4px}
+.card-ctas a{
+  flex:1;text-align:center;font-size:12px;font-weight:600;
+  padding:8px;border-radius:var(--r-sm);transition:all .15s;text-decoration:none;
+}
+.card-cta-p{background:var(--navy-lt);color:var(--navy)}
+.card-cta-p:hover{background:var(--accent-d);color:var(--accent)}
+.card-cta-s{border:1px solid var(--border2);color:var(--fg2)}
+.card-cta-s:hover{border-color:var(--accent);color:var(--navy)}
 </style>
 
 <script>
-var allVehicles = [], currentTemp = 0;
+'use strict';
+var allVehicles = [];
 
-function setSliderPct(el) {
-  var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
-  el.style.setProperty('--pct', pct + '%');
+function resetFilters() {
+  document.getElementById('pageSearch').value = '';
+  document.getElementById('bodyFilter').value = 'all';
+  document.getElementById('priceFilter').value = 'all';
+  document.getElementById('sortSelect').value = 'range-desc';
+  document.getElementById('evapOnly').checked = false;
+  document.getElementById('hpOnly').checked = false;
+  render();
 }
 
-document.addEventListener('DOMContentLoaded', async function() {
-  var grid = document.getElementById('vehicleGrid');
-  var search = document.getElementById('searchInput');
-  var sort = document.getElementById('sortSelect');
-  var rebateChk = document.getElementById('rebateFilter');
-  var tempSl = document.getElementById('gridTempSlider');
-  var tempVal = document.getElementById('gridTempVal');
+function render() {
+  var q = (document.getElementById('pageSearch').value || '').trim().toLowerCase();
+  var body = document.getElementById('bodyFilter').value;
+  var price = document.getElementById('priceFilter').value;
+  var evapOnly = document.getElementById('evapOnly').checked;
+  var hpOnly = document.getElementById('hpOnly').checked;
+  var sort = document.getElementById('sortSelect').value;
 
-  // Pre-fill search from ?q= URL param (from nav dropdown or nav search)
-  var urlQ = new URLSearchParams(location.search).get('q');
-  if(urlQ && search) search.value = urlQ;
-
-  setSliderPct(tempSl);
-
-  allVehicles = await EVS.loadVehicles();
-  render();
-
-  search.addEventListener('input', render);
-  sort.addEventListener('change', render);
-  rebateChk.addEventListener('change', render);
-  tempSl.addEventListener('input', function() {
-    currentTemp = +this.value;
-    setSliderPct(this);
-    tempVal.textContent = (currentTemp > 0 ? '+' : '') + currentTemp + '\u00b0C';
-    render();
+  var list = allVehicles.filter(function(v) {
+    if (q) {
+      var match = (v.name && v.name.toLowerCase().includes(q)) ||
+                  (v.make && v.make.toLowerCase().includes(q));
+      if (!match) return false;
+    }
+    if (body !== 'all' && (v.body || '').toLowerCase() !== body) return false;
+    if (price === 'under50' && v.msrp > 50000) return false;
+    if (price === '50to70' && (v.msrp < 50000 || v.msrp > 70000)) return false;
+    if (price === 'over70' && v.msrp <= 70000) return false;
+    if (evapOnly && !v.evap_eligible) return false;
+    if (hpOnly && !v.hp) return false;
+    return true;
   });
 
-  function render() {
-    var q = search.value.toLowerCase().trim();
-    var sv = sort.value;
-    var ro = rebateChk.checked;
+  list.sort(function(a, b) {
+    if (sort === 'range-desc') return b.range - a.range;
+    if (sort === 'price-asc') return a.msrp - b.msrp;
+    if (sort === 'price-desc') return b.msrp - a.msrp;
+    if (sort === 'winter-desc') return EVS.winterRange(b.range, -15) - EVS.winterRange(a.range, -15);
+    return 0;
+  });
 
-    var list = allVehicles.filter(function(v) {
-      if (q && !(v.name||'').toLowerCase().includes(q) && !(v.make||'').toLowerCase().includes(q)) return false;
-      if (ro && !(v.rebate > 0)) return false;
-      return true;
-    });
+  var grid = document.getElementById('grid');
+  var noRes = document.getElementById('noResults');
+  var countEl = document.getElementById('vehicleCount');
 
-    list.sort(function(a,b) {
-      if (sv === 'range_desc') return (b.range||0) - (a.range||0);
-      if (sv === 'price_asc') return (a.msrp||999999) - (b.msrp||999999);
-      if (sv === 'price_desc') return (b.msrp||0) - (a.msrp||0);
-      if (sv === 'winter_desc') return EVS.winterRange(b.range||0, currentTemp) - EVS.winterRange(a.range||0, currentTemp);
-      return (a.name||'').localeCompare(b.name||'');
-    });
+  countEl.textContent = list.length + ' of ' + allVehicles.length + ' vehicles shown';
 
-    document.getElementById('resultsCount').textContent = list.length + ' of ' + allVehicles.length + ' vehicles';
+  if (!list.length) {
+    grid.style.display = 'none';
+    noRes.style.display = 'block';
+    return;
+  }
+  noRes.style.display = 'none';
+  grid.style.display = 'grid';
 
-    var maxR = Math.max.apply(null, allVehicles.map(function(v){ return v.range||0; }));
+  grid.innerHTML = list.map(function(v) {
+    var wr = EVS.winterRange(v.range, -15);
+    var badges = [];
+    if (v.evap_eligible) badges.push('<span class="badge badge-g">EVAP $5k</span>');
+    if (v.hp) badges.push('<span class="badge badge-b">Heat Pump</span>');
+    if (v.ca) badges.push('<span class="badge badge-p">Made in Canada</span>');
 
-    if (!list.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:80px 0;color:var(--fg3)">No vehicles match your filters.</div>';
-      return;
+    return '<div class="ev-card" role="listitem">' +
+      '<div class="ev-card-img-wrap">' +
+        '<img src="' + v.img + '" alt="' + v.name + '" class="ev-card-img" loading="lazy" onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'32px\';this.style.opacity=\'.3\'"/>' +
+      '</div>' +
+      '<div class="ev-card-body">' +
+        '<div style="display:flex;gap:6px;flex-wrap:wrap">' + badges.join('') + '</div>' +
+        '<h3 class="card-title">' + v.name + '</h3>' +
+        '<div class="fg2" style="font-size:14px;margin-top:-4px">From $' + v.msrp.toLocaleString('en-CA') + '</div>' +
+        '<div class="stat-grid" style="margin-top:6px">' +
+          '<div class="stat-cell"><div class="stat-label">NRCan Range</div><div class="stat-val">' + v.range + ' km</div></div>' +
+          '<div class="stat-cell" style="border-color:var(--accent-g)"><div class="stat-label" style="color:var(--accent)">Winter (&minus;15&deg;C)</div><div class="stat-val" style="color:var(--accent)">' + wr + ' km</div></div>' +
+          '<div class="stat-cell"><div class="stat-label">Max DC Fast</div><div class="stat-val">' + v.dc + ' kW</div></div>' +
+          '<div class="stat-cell"><div class="stat-label">0&ndash;100 km/h</div><div class="stat-val">' + (v.acc ? v.acc + 's' : '&mdash;') + '</div></div>' +
+        '</div>' +
+        '<div class="card-ctas" style="margin-top:8px">' +
+          '<a href="compare.html?a=' + v.id + '" class="card-cta-p">Compare &rarr;</a>' +
+          '<a href="tools.html#winter" class="card-cta-s">Winter Tool</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+async function init() {
+  document.getElementById('loading').style.display = 'grid';
+  document.getElementById('errorState').style.display = 'none';
+  document.getElementById('grid').style.display = 'none';
+
+  try {
+    allVehicles = await EVS.loadVehicles();
+    document.getElementById('loading').style.display = 'none';
+
+    // Parse URL query parameter
+    var urlQ = new URLSearchParams(location.search).get('q');
+    if (urlQ) {
+      document.getElementById('pageSearch').value = urlQ;
     }
 
-    grid.innerHTML = list.map(function(v) {
-      var wr = EVS.winterRange(v.range||0, currentTemp);
-      var pct = maxR ? Math.round((v.range||0) / maxR * 100) : 0;
-      var bc = pct < 50 ? (pct < 35 ? 'rose' : 'amber') : '';
-      return '<article class="ev-card" role="listitem" aria-label="' + (v.name||'') + '">' +
-        '<div class="ev-card-img-wrap">' +
-          '<img src="' + (v.img||'evcarslogo.png') + '" alt="' + (v.name||'') + '" class="ev-card-img" loading="lazy"' +
-            ' onerror="this.src=\'evcarslogo.png\';this.style.objectFit=\'contain\';this.style.padding=\'32px\';this.style.opacity=\'.3\'"/>' +
-        '</div>' +
-        '<div class="ev-card-body">' +
-          '<div class="ev-card-meta">' +
-            (v.rebate > 0 ? '<span class="badge badge-g">iZEV $' + (v.rebate/1000).toFixed(0) + 'k</span>' : '') +
-            (v.hp ? '<span class="badge badge-b">Heat Pump</span>' : '') +
-            (v.ca ? '<span class="badge badge-o">Made in \u{1f1e8}\u{1f1e6}</span>' : '') +
-          '</div>' +
-          '<h3 class="card-title">' + (v.name||'Unknown') + '</h3>' +
-          '<p class="fg2" style="font-size:14px;margin-top:4px">' + (v.msrp ? 'From $' + v.msrp.toLocaleString('en-CA') : 'Price TBD') + '</p>' +
-          '<div class="stat-grid">' +
-            '<div class="stat-cell"><div class="stat-label">NRCan Range</div><div class="stat-val">' + (v.range ? v.range + ' km' : '--') + '</div></div>' +
-            '<div class="stat-cell" style="border-color:var(--accent-g)">' +
-              '<div class="stat-label" style="color:var(--accent)">Winter @ ' + (currentTemp > 0 ? '+' : '') + currentTemp + '\u00b0</div>' +
-              '<div class="stat-val" style="color:var(--accent)">' + (v.range ? wr + ' km' : '--') + '</div>' +
-            '</div>' +
-            '<div class="stat-cell"><div class="stat-label">DC Fast</div><div class="stat-val">' + (v.dc ? v.dc + ' kW' : '--') + '</div></div>' +
-            '<div class="stat-cell"><div class="stat-label">Battery</div><div class="stat-val">' + (v.battery ? v.battery + ' kWh' : '--') + '</div></div>' +
-          '</div>' +
-          '<div class="range-bar-wrap">' +
-            '<div class="range-bar-track"><div class="range-bar-fill ' + bc + '" style="width:' + pct + '%"></div></div>' +
-          '</div>' +
-        '</div>' +
-        '</article>';
-    }).join('');
+    render();
+  } catch(err) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('errorState').style.display = 'block';
   }
-});
+}
+
+document.getElementById('pageSearch').addEventListener('input', render);
+document.getElementById('bodyFilter').addEventListener('change', render);
+document.getElementById('priceFilter').addEventListener('change', render);
+document.getElementById('sortSelect').addEventListener('change', render);
+document.getElementById('evapOnly').addEventListener('change', render);
+document.getElementById('hpOnly').addEventListener('change', render);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
+
 <footer>
   <div class="wrap-wide footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">evselect<span>.ca</span></div>
-        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real winters.</p>
+        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real Canadian winters.</p>
       </div>
       <div>
         <div class="footer-col-title">Platform</div>
@@ -283,29 +364,31 @@ document.addEventListener('DOMContentLoaded', async function() {
           <a href="vehicles.html">Browse EVs</a>
           <a href="tools.html">Tools</a>
           <a href="compare.html">Compare</a>
+          <button onclick="openPolicy('methodology')">About the Data &amp; Methodology</button>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Tools</div>
+        <div class="footer-col-title">EV Tools</div>
         <div class="footer-links">
-          <a href="tools.html#winter">Winter Range</a>
-          <a href="tools.html#rebate">Rebate Calculator</a>
-          <a href="tools.html#route">Route Planner</a>
+          <a href="tools.html#winter">Winter Range Calculator</a>
+          <a href="tools.html#rebate">2026 Rebate Stacker</a>
+          <a href="tools.html#route">Canada Route Planner</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Legal</div>
+        <div class="footer-col-title">Legal &amp; Compliance</div>
         <div class="footer-links">
           <button onclick="openPolicy('terms')">Terms &amp; Conditions</button>
-          <button onclick="openPolicy('privacy')">Privacy Policy</button>
+          <button onclick="openPolicy('privacy')">Privacy Policy (PIPEDA &amp; Law 25)</button>
           <button onclick="openPolicy('cookie')">Cookie Policy</button>
-          <button onclick="openPolicy('disclaimer')">Data Disclaimer</button>
+          <button onclick="openPolicy('disclaimer')">Data &amp; Rebate Disclaimer</button>
+          <button onclick="openPolicy('trademarks')">Trademarks &amp; Non-Affiliation</button>
           <button onclick="openPolicy('accessibility')">Accessibility</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Not affiliated with any manufacturer. Informational purposes only.</span>
+      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Vehicle names, logos, and images are trademarks and property of their respective manufacturers. Not affiliated with or endorsed by any automotive manufacturer.</span>
       <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank" rel="noopener" class="footer-copy" style="display:flex;align-items:center;gap:6px">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
         GitHub
@@ -360,37 +443,64 @@ document.addEventListener('DOMContentLoaded', async function() {
   var fy = document.getElementById('footerYear');
   if(fy) fy.textContent = new Date().getFullYear();
 
-  // Nav search bar: redirect to vehicles.html with query
+  // Nav search bar
   var navSearch = document.getElementById('navSearchInput');
   if(navSearch){
-    // Pre-fill from URL ?q= param
-    var urlQ = new URLSearchParams(location.search).get('q');
-    if(urlQ) navSearch.value = urlQ;
     navSearch.addEventListener('keydown', function(e){
       if(e.key === 'Enter' && this.value.trim()){
-        window.location.href = 'vehicles.html?q=' + encodeURIComponent(this.value.trim());
+        var pSearch = document.getElementById('pageSearch');
+        if(pSearch){
+          pSearch.value = this.value.trim();
+          render();
+        }
       }
     });
   }
 })();
 
-// Scroll reveal
-(function(){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, {threshold:0.08});
-  function init(){ document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
-})();
-
-// Policies
+// Comprehensive Policy Content (PIPEDA, Quebec Law 25, Methodology, Trademarks)
 var POLICIES = {
-  terms:{title:'Terms & Conditions',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Data Accuracy</h3><p>Vehicle range figures are NRCan official ratings. Winter range estimates use a simplified thermal degradation model. <strong>Do not rely solely on these estimates for critical journey safety decisions.</strong></p><h3>3. Rebate Information</h3><p>Based on publicly available government data and may be outdated. Always verify directly with Transport Canada or your provincial ministry before purchasing.</p><h3>4. No Financial Advice</h3><p>All content is for informational purposes only and does not constitute financial, legal, or purchasing advice.</p><h3>5. Limitation of Liability</h3><p>EVSelect is not liable for any damages resulting from platform use, including range errors, rebate inaccuracies, or service interruptions.</p><h3>6. Governing Law</h3><p>Governed by the laws of Alberta, Canada.</p>'},
-  privacy:{title:'Privacy Policy',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; PIPEDA Compliant</p><h3>What We Collect</h3><ul><li>Anonymised usage data via server logs (consent-based analytics only)</li><li>AI assistant chat messages (processed by Hugging Face free API)</li><li>Cookie consent preference stored in browser localStorage</li></ul><h3>What We Do NOT Collect</h3><p>We do not collect names, emails, payment info, or government IDs. We do not sell your data.</p><h3>Your PIPEDA Rights</h3><p>You may access information we hold, request corrections, withdraw consent, or file a complaint with the Office of the Privacy Commissioner of Canada.</p>'},
-  cookie:{title:'Cookie Policy',body:'<h3>Cookies We Use</h3><table><thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead><tbody><tr><td>evs_consent</td><td>Consent preference</td><td>Essential</td></tr><tr><td>_ga, _gid</td><td>Analytics (if enabled)</td><td>Optional</td></tr></tbody></table><h3>localStorage</h3><p>We use browser localStorage for your preference. This is not transmitted to our servers.</p>'},
-  disclaimer:{title:'Data Disclaimer',body:'<h3>Vehicle Range</h3><p>NRCan official ratings for the best available trim. Real-world range varies by temperature, speed, cargo, HVAC, and battery age.</p><h3>Winter Range Calculator</h3><p>Uses a simplified linear model (0% loss at 0&deg;C, 35% at &minus;30&deg;C). <strong>Do not use as your only planning tool for critical winter journeys.</strong></p><h3>Rebate Information</h3><p>Verify directly with: <a href="https://tc.canada.ca" target="_blank">Transport Canada iZEV</a>, <a href="https://goelectricbc.gov.bc.ca" target="_blank">Go Electric BC</a>, <a href="https://vehiculeselectriques.gouv.qc.ca" target="_blank">Roulez Vert QC</a>.</p>'},
-  accessibility:{title:'Accessibility Statement',body:'<p>EVSelect strives to conform to WCAG 2.1 Level AA.</p><h3>Features Implemented</h3><ul><li>Semantic HTML5 heading hierarchy</li><li>ARIA labels on all interactive elements</li><li>Full keyboard navigability</li><li>High-contrast dark mode</li><li>Focus-visible styles</li><li>Alt text on all images</li><li>aria-live regions on dynamic content</li></ul><h3>Feedback</h3><p>Report issues via <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>. We respond within 5 business days.</p>'}
+  methodology:{
+    title:'About the Data & Methodology',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
+      '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
+      '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
+  },
+  terms:{
+    title:'Terms & Conditions',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Informational Purpose</h3><p>All estimates (winter range, charging duration, and incentive eligibility) are provided strictly for educational comparison. <strong>Do not rely solely on automated calculations for mission-critical travel safety or financial purchasing commitments.</strong></p><h3>3. Rebate Accuracy Disclaimer</h3><p>Government rebate allocations, rules, and eligibility caps change frequently without prior notice. Always verify directly with Transport Canada or your provincial ministry before signing a vehicle purchase agreement.</p><h3>4. Limitation of Liability</h3><p>EVSelect and its contributors are not liable for damages or losses resulting from platform use, range deviations, or incentive disqualifications.</p><h3>5. Governing Law</h3><p>Governed by the laws of the Province of Alberta and the federal laws of Canada applicable therein.</p>'
+  },
+  privacy:{
+    title:'Privacy Policy (PIPEDA & Quebec Law 25)',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; Compliant with PIPEDA &amp; Qu&eacute;bec Law 25</p>' +
+      '<h3>1. Scope &amp; Commitment</h3><p>EVSelect.ca is committed to protecting the privacy of Canadian users under the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and Qu&eacute;bec <em>Law 25 (An Act to modernize legislative provisions as regards the protection of personal information)</em>.</p>' +
+      '<h3>2. What We Collect</h3><ul><li><strong>Anonymized server log telemetry</strong> (IP address masked, browser type, page visits) for site reliability and performance monitoring.</li><li><strong>Client-side state</strong> (dark/light theme choice, cookie preferences) stored strictly in local browser <code>localStorage</code> without transmission to our servers.</li><li><strong>Chat queries</strong> submitted to the interactive assistant (processed ephemerally via secure API without linking to personal identities).</li></ul>' +
+      '<h3>3. What We Do NOT Collect</h3><p>We do not collect names, phone numbers, home addresses, driver\'s licenses, credit card data, or VIN numbers. <strong>We do not sell, rent, or trade user data to third parties or automotive dealerships.</strong></p>' +
+      '<h3>4. Retention &amp; Deletion Rights</h3><p>Under PIPEDA and Law 25, you have the right to request access to or deletion of any stored data. Because all personal state remains exclusively in your own local device storage, clearing your browser cache/cookies instantly destroys all local data.</p>' +
+      '<h3>5. Privacy Officer Contact</h3><p>For inquiries regarding privacy or compliance, contact the privacy team via our public repository issue tracker at <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>.</p>'
+  },
+  cookie:{
+    title:'Cookie Policy',
+    body:'<h3>Essential Local Storage</h3><p>EVSelect uses browser <code>localStorage</code> strictly for functional preferences (e.g. keeping your dark/light mode preference across sessions). No cross-site advertising or behavioral tracking cookies are utilized.</p>'
+  },
+  disclaimer:{
+    title:'Data & Rebate Disclaimer',
+    body:'<h3>1. Real-World Driving Variations</h3><p>Actual electric vehicle range differs significantly from official ratings based on driving speed, cabin temperature settings, precipitation, tire type (winter vs. all-season), terrain elevation, and payload.</p>' +
+      '<h3>2. Regulatory &amp; Incentive Notice</h3><p>Government incentive programs (including Federal EVAP, Roulez Vert, CleanBC, and provincial rebates) are governed exclusively by their official respective government ministries. Funding caps, program eligibility, and qualification windows are subject to termination or alteration without notice.</p>'
+  },
+  trademarks:{
+    title:'Trademarks & Non-Affiliation',
+    body:'<h3>Trademark Notice</h3><p>All vehicle brand names, model names, badges, logos, and images referenced on this platform (including Tesla, Hyundai, Kia, Chevrolet, Ford, Volkswagen, Nissan, BMW, Polestar, Rivian, Subaru, Toyota, and Volvo) are trademarks and registered property of their respective manufacturer owners.</p>' +
+      '<h3>Non-Affiliation</h3><p>EVSelect.ca is an independent Canadian consumer informational resource. EVSelect.ca is not affiliated with, sponsored by, or endorsed by any vehicle manufacturer, automotive dealer association, or government agency.</p>'
+  },
+  accessibility:{
+    title:'Accessibility Statement (WCAG 2.1 AA)',
+    body:'<p>EVSelect.ca is designed to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. Key implementations include semantic heading structure, high-contrast dark and light themes, keyboard navigability, ARIA landmarks, and descriptive screen-reader alternatives.</p>'
+  }
 };
+
 function openPolicy(k){
   var p=POLICIES[k]; if(!p) return;
   document.getElementById('policyTitle').textContent=p.title;

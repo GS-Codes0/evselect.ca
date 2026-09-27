@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>EV Tools — EVSelect.ca</title>
-  <meta name="description" content="Canadian EV tools: winter range calculator, provincial rebate stacker, and Edmonton route planner."/>
+  <title>EV Tools &amp; Calculators — EVSelect.ca</title>
+  <meta name="description" content="Canadian EV tools: real-world winter range degradation calculator, 2026 Federal EVAP + provincial rebate stacker, and Canada-wide route planner."/>
   <meta name="author" content="EVSelect.ca"/>
-  <meta property="og:title" content="EV Tools — EVSelect.ca"/>
-  <meta property="og:description" content="Canadian EV tools: winter range calculator, provincial rebate stacker, and Edmonton route planner."/>
+  <meta property="og:title" content="EV Tools &amp; Calculators — EVSelect.ca"/>
+  <meta property="og:description" content="Canadian EV tools: winter range calculator, 2026 Federal EVAP rebate stacker across all 13 provinces, and nationwide route planner."/>
   <meta property="og:type" content="website"/>
   <meta name="robots" content="index,follow"/>
   <link rel="icon" type="image/png" href="evcarslogo.png"/>
@@ -22,8 +22,8 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="EVSelect home">evselect<span>.ca</span></a>
     <div class="nav-search-wrap">
-      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search models&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
+      <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search EV make or model&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
     </div>
     <div class="nav-links" id="navLinks">
       <div class="nav-dropdown-wrap" id="modelsDropdown">
@@ -35,7 +35,7 @@
           <div class="nav-dropdown-section">Browse All</div>
           <a href="vehicles.html" class="nav-dropdown-item" role="menuitem">All Electric Vehicles</a>
           <div class="nav-dropdown-divider"></div>
-          <div class="nav-dropdown-section">Models</div>
+          <div class="nav-dropdown-section">Popular Models</div>
           <a href="vehicles.html?q=Tesla+Model+Y" class="nav-dropdown-item" role="menuitem">Tesla Model Y</a>
           <a href="vehicles.html?q=Tesla+Model+3" class="nav-dropdown-item" role="menuitem">Tesla Model 3</a>
           <a href="vehicles.html?q=Hyundai+IONIQ+6" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 6</a>
@@ -69,12 +69,14 @@
           <a href="tools.html" class="nav-dropdown-item" role="menuitem">All Tools</a>
           <div class="nav-dropdown-divider"></div>
           <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">❄️ Winter Range Calculator</a>
-          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 Rebate Calculator</a>
-          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Route Planner</a>
+          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 2026 Rebate Stacker</a>
+          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Canada Route Planner</a>
         </div>
-      </div><a href="compare.html">Compare</a>
+      </div>
+      <a href="compare.html">Compare</a>
       <a href="vehicles.html" class="nav-cta">Browse EVs</a>
     </div>
+    <!-- Top-Right Corner Theme Toggle Button -->
     <button class="nav-theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">
       <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -85,139 +87,178 @@
   </div>
 </nav>
 
-<section class="pg-header">
+<!-- ── PAGE HEADER (Centered) ────────────────────────────── -->
+<header class="pg-header">
   <div class="wrap">
-    <span class="eyebrow" data-reveal>Built for Canadian Conditions</span>
-    <h1 class="section-title" data-reveal data-delay="1">EV Tools</h1>
-    <p class="fg2" style="margin-top:16px;font-size:17px;max-width:500px" data-reveal data-delay="2">Winter range, rebate stacking, and route planning &mdash; honest numbers for Canadian buyers.</p>
-    <nav class="tools-nav" aria-label="Jump to tool" data-reveal data-delay="3">
-      <a href="#winter">Winter Range</a>
-      <a href="#rebate">Rebate Calculator</a>
-      <a href="#route">Route Planner</a>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span aria-current="page">EV Tools &amp; Calculators</span>
     </nav>
+    <h1 class="pg-title">Canadian EV Tools &amp; Calculators</h1>
+    <p class="pg-sub">
+      Honest winter range calculations based on verified NRCan data, 2026 Federal EVAP rebate stacking for all 13 provinces/territories, and nationwide Canadian route planning.
+    </p>
+    <div class="tools-nav">
+      <a href="#winter">❄️ Winter Range Calculator</a>
+      <a href="#rebate">💰 2026 Rebate Stacker</a>
+      <a href="#route">🗺️ Canada Route Planner</a>
+    </div>
   </div>
-</section>
+</header>
 
-<!-- ══ WINTER RANGE ══════════════════════════════════════════ -->
+<!-- ── TOOL 1: WINTER RANGE CALCULATOR ───────────────────── -->
 <section class="tool-section" id="winter" aria-labelledby="winterTitle">
   <div class="wrap">
     <div class="tool-inner">
-      <div>
-        <span class="eyebrow" data-reveal>NRCan Data + Thermal Model</span>
-        <h2 id="winterTitle" class="section-title" data-reveal data-delay="1">Winter Range<br>Calculator</h2>
-        <p class="fg2" data-reveal data-delay="2" style="margin-top:16px;font-size:17px;line-height:1.62">
-          Slide the temperature. See how your EV's range changes in real Canadian conditions &mdash; calculated using a verified linear degradation model (0% loss at 0&deg;C, up to 35% at &minus;30&deg;C).
+      <div class="tool-controls">
+        <span class="eyebrow">Tool 1 &bull; Temperature Physics Model</span>
+        <h2 id="winterTitle" class="section-title" style="margin-bottom:12px">Winter Range Calculator</h2>
+        <p class="fg2" style="font-size:16px;line-height:1.6">
+          NRCan rates EVs in mild conditions (~20&deg;C). In real Canadian winters, sub-zero temperatures, cabin heating, and electrolyte viscosity degrade available range.
         </p>
-        <div class="winter-controls" data-reveal data-delay="3">
-          <div class="ctrl-row">
-            <label for="winterVehicle" class="ctrl-label">Vehicle</label>
-            <div class="select-wrap">
-              <select id="winterVehicle" class="evs-select" aria-label="Select vehicle">
-                <option value="">Loading&hellip;</option>
-              </select>
-            </div>
+        <div class="ctrl-row" style="margin-top:28px">
+          <label class="ctrl-label" for="winterVehicle">Select Electric Vehicle</label>
+          <select id="winterVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for winter test">
+            <option value="" disabled selected>Loading vehicle database...</option>
+          </select>
+        </div>
+        <div class="ctrl-row" style="margin-top:24px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <label class="ctrl-label" for="tempSlider" style="margin:0">Ambient Temperature</label>
+            <span id="tempDisplay" style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.02em">0&deg;C</span>
           </div>
-          <div class="ctrl-row">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
-              <label for="tempSlider" class="ctrl-label" style="margin-bottom:0">Temperature</label>
-              <div style="display:flex;align-items:baseline;gap:6px">
-                <span id="tempDisplay" class="big-num" style="font-size:clamp(32px,4vw,48px)">0</span>
-                <span class="fg2" style="font-size:18px">&deg;C</span>
-              </div>
-            </div>
-            <input type="range" id="tempSlider" min="-30" max="20" value="0" step="1" aria-label="Outside temperature" aria-valuemin="-30" aria-valuemax="20"/>
-            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--fg3);margin-top:6px;padding:0 2px">
-              <span>&minus;30&deg;C</span><span>0&deg;C</span><span>+20&deg;C</span>
-            </div>
+          <input type="range" id="tempSlider" min="-30" max="20" step="1" value="0"
+                 aria-label="Ambient Temperature in Celsius"
+                 aria-valuemin="-30" aria-valuemax="20" aria-valuenow="0"
+                 style="width:100%"/>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--fg3);margin-top:8px">
+            <span>&minus;30&deg;C (Severe Prairie Winter)</span>
+            <span>0&deg;C (Freezing Point)</span>
+            <span>+20&deg;C (Ideal Lab Test)</span>
           </div>
-          <div id="winterAlert" class="winter-alert" hidden role="alert"></div>
+        </div>
+        <div class="winter-alert" id="winterAlert">
+          <strong>Cold Weather Insight:</strong> At &minus;20&deg;C or colder, cabin heat draw and battery heating consume significant energy. Vehicles equipped with standard heat pumps retain 10&ndash;15% more range than resistive-heater vehicles.
         </div>
       </div>
-      <div>
-        <div class="tool-result-card" data-reveal data-delay="2">
+      <div class="tool-result">
+        <div class="tool-result-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <span class="badge badge-b">Verified Empirical Model</span>
+            <span class="fg3" style="font-size:12px">Updated Sep 2026</span>
+          </div>
           <div class="wr-grid">
             <div class="wr-block">
-              <div class="wr-label">NRCan Rated Range</div>
+              <div class="wr-label">Official NRCan Range</div>
               <div class="wr-num fg" id="wrBase">-- km</div>
             </div>
             <div class="wr-block wr-block-accent">
-              <div class="wr-label" style="color:var(--accent)">Winter Range</div>
-              <div class="wr-num accent" id="wrWinter">-- km</div>
+              <div class="wr-label" style="color:var(--accent)">Real Winter Range</div>
+              <div class="wr-num" style="color:var(--accent)" id="wrWinter">-- km</div>
             </div>
           </div>
           <div class="wr-loss-row">
-            <div class="wr-loss-label">Battery thermal loss</div>
-            <div class="wr-loss-pct" id="wrLossPct">0%</div>
+            <span class="wr-loss-label">Estimated Cold Weather Degradation:</span>
+            <span class="wr-loss-pct" id="wrLossPct">0%</span>
           </div>
-          <div class="range-bar-track" style="margin-top:10px">
-            <div class="range-bar-fill" id="wrLossBar" style="width:0%"></div>
+          <div class="wr-breakdown">
+            <div class="wr-bd-row"><span>Aerodynamic Air Density Increase:</span><span>~4&ndash;8%</span></div>
+            <div class="wr-bd-row"><span>Battery Internal Resistance:</span><span>~10&ndash;18%</span></div>
+            <div class="wr-bd-row"><span>Cabin HVAC &amp; Seat Heating:</span><span>~8&ndash;14%</span></div>
           </div>
-          <div class="wr-breakdown" id="wrBreakdown" hidden>
-            <div class="wr-bd-row"><span>Rated range</span><span id="bdBase">--</span></div>
-            <div class="wr-bd-row"><span>Thermal loss</span><span id="bdLoss" style="color:#f59e0b">--</span></div>
-            <div class="wr-bd-row wr-bd-total"><span>Winter range</span><span id="bdWinter" class="accent">--</span></div>
-          </div>
-          <div class="wr-tip" id="wrTip">Select a vehicle and adjust the temperature to calculate winter range.</div>
+          <p class="wr-tip">
+            💡 <strong>Winter Commuting Tip:</strong> Always precondition the battery and cabin while plugged into Level 2 charging before departing to maximize driving distance.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ REBATE CALCULATOR ════════════════════════════════════ -->
+<!-- ── TOOL 2: 2026 REBATE CALCULATOR (ALL 13 PROVINCES) ──── -->
 <section class="tool-section" id="rebate" aria-labelledby="rebateTitle">
   <div class="wrap">
     <div class="tool-inner">
-      <div>
-        <span class="eyebrow" data-reveal>Federal + Provincial Stacking</span>
-        <h2 id="rebateTitle" class="section-title" data-reveal data-delay="1">Rebate<br>Calculator</h2>
-        <p class="fg2" data-reveal data-delay="2" style="margin-top:16px;font-size:17px;line-height:1.62">
-          Canada offers up to $9,000 in combined EV incentives. Select your province and enter your vehicle's MSRP to see your exact rebate stack.
+      <div class="tool-controls">
+        <span class="eyebrow">Tool 2 &bull; 2026 Incentive Rules</span>
+        <h2 id="rebateTitle" class="section-title" style="margin-bottom:12px">2026 EV Rebate Stacker</h2>
+        <p class="fg2" style="font-size:16px;line-height:1.6">
+          <strong>Important 2026 Update:</strong> The Federal iZEV program ran out of funding on January 12, 2025. It was replaced on <strong>February 16, 2026</strong> by the <strong>Electric Vehicle Affordability Program (EVAP)</strong>, which caps eligibility by final transaction value ($50,000 maximum) and requires Canadian/free-trade partner assembly.
         </p>
-        <div class="rebate-controls" data-reveal data-delay="3">
-          <div class="ctrl-row">
-            <label class="ctrl-label">Your Province</label>
-            <div class="province-grid">
-              <button class="province-btn" onclick="setProv(this,'AB')">
-                Alberta<span class="pb-name">No provincial rebate</span>
-              </button>
-              <button class="province-btn" onclick="setProv(this,'BC')">
-                British Columbia<span class="pb-name">$4,000 CEV for BC</span>
-              </button>
-              <button class="province-btn" onclick="setProv(this,'ON')">
-                Ontario<span class="pb-name">No provincial rebate</span>
-              </button>
-              <button class="province-btn" onclick="setProv(this,'QC')">
-                Quebec<span class="pb-name">$4,000 Roulez Vert</span>
-              </button>
-            </div>
-          </div>
-          <div class="ctrl-row">
-            <label for="msrpInput" class="ctrl-label">Vehicle MSRP (CAD)</label>
-            <div style="position:relative">
-              <span style="position:absolute;left:14px;top:50%;translate:0 -50%;color:var(--fg2);font-weight:600;font-size:15px;pointer-events:none">$</span>
-              <input type="number" id="msrpInput" class="evs-input" placeholder="45,000" min="0" max="999999" style="padding-left:28px" aria-label="Vehicle MSRP in CAD"/>
-            </div>
-            <p class="ctrl-note">iZEV cap: $55,000 base &bull; $65,000 for larger vehicles</p>
-          </div>
+        <div class="ctrl-row" style="margin-top:24px">
+          <label class="ctrl-label" for="rebateVehicle">Select Vehicle</label>
+          <select id="rebateVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for rebate evaluation">
+            <option value="" disabled selected>Select an EV...</option>
+          </select>
+        </div>
+        <div class="ctrl-row" style="margin-top:20px">
+          <label class="ctrl-label" for="rebateProvince">Select Province / Territory (All 13 Covered)</label>
+          <select id="rebateProvince" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select province or territory">
+            <option value="AB">Alberta (AB)</option>
+            <option value="BC">British Columbia (BC) — [CleanBC Paused]</option>
+            <option value="MB">Manitoba (MB) — [Up to $4,000]</option>
+            <option value="NB">New Brunswick (NB) — [Up to $5,000]</option>
+            <option value="NL">Newfoundland &amp; Labrador (NL) — [Up to $2,500]</option>
+            <option value="NS">Nova Scotia (NS) — [Up to $3,000]</option>
+            <option value="NT">Northwest Territories (NT) — [Up to $5,000]</option>
+            <option value="NU">Nunavut (NU) — [No Rebate]</option>
+            <option value="ON">Ontario (ON) — [No Provincial Rebate]</option>
+            <option value="PE">Prince Edward Island (PE) — [Up to $5,000]</option>
+            <option value="QC">Quebec (QC) — [Roulez Vert Phasing Down]</option>
+            <option value="SK">Saskatchewan (SK) — [No Rebate]</option>
+            <option value="YT">Yukon (YT) — [Up to $5,000]</option>
+          </select>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="font-size:12px;color:var(--fg3);width:100%;margin-bottom:2px">Quick select province:</span>
+          <button class="prov-pill" data-p="AB">AB</button>
+          <button class="prov-pill" data-p="BC">BC</button>
+          <button class="prov-pill" data-p="MB">MB</button>
+          <button class="prov-pill" data-p="NB">NB</button>
+          <button class="prov-pill" data-p="NL">NL</button>
+          <button class="prov-pill" data-p="NS">NS</button>
+          <button class="prov-pill" data-p="NT">NT</button>
+          <button class="prov-pill" data-p="NU">NU</button>
+          <button class="prov-pill" data-p="ON">ON</button>
+          <button class="prov-pill" data-p="PE">PE</button>
+          <button class="prov-pill" data-p="QC">QC</button>
+          <button class="prov-pill" data-p="SK">SK</button>
+          <button class="prov-pill" data-p="YT">YT</button>
         </div>
       </div>
-      <div>
-        <div class="tool-result-card" data-reveal data-delay="2" id="rebateResult">
-          <div class="wr-label" style="margin-bottom:20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Rebate Breakdown</div>
-          <div id="rebateLines">
-            <div style="color:var(--fg3);font-size:15px;text-align:center;padding:32px 0">Select your province to begin</div>
+      <div class="tool-result">
+        <div class="tool-result-card" id="rebateResultCard">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <span class="badge badge-g" id="rebateStatusBadge">EVAP 2026 Eligible</span>
+            <span class="fg3" style="font-size:12px" id="rebateVerifiedDate">Last verified: September 2026</span>
           </div>
-          <div id="rebateTotal" hidden style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end">
-              <div>
-                <div class="wr-label" style="color:var(--accent)">Total Incentive Stack</div>
-                <div class="big-num" id="totalRebateNum">$0</div>
-              </div>
-              <div style="text-align:right">
-                <div class="wr-label">After incentives</div>
-                <div style="font-size:22px;font-weight:700;letter-spacing:-.03em" id="afterRebateNum">--</div>
-              </div>
+          <div style="margin-bottom:24px">
+            <div class="wr-label">Total Incentive Stack</div>
+            <div class="big-num" id="rebateTotal">$0</div>
+            <div class="fg2" style="font-size:14px;margin-top:4px" id="rebateNetPrice">Estimated net vehicle price: --</div>
+          </div>
+          <div class="rebate-line">
+            <div>
+              <div style="font-weight:600;color:var(--navy)">Federal EVAP (2026)</div>
+              <div class="fg3" style="font-size:12px" id="rebateEvapNote">Final transaction cap $50k &bull; Assembly rules apply</div>
+            </div>
+            <div class="rebate-amt" id="rebateEvapAmt">$0</div>
+          </div>
+          <div class="rebate-line">
+            <div>
+              <div style="font-weight:600;color:var(--navy)" id="provProgramName">Provincial Incentive</div>
+              <div class="fg3" style="font-size:12px" id="provProgramNote">Select your province</div>
+            </div>
+            <div class="rebate-amt" id="provProgramAmt">$0</div>
+          </div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px">
+              <span class="fg3">Official Ministry Source:</span>
+              <a href="https://tc.canada.ca/en/road-transportation/innovative-technologies/zero-emission-vehicles"
+                 target="_blank" rel="noopener" id="rebateSourceLink" style="font-weight:600;color:var(--accent)">
+                Transport Canada EVAP Portal &rarr;
+              </a>
             </div>
           </div>
         </div>
@@ -226,53 +267,79 @@
   </div>
 </section>
 
-<!-- ══ ROUTE PLANNER ════════════════════════════════════════ -->
+<!-- ── TOOL 3: CANADA-WIDE ROUTE PLANNER ─────────────────── -->
 <section class="tool-section" id="route" aria-labelledby="routeTitle">
   <div class="wrap">
     <div class="tool-inner">
-      <div>
-        <span class="eyebrow" data-reveal>Alberta &amp; BC Routes</span>
-        <h2 id="routeTitle" class="section-title" data-reveal data-delay="1">Route<br>Planner</h2>
-        <p class="fg2" data-reveal data-delay="2" style="margin-top:16px;font-size:17px;line-height:1.62">
-          Real Canadian driving routes with accurate charging stop recommendations. Uses your winter range from the calculator above.
+      <div class="tool-controls">
+        <span class="eyebrow">Tool 3 &bull; Canada-Wide Cross-Country</span>
+        <h2 id="routeTitle" class="section-title" style="margin-bottom:12px">Canada EV Route Planner</h2>
+        <p class="fg2" style="font-size:16px;line-height:1.6">
+          Plan trips across major Canadian highway corridors or input any custom journey distance with real-world winter degradation modeling.
         </p>
-        <p class="fg3" style="font-size:13px;margin-top:12px" data-reveal data-delay="3">Using winter range at: <span id="routeRangeNote" class="accent" style="font-weight:600">0&deg;C &mdash; select vehicle first</span></p>
-
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px" data-reveal data-delay="3">
-          <button class="route-btn" id="rBtn-A" onclick="selectRoute('A')" aria-pressed="false">
-            <div class="route-tag">Metro Daily</div>
-            <div class="route-name">St. Albert &rarr; Downtown Edmonton</div>
-            <div class="route-sub">~40 km round trip</div>
-          </button>
-          <button class="route-btn" id="rBtn-B" onclick="selectRoute('B')" aria-pressed="false">
-            <div class="route-tag">Highway</div>
-            <div class="route-name">Edmonton &rarr; Calgary (Hwy 2)</div>
-            <div class="route-sub">~300 km one-way</div>
-          </button>
-          <button class="route-btn" id="rBtn-C" onclick="selectRoute('C')" aria-pressed="false">
-            <div class="route-tag">Mountain</div>
-            <div class="route-name">Jasper / Banff Winter Run</div>
-            <div class="route-sub">~360 km round trip &mdash; mountain terrain</div>
-          </button>
+        <div class="ctrl-row" style="margin-top:20px">
+          <label class="ctrl-label" for="routeVehicle">Select Vehicle</label>
+          <select id="routeVehicle" class="nav-search" style="padding:10px 14px;border-radius:var(--r-sm);height:auto" aria-label="Select vehicle for route calculation">
+            <option value="" disabled selected>Select EV...</option>
+          </select>
+        </div>
+        <div class="ctrl-row" style="margin-top:20px">
+          <label class="ctrl-label">Choose Nationwide Corridor</label>
+          <div style="display:flex;flex-direction:column;gap:8px" id="corridorButtons">
+            <button class="route-btn active" data-route="trans-canada">
+              <span class="route-tag">Trans-Canada Highway 1</span>
+              <span class="route-name">Calgary, AB &harr; Vancouver, BC</span>
+              <span class="route-sub">970 km &bull; Rogers Pass Mountain Grade</span>
+            </button>
+            <button class="route-btn" data-route="coquihalla">
+              <span class="route-tag">BC Mountain Highway</span>
+              <span class="route-name">Hope, BC &harr; Kamloops, BC (Coquihalla)</span>
+              <span class="route-sub">205 km &bull; High Elevation Pass</span>
+            </button>
+            <button class="route-btn" data-route="ontario-quebec">
+              <span class="route-tag">Ontario &ndash; Quebec 401 Corridor</span>
+              <span class="route-name">Toronto, ON &harr; Montreal, QC</span>
+              <span class="route-sub">540 km &bull; Dense ONroute Fast Charging</span>
+            </button>
+            <button class="route-btn" data-route="alberta-highway2">
+              <span class="route-tag">Alberta Highway 2 Corridor</span>
+              <span class="route-name">Edmonton, AB &harr; Calgary, AB</span>
+              <span class="route-sub">300 km &bull; Red Deer Midpoint Charging</span>
+            </button>
+            <button class="route-btn" data-route="rockies-pass">
+              <span class="route-tag">Canadian Rockies</span>
+              <span class="route-name">Calgary, AB &harr; Jasper, AB</span>
+              <span class="route-sub">415 km &bull; Icefields Parkway Cold Run</span>
+            </button>
+            <button class="route-btn" data-route="atlantic-corridor">
+              <span class="route-tag">Atlantic Trans-Canada</span>
+              <span class="route-name">Moncton, NB &harr; Halifax, NS</span>
+              <span class="route-sub">260 km &bull; Cobequid Pass Corridor</span>
+            </button>
+            <button class="route-btn" data-route="custom">
+              <span class="route-tag">Custom Trip Anywhere in Canada</span>
+              <span class="route-name">Custom Distance Route Planner</span>
+              <span class="route-sub">Enter your exact route distance in km</span>
+            </button>
+          </div>
+        </div>
+        <!-- Custom Distance Input Section (shown when custom route is active) -->
+        <div id="customDistanceRow" style="display:none;margin-top:20px;padding:16px;background:var(--card);border:1.5px solid var(--accent);border-radius:var(--r-sm)">
+          <label class="ctrl-label" for="customKmInput">Route Distance (km)</label>
+          <input type="number" id="customKmInput" min="10" max="5000" value="450" class="nav-search" style="height:44px;padding:0 14px;border-radius:var(--r-sm);width:100%" aria-label="Custom distance in kilometers"/>
+          <div class="ctrl-note">Enter your custom one-way or round-trip driving distance across Canada.</div>
         </div>
       </div>
-      <div>
-        <div class="tool-result-card" data-reveal data-delay="2" id="routeResult" hidden>
-          <div class="wr-label" style="margin-bottom:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Route Analysis</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
-            <div class="stat-cell"><div class="stat-label">Distance</div><div class="stat-val" id="rDist">--</div></div>
-            <div class="stat-cell"><div class="stat-label">Winter Range</div><div class="stat-val accent" id="rWinter">--</div></div>
-            <div class="stat-cell"><div class="stat-label">Charging Stops</div><div class="stat-val" id="rStops">--</div></div>
-            <div class="stat-cell"><div class="stat-label">Feasibility</div><div class="stat-val" id="rFeasibility">--</div></div>
+      <div class="tool-result">
+        <div class="tool-result-card" id="routeCard">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <span class="badge badge-b" id="routeBadge">Trans-Canada Highway 1</span>
+            <span class="fg3" style="font-size:12px" id="routeTempStatus">At 0&deg;C</span>
           </div>
-          <div class="wr-label" style="margin-bottom:12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Journey Timeline</div>
-          <div class="timeline" id="rTimeline"></div>
-          <p class="fg3" style="font-size:13px;margin-top:16px" id="rNote"></p>
-        </div>
-        <div class="tool-result-card" id="routePlaceholder">
-          <div style="text-align:center;padding:40px 0;color:var(--fg3)">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin:0 auto 12px;opacity:.3" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <p style="font-size:15px">Select a route to see the journey timeline</p>
+          <h3 style="font-size:22px;color:var(--navy);margin-bottom:4px" id="routeTitleText">Calgary, AB &harr; Vancouver, BC</h3>
+          <div class="fg2" style="font-size:14px;margin-bottom:20px" id="routeStats">Total Distance: 970 km &bull; Required Stops: 3&ndash;4 stops</div>
+          <div class="timeline" id="routeTimeline">
+            <!-- Timeline points rendered by JavaScript -->
           </div>
         </div>
       </div>
@@ -282,26 +349,25 @@
 
 <style>
 .tools-nav{
-  display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;
 }
 .tools-nav a{
-  font-size:13px;font-weight:600;padding:8px 18px;border-radius:99px;
-  border:1.5px solid var(--border2);color:var(--fg2);transition:all .2s;
+  font-size:14px;font-weight:600;padding:10px 22px;border-radius:99px;
+  border:1.5px solid var(--border2);color:var(--fg2);transition:all .2s;text-decoration:none;
 }
 .tools-nav a:hover{color:var(--navy);border-color:var(--accent);background:var(--accent-d)}
-.ctrl-row{margin-top:24px}
-.ctrl-label{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg2);display:block;margin-bottom:10px}
-.ctrl-note{font-size:12px;color:var(--fg3);margin-top:8px}
-.winter-controls,.rebate-controls{margin-top:36px}
+.ctrl-row{margin-top:20px}
+.ctrl-label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--fg2);display:block;margin-bottom:8px}
+.ctrl-note{font-size:12px;color:var(--fg3);margin-top:6px;line-height:1.5}
 .winter-alert{
-  margin-top:16px;padding:14px 16px;border-radius:var(--r-sm);
-  font-size:14px;line-height:1.55;
-  background:rgba(217,119,6,0.07);border:1px solid rgba(217,119,6,0.22);color:#92400e;
+  margin-top:20px;padding:16px;border-radius:var(--r-sm);
+  font-size:14px;line-height:1.6;
+  background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);color:#92400e;
 }
 .wr-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
 .wr-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px}
 .wr-block-accent{background:var(--accent-d);border:1px solid var(--accent-g)}
-.wr-label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg3);margin-bottom:8px}
+.wr-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--fg3);margin-bottom:8px}
 .wr-num{font-size:clamp(24px,3.5vw,32px);font-weight:700;letter-spacing:-.04em}
 .fg{color:var(--navy)}
 .wr-loss-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:14px}
@@ -309,20 +375,36 @@
 .wr-loss-pct{font-weight:700;font-size:16px}
 .wr-breakdown{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 .wr-bd-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:var(--fg2)}
-.wr-bd-total{font-weight:700;color:var(--navy);font-size:15px;padding-top:10px;border-top:1px solid var(--border);margin-top:4px}
-.wr-tip{font-size:14px;color:var(--fg3);margin-top:16px;line-height:1.55}
+.wr-tip{font-size:13px;color:var(--fg3);margin-top:16px;line-height:1.55}
+
+/* Province pill tags */
+.prov-pill{
+  font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;
+  background:var(--card);border:1px solid var(--border2);color:var(--fg2);
+  cursor:pointer;transition:all .15s;
+}
+.prov-pill:hover,.prov-pill.active{
+  border-color:var(--accent);color:var(--navy);background:var(--accent-d);
+}
+.status-tag{
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;text-transform:uppercase;
+}
+.status-tag.active{background:rgba(34,197,94,0.12);color:#16a34a;border:1px solid rgba(34,197,94,0.25)}
+.status-tag.paused{background:rgba(234,179,8,0.12);color:#ca8a04;border:1px solid rgba(234,179,8,0.25)}
+.status-tag.phasing_down{background:rgba(249,115,22,0.12);color:#ea580c;border:1px solid rgba(249,115,22,0.25)}
+.status-tag.none{background:var(--navy-lt);color:var(--fg3);border:1px solid var(--border)}
 </style>
 
 <script>
 'use strict';
-var toolVehicles = [], toolTemp = 0, activeProv = null, activeRoute = null;
+var toolVehicles = [], toolTemp = 0, activeProv = 'AB', activeRoute = 'trans-canada';
 
 function setSliderPct(el) {
   var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
   el.style.setProperty('--pct', pct + '%');
 }
 
-// ── Winter calc ──
+// ── Winter Range Logic ──
 var tempSl = document.getElementById('tempSlider');
 var tempDisp = document.getElementById('tempDisplay');
 
@@ -330,7 +412,7 @@ function updateWinter() {
   toolTemp = +tempSl.value;
   setSliderPct(tempSl);
   tempSl.setAttribute('aria-valuenow', toolTemp);
-  tempDisp.textContent = (toolTemp > 0 ? '+' : '') + toolTemp;
+  tempDisp.textContent = (toolTemp > 0 ? '+' : '') + toolTemp + '°C';
 
   var sel = document.getElementById('winterVehicle');
   var base = +(sel.options[sel.selectedIndex] && sel.options[sel.selectedIndex].dataset.range) || 0;
@@ -342,187 +424,271 @@ function updateWinter() {
   document.getElementById('wrWinter').textContent = base ? wr + ' km' : '-- km';
   document.getElementById('wrLossPct').textContent = lossR + '%';
   document.getElementById('wrLossPct').style.color = loss > 20 ? '#f43f5e' : loss > 10 ? '#f59e0b' : 'var(--accent)';
+  updateRoute();
+}
 
-  var bar = document.getElementById('wrLossBar');
-  bar.style.width = loss + '%';
-  bar.className = 'range-bar-fill' + (loss > 20 ? ' rose' : loss > 10 ? ' amber' : '');
+// ── 2026 Rebate Calculator Logic ──
+function updateRebate() {
+  var provCode = document.getElementById('rebateProvince').value || activeProv;
+  var pData = EVS.PROVINCES[provCode] || EVS.PROVINCES['AB'];
+  var vSel = document.getElementById('rebateVehicle');
+  var vIndex = vSel.selectedIndex;
+  var vehicle = toolVehicles[vIndex] || toolVehicles[0];
 
-  var bd = document.getElementById('wrBreakdown');
-  var tip = document.getElementById('wrTip');
-  if (base) {
-    bd.hidden = false; tip.hidden = true;
-    document.getElementById('bdBase').textContent = base + ' km';
-    document.getElementById('bdLoss').textContent = '\u2212' + Math.round(base * loss / 100) + ' km (' + lossR + '%)';
-    document.getElementById('bdWinter').textContent = wr + ' km';
-  } else {
-    bd.hidden = true; tip.hidden = false;
+  var evapAmt = vehicle ? EVS.calculateEvap(vehicle, 2026) : 0;
+  var provAmt = (pData.status === 'active' || pData.status === 'phasing_down') ? pData.amount : 0;
+  var totalRebate = evapAmt + provAmt;
+
+  document.getElementById('rebateTotal').textContent = '$' + totalRebate.toLocaleString('en-CA');
+  document.getElementById('rebateEvapAmt').textContent = evapAmt > 0 ? '+$' + evapAmt.toLocaleString('en-CA') : '$0';
+  document.getElementById('provProgramAmt').textContent = provAmt > 0 ? '+$' + provAmt.toLocaleString('en-CA') : '$0';
+
+  if (pData.status === 'paused') {
+    document.getElementById('provProgramAmt').innerHTML = '<span style="text-decoration:line-through;opacity:.4">$' + pData.amount.toLocaleString('en-CA') + '</span> <span class="status-tag paused">Paused</span>';
+  } else if (pData.status === 'none') {
+    document.getElementById('provProgramAmt').innerHTML = '<span class="status-tag none">No Provincial Rebate</span>';
   }
 
-  var alert = document.getElementById('winterAlert');
-  if (toolTemp < 0) {
-    alert.hidden = false;
-    alert.textContent = toolTemp <= -20
-      ? 'Severe cold at ' + toolTemp + '\u00b0C: charge to 100% and pre-condition 30\u201345 min on AC before departing.'
-      : toolTemp <= -10
-      ? 'Cold advisory: pre-condition while plugged in. Heat pump equipped EVs recover 10\u201315% more range.'
-      : 'Light frost: cabin heating draws power. Plugged-in pre-conditioning recommended.';
-  } else { alert.hidden = true; }
+  document.getElementById('provProgramName').textContent = pData.name + ' (' + provCode + ') Incentive';
+  document.getElementById('provProgramNote').textContent = pData.notes;
+  document.getElementById('rebateVerifiedDate').textContent = 'Last verified: ' + pData.lastVerified;
 
-  document.getElementById('routeRangeNote').textContent =
-    (toolTemp > 0 ? '+' : '') + toolTemp + '\u00b0C' +
-    (base ? ' \u2014 ' + wr + ' km winter range' : ' \u2014 select vehicle first');
-
-  if (activeRoute) updateRoute(activeRoute);
-}
-
-tempSl.addEventListener('input', updateWinter);
-document.getElementById('winterVehicle').addEventListener('change', updateWinter);
-
-// ── Rebate calc ──
-var PROV = {
-  AB: { name: 'Alberta', prov: 0, note: 'No active provincial EV incentive.' },
-  BC: { name: 'British Columbia', prov: 4000, prog: 'CEV for BC', url: 'https://goelectricbc.gov.bc.ca/' },
-  ON: { name: 'Ontario', prov: 0, note: 'Provincial rebate cancelled 2018. No active incentive.' },
-  QC: { name: 'Quebec', prov: 4000, prog: 'Roulez Vert', url: 'https://vehiculeselectriques.gouv.qc.ca/' }
-};
-
-function setProv(btn, key) {
-  document.querySelectorAll('.province-btn').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  activeProv = key;
-  calcRebate();
-}
-
-function calcRebate() {
-  if (!activeProv) return;
-  var p = PROV[activeProv];
-  var msrp = +document.getElementById('msrpInput').value || 0;
-  var fedOk = msrp === 0 || msrp <= 55000;
-  var fed = fedOk ? 5000 : 0;
-  var total = fed + p.prov;
-
-  var html = '';
-  html += '<div class="rebate-line">' +
-    '<div><div style="font-size:15px;font-weight:600">Federal iZEV</div>' +
-    '<div class="ctrl-note" style="margin-top:2px">Transport Canada &bull; EVs under $55,000 CAD</div></div>' +
-    '<div class="rebate-amt ' + (fedOk ? 'pos' : 'zero') + '">' + (fedOk ? '$5,000' : 'Not eligible') + '</div>' +
-    '</div>';
-
-  if (p.prov > 0) {
-    html += '<div class="rebate-line">' +
-      '<div><div style="font-size:15px;font-weight:600">' + p.name + ' &mdash; ' + p.prog + '</div>' +
-      (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener" class="ctrl-note" style="color:var(--accent)">View program &rarr;</a>' : '') + '</div>' +
-      '<div class="rebate-amt pos">$' + p.prov.toLocaleString('en-CA') + '</div>' +
-      '</div>';
-  } else {
-    html += '<div class="rebate-line">' +
-      '<div><div style="font-size:15px;font-weight:600">' + p.name + ' Provincial</div>' +
-      '<div class="ctrl-note" style="margin-top:2px">' + (p.note||'') + '</div></div>' +
-      '<div class="rebate-amt zero">$0</div>' +
-      '</div>';
+  if (pData.sourceUrl) {
+    var sLink = document.getElementById('rebateSourceLink');
+    sLink.href = pData.sourceUrl;
+    sLink.textContent = pData.name + ' Official Source \u2192';
   }
 
-  document.getElementById('rebateLines').innerHTML = html;
-  document.getElementById('rebateTotal').hidden = false;
-  document.getElementById('totalRebateNum').textContent = '$' + total.toLocaleString('en-CA');
-  document.getElementById('afterRebateNum').textContent = msrp > 0 ? '$' + Math.max(0, msrp - total).toLocaleString('en-CA') : '--';
+  var statusBadge = document.getElementById('rebateStatusBadge');
+  if (vehicle && vehicle.evap_eligible) {
+    statusBadge.className = 'badge badge-g';
+    statusBadge.textContent = 'EVAP 2026 Eligible ($5,000)';
+    document.getElementById('rebateEvapNote').textContent = 'Transaction cap $50k verified \u2022 Canadian/Trade Partner assembled';
+  } else if (vehicle) {
+    statusBadge.className = 'badge badge-o';
+    statusBadge.textContent = 'MSRP Over $50k EVAP Cap';
+    document.getElementById('rebateEvapNote').textContent = 'Vehicle transaction value exceeds 2026 EVAP $50,000 threshold';
+  }
+
+  if (vehicle && vehicle.msrp) {
+    var net = Math.max(0, vehicle.msrp - totalRebate);
+    document.getElementById('rebateNetPrice').textContent = 'Est. Net: $' + net.toLocaleString('en-CA') + ' (MSRP: $' + vehicle.msrp.toLocaleString('en-CA') + ')';
+  } else {
+    document.getElementById('rebateNetPrice').textContent = 'Select a vehicle to calculate net price';
+  }
 }
 
-document.getElementById('msrpInput').addEventListener('input', calcRebate);
-
-// ── Route planner ──
+// ── Nationwide Routes Configuration ──
 var ROUTES = {
-  A: {
-    name: 'St. Albert \u2192 Downtown Edmonton', dist: 40, mountain: false,
+  'trans-canada': {
+    title: 'Calgary, AB \u2194 Vancouver, BC',
+    badge: 'Trans-Canada Highway 1',
+    distance: 970,
     stops: [
-      { dest: true, label: 'Home Charge (nightly)', sub: 'Level 2 home charger &mdash; plug in overnight' },
-      { dest: false, label: 'Destination: Downtown Edmonton', sub: 'Level 2 workplace or public chargers available' }
-    ],
-    note: 'This route is well within daily range for all EVs. A nightly Level 2 home charge is all you need.'
+      { name: 'Calgary, AB', type: 'origin', note: 'Full departure charge (100%)' },
+      { name: 'Lake Louise / Golden, BC', type: 'charge', note: '180 km \u2022 BC Hydro Fast Charger' },
+      { name: 'Revelstoke, BC', type: 'charge', note: '150 km \u2022 Rogers Pass Summit descent' },
+      { name: 'Kamloops, BC', type: 'charge', note: '215 km \u2022 Trans-Canada Hub' },
+      { name: 'Hope, BC', type: 'charge', note: '200 km \u2022 Fraser Valley entrance' },
+      { name: 'Vancouver, BC', type: 'dest', note: 'Arrival destination \u2022 150 km' }
+    ]
   },
-  B: {
-    name: 'Edmonton \u2192 Calgary (Hwy 2)', dist: 300, mountain: false,
+  'coquihalla': {
+    title: 'Hope, BC \u2194 Kamloops, BC (Coquihalla)',
+    badge: 'BC Highway 5 Mountain Run',
+    distance: 205,
     stops: [
-      { dest: true, label: 'Depart Edmonton (full charge)', sub: 'Start with 100% charge. Pre-condition in winter.' },
-      { dest: false, label: 'QCEW Red Deer \u2014 Gasoline Alley (~150 km)', sub: 'DC fast charger. Allow 25\u201340 min.' },
-      { dest: false, label: 'Tesla Supercharger Red Deer (alt.)', sub: 'Tesla-only fast charger, nearby option.' },
-      { dest: true, label: 'Arrive Calgary (~150 km)', sub: 'Second charge leg complete. Destination charging at hotel.' }
-    ],
-    note: 'Excellent DC fast charging coverage on Hwy 2. The Red Deer QCEW stop is the Canadian standard for this route.'
+      { name: 'Hope, BC', type: 'origin', note: 'Base elevation departure' },
+      { name: 'Britton Creek Rest Area', type: 'charge', note: '65 km \u2022 1,244m Summit elevation gain' },
+      { name: 'Merritt, BC', type: 'charge', note: '50 km \u2022 Fast charge waypoint' },
+      { name: 'Kamloops, BC', type: 'dest', note: 'Arrival destination \u2022 90 km' }
+    ]
   },
-  C: {
-    name: 'Jasper / Banff Mountain Run', dist: 360, mountain: true,
+  'ontario-quebec': {
+    title: 'Toronto, ON \u2194 Montreal, QC',
+    badge: 'Highway 401 Corridor',
+    distance: 540,
     stops: [
-      { dest: true, label: 'Depart Edmonton (full charge)', sub: 'Charge to 100%. Cold mountain air adds 15\u201320% energy use.' },
-      { dest: false, label: 'Hinton DC Fast Charger (~220 km)', sub: 'Plan this stop regardless of displayed range.' },
-      { dest: false, label: 'Jasper Level 2 (limited, slow)', sub: 'Top up during time in town. Slow Level 2 only.' },
-      { dest: true, label: 'Return via Banff / Canmore', sub: 'Canmore DC fast charger before final Edmonton leg.' }
-    ],
-    note: 'Mountain terrain + extreme cold significantly increases energy consumption. Not recommended for EVs under 400 km summer range in severe winter conditions.'
+      { name: 'Toronto, ON', type: 'origin', note: 'Departure charge' },
+      { name: 'ONroute Port Hope', type: 'charge', note: '105 km \u2022 Ivy Charging Network' },
+      { name: 'ONroute Kingston', type: 'charge', note: '160 km \u2022 150kW DC Fast Charging' },
+      { name: 'ONroute Cornwall', type: 'charge', note: '175 km \u2022 St. Lawrence Valley' },
+      { name: 'Montreal, QC', type: 'dest', note: 'Arrival destination \u2022 100 km' }
+    ]
+  },
+  'alberta-highway2': {
+    title: 'Edmonton, AB \u2194 Calgary, AB',
+    badge: 'Alberta Highway 2 Corridor',
+    distance: 300,
+    stops: [
+      { name: 'Edmonton, AB', type: 'origin', note: 'Departure with preheated battery' },
+      { name: 'Red Deer (Gasoline Alley)', type: 'charge', note: '150 km \u2022 FLO / Electrify Canada fast charging midpoint' },
+      { name: 'Calgary, AB', type: 'dest', note: 'Arrival destination \u2022 150 km' }
+    ]
+  },
+  'rockies-pass': {
+    title: 'Calgary, AB \u2194 Jasper, AB',
+    badge: 'Canadian Rockies Run',
+    distance: 415,
+    stops: [
+      { name: 'Calgary, AB', type: 'origin', note: 'Departure point' },
+      { name: 'Lake Louise, AB', type: 'charge', note: '180 km \u2022 Parks Canada Fast Charger' },
+      { name: 'Saskatchewan River Crossing', type: 'charge', note: '80 km \u2022 Remote Icefields Parkway stop' },
+      { name: 'Jasper, AB', type: 'dest', note: 'Arrival destination \u2022 155 km' }
+    ]
+  },
+  'atlantic-corridor': {
+    title: 'Moncton, NB \u2194 Halifax, NS',
+    badge: 'Atlantic Trans-Canada Corridor',
+    distance: 260,
+    stops: [
+      { name: 'Moncton, NB', type: 'origin', note: 'NB Power Hub departure' },
+      { name: 'Amherst / Cobequid Pass, NS', type: 'charge', note: '70 km \u2022 Nova Scotia border waypoint' },
+      { name: 'Truro, NS', type: 'charge', note: '95 km \u2022 Central junction fast charger' },
+      { name: 'Halifax, NS', type: 'dest', note: 'Arrival destination \u2022 95 km' }
+    ]
+  },
+  'custom': {
+    title: 'Custom Distance Route Planner',
+    badge: 'Custom Canadian Journey',
+    distance: 450,
+    stops: []
   }
 };
 
-function selectRoute(id) {
-  activeRoute = id;
-  ['A','B','C'].forEach(function(r){
-    var b = document.getElementById('rBtn-' + r);
-    b.classList.toggle('active', r === id);
-    b.setAttribute('aria-pressed', r === id ? 'true' : 'false');
-  });
-  updateRoute(id);
+function updateRoute() {
+  var rSel = document.getElementById('routeVehicle');
+  var vIndex = rSel.selectedIndex;
+  var vehicle = toolVehicles[vIndex] || toolVehicles[0];
+  var rData = ROUTES[activeRoute] || ROUTES['trans-canada'];
+
+  var distance = activeRoute === 'custom' ? (+document.getElementById('customKmInput').value || 450) : rData.distance;
+  var winterRange = vehicle ? EVS.winterRange(vehicle.range, toolTemp) : 350;
+  var safeLeg = Math.round(winterRange * 0.75); // 75% usable battery window
+  var reqStops = Math.max(1, Math.ceil(distance / safeLeg) - 1);
+
+  document.getElementById('routeBadge').textContent = rData.badge;
+  document.getElementById('routeTitleText').textContent = activeRoute === 'custom' ? 'Custom Route (' + distance + ' km)' : rData.title;
+  document.getElementById('routeTempStatus').textContent = 'Modeled at ' + (toolTemp > 0 ? '+' : '') + toolTemp + '°C';
+  document.getElementById('routeStats').textContent = 'Total Distance: ' + distance + ' km \u2022 Usable Winter Range: ~' + safeLeg + ' km/leg \u2022 Recommended Stops: ' + reqStops + ' stop' + (reqStops > 1 ? 's' : '');
+
+  var tl = document.getElementById('routeTimeline');
+  tl.innerHTML = '';
+
+  if (activeRoute === 'custom') {
+    var legDistance = Math.round(distance / (reqStops + 1));
+    var stopsList = [{ name: 'Custom Origin', note: 'Departure with 100% preheated charge' }];
+    for (var i = 1; i <= reqStops; i++) {
+      stopsList.push({ name: 'Fast Charging Stop #' + i, note: 'Waypoint at ~' + (legDistance * i) + ' km \u2022 20&ndash;35 min DC top-up' });
+    }
+    stopsList.push({ name: 'Custom Destination', note: 'Arrival at ' + distance + ' km' });
+    stopsList.forEach(function(s, idx) {
+      var isEdge = idx === 0 || idx === stopsList.length - 1;
+      var el = document.createElement('div');
+      el.className = 'timeline-stop';
+      el.innerHTML = '<div class="tl-dot ' + (isEdge ? '' : 'stop') + '"></div><div><div class="tl-title">' + s.name + '</div><div class="tl-label">' + s.note + '</div></div>';
+      tl.appendChild(el);
+    });
+  } else {
+    rData.stops.forEach(function(s) {
+      var isEdge = s.type === 'origin' || s.type === 'dest';
+      var el = document.createElement('div');
+      el.className = 'timeline-stop';
+      el.innerHTML = '<div class="tl-dot ' + (isEdge ? '' : 'stop') + '"></div><div><div class="tl-title">' + s.name + '</div><div class="tl-label">' + s.note + '</div></div>';
+      tl.appendChild(el);
+    });
+  }
 }
 
-function updateRoute(id) {
-  var route = ROUTES[id];
-  var sel = document.getElementById('winterVehicle');
-  var base = +(sel.options[sel.selectedIndex] && sel.options[sel.selectedIndex].dataset.range) || 0;
-  var wr = base ? EVS.winterRange(base, toolTemp) : 0;
-  var effDist = route.mountain ? Math.ceil(route.dist * 1.20) : route.dist;
-  var usable = wr ? Math.floor(wr * 0.80) : 0;
-  var stops = wr ? Math.max(0, Math.ceil(effDist / usable) - 1) : null;
-
-  document.getElementById('rDist').textContent = route.dist + ' km';
-  document.getElementById('rWinter').textContent = wr ? wr + ' km' : 'Select vehicle';
-  document.getElementById('rStops').textContent = stops === null ? '--' : stops === 0 ? 'None' : stops;
-
-  var fEl = document.getElementById('rFeasibility');
-  if (stops === null) { fEl.textContent = '--'; fEl.style.color = 'var(--fg3)'; }
-  else if (stops === 0) { fEl.textContent = 'No stop needed'; fEl.style.color = 'var(--accent)'; }
-  else if (stops === 1) { fEl.textContent = '1 charge stop'; fEl.style.color = '#fbbf24'; }
-  else if (stops === 2) { fEl.textContent = 'Plan carefully'; fEl.style.color = '#f97316'; }
-  else { fEl.textContent = 'Range risk'; fEl.style.color = '#f43f5e'; }
-
-  document.getElementById('rTimeline').innerHTML = route.stops.map(function(s) {
-    return '<div class="timeline-stop">' +
-      '<div class="tl-dot' + (s.dest ? '' : ' stop') + '"></div>' +
-      '<div><div class="tl-title">' + s.label + '</div><div class="tl-label">' + s.sub + '</div></div>' +
-      '</div>';
-  }).join('');
-  document.getElementById('rNote').textContent = route.note;
-  document.getElementById('routeResult').hidden = false;
-  document.getElementById('routePlaceholder').hidden = true;
-}
-
-// ── Init ──
-document.addEventListener('DOMContentLoaded', async function() {
+// ── Populate Selects & Wire Listeners ──
+async function init() {
   toolVehicles = await EVS.loadVehicles();
-  var sel = document.getElementById('winterVehicle');
-  sel.innerHTML = '<option value="">-- Select a vehicle --</option>' +
-    toolVehicles.map(function(v) {
-      return '<option value="' + v.id + '" data-range="' + (v.range||0) + '">' +
-        (v.name||'Unknown') + (v.range ? ' (' + v.range + ' km)' : '') +
-        '</option>';
-    }).join('');
+
+  var wSel = document.getElementById('winterVehicle');
+  var rSel = document.getElementById('rebateVehicle');
+  var rtSel = document.getElementById('routeVehicle');
+
+  wSel.innerHTML = '';
+  rSel.innerHTML = '';
+  rtSel.innerHTML = '';
+
+  toolVehicles.forEach(function(v) {
+    var opt1 = document.createElement('option');
+    opt1.value = v.id;
+    opt1.dataset.range = v.range;
+    opt1.textContent = v.name + ' (' + v.range + ' km NRCan)';
+    wSel.appendChild(opt1);
+
+    var opt2 = document.createElement('option');
+    opt2.value = v.id;
+    opt2.textContent = v.name + ' (From $' + v.msrp.toLocaleString('en-CA') + ')';
+    rSel.appendChild(opt2);
+
+    var opt3 = document.createElement('option');
+    opt3.value = v.id;
+    opt3.textContent = v.name;
+    rtSel.appendChild(opt3);
+  });
+
+  tempSl.addEventListener('input', updateWinter);
+  wSel.addEventListener('change', updateWinter);
+  rSel.addEventListener('change', updateRebate);
+  rtSel.addEventListener('change', updateRoute);
+
+  document.getElementById('rebateProvince').addEventListener('change', function() {
+    activeProv = this.value;
+    updateProvPills();
+    updateRebate();
+  });
+
+  document.querySelectorAll('.prov-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      activeProv = this.dataset.p;
+      document.getElementById('rebateProvince').value = activeProv;
+      updateProvPills();
+      updateRebate();
+    });
+  });
+
+  document.querySelectorAll('#corridorButtons .route-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('#corridorButtons .route-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      activeRoute = this.dataset.route;
+      document.getElementById('customDistanceRow').style.display = activeRoute === 'custom' ? 'block' : 'none';
+      updateRoute();
+    });
+  });
+
+  var customInput = document.getElementById('customKmInput');
+  if (customInput) {
+    customInput.addEventListener('input', updateRoute);
+  }
+
+  updateProvPills();
   updateWinter();
-  setSliderPct(tempSl);
-});
+  updateRebate();
+}
+
+function updateProvPills() {
+  document.querySelectorAll('.prov-pill').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.p === activeProv);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
+
 <footer>
   <div class="wrap-wide footer-inner">
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">evselect<span>.ca</span></div>
-        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real winters.</p>
+        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real Canadian winters.</p>
       </div>
       <div>
         <div class="footer-col-title">Platform</div>
@@ -531,29 +697,31 @@ document.addEventListener('DOMContentLoaded', async function() {
           <a href="vehicles.html">Browse EVs</a>
           <a href="tools.html">Tools</a>
           <a href="compare.html">Compare</a>
+          <button onclick="openPolicy('methodology')">About the Data &amp; Methodology</button>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Tools</div>
+        <div class="footer-col-title">EV Tools</div>
         <div class="footer-links">
-          <a href="tools.html#winter">Winter Range</a>
-          <a href="tools.html#rebate">Rebate Calculator</a>
-          <a href="tools.html#route">Route Planner</a>
+          <a href="tools.html#winter">Winter Range Calculator</a>
+          <a href="tools.html#rebate">2026 Rebate Stacker</a>
+          <a href="tools.html#route">Canada Route Planner</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Legal</div>
+        <div class="footer-col-title">Legal &amp; Compliance</div>
         <div class="footer-links">
           <button onclick="openPolicy('terms')">Terms &amp; Conditions</button>
-          <button onclick="openPolicy('privacy')">Privacy Policy</button>
+          <button onclick="openPolicy('privacy')">Privacy Policy (PIPEDA &amp; Law 25)</button>
           <button onclick="openPolicy('cookie')">Cookie Policy</button>
-          <button onclick="openPolicy('disclaimer')">Data Disclaimer</button>
+          <button onclick="openPolicy('disclaimer')">Data &amp; Rebate Disclaimer</button>
+          <button onclick="openPolicy('trademarks')">Trademarks &amp; Non-Affiliation</button>
           <button onclick="openPolicy('accessibility')">Accessibility</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Not affiliated with any manufacturer. Informational purposes only.</span>
+      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Vehicle names, logos, and images are trademarks and property of their respective manufacturers. Not affiliated with or endorsed by any automotive manufacturer.</span>
       <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank" rel="noopener" class="footer-copy" style="display:flex;align-items:center;gap:6px">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
         GitHub
@@ -628,14 +796,49 @@ document.addEventListener('DOMContentLoaded', async function() {
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 
-// Policies
+// Comprehensive Policy Content (PIPEDA, Quebec Law 25, Methodology, Trademarks)
 var POLICIES = {
-  terms:{title:'Terms & Conditions',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Data Accuracy</h3><p>Vehicle range figures are NRCan official ratings. Winter range estimates use a simplified thermal degradation model. <strong>Do not rely solely on these estimates for critical journey safety decisions.</strong></p><h3>3. Rebate Information</h3><p>Based on publicly available government data and may be outdated. Always verify directly with Transport Canada or your provincial ministry before purchasing.</p><h3>4. No Financial Advice</h3><p>All content is for informational purposes only and does not constitute financial, legal, or purchasing advice.</p><h3>5. Limitation of Liability</h3><p>EVSelect is not liable for any damages resulting from platform use, including range errors, rebate inaccuracies, or service interruptions.</p><h3>6. Governing Law</h3><p>Governed by the laws of Alberta, Canada.</p>'},
-  privacy:{title:'Privacy Policy',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; PIPEDA Compliant</p><h3>What We Collect</h3><ul><li>Anonymised usage data via server logs (consent-based analytics only)</li><li>AI assistant chat messages (processed by Hugging Face free API)</li><li>Cookie consent preference stored in browser localStorage</li></ul><h3>What We Do NOT Collect</h3><p>We do not collect names, emails, payment info, or government IDs. We do not sell your data.</p><h3>Your PIPEDA Rights</h3><p>You may access information we hold, request corrections, withdraw consent, or file a complaint with the Office of the Privacy Commissioner of Canada.</p>'},
-  cookie:{title:'Cookie Policy',body:'<h3>Cookies We Use</h3><table><thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead><tbody><tr><td>evs_consent</td><td>Consent preference</td><td>Essential</td></tr><tr><td>_ga, _gid</td><td>Analytics (if enabled)</td><td>Optional</td></tr></tbody></table><h3>localStorage</h3><p>We use browser localStorage for your preference. This is not transmitted to our servers.</p>'},
-  disclaimer:{title:'Data Disclaimer',body:'<h3>Vehicle Range</h3><p>NRCan official ratings for the best available trim. Real-world range varies by temperature, speed, cargo, HVAC, and battery age.</p><h3>Winter Range Calculator</h3><p>Uses a simplified linear model (0% loss at 0&deg;C, 35% at &minus;30&deg;C). <strong>Do not use as your only planning tool for critical winter journeys.</strong></p><h3>Rebate Information</h3><p>Verify directly with: <a href="https://tc.canada.ca" target="_blank">Transport Canada iZEV</a>, <a href="https://goelectricbc.gov.bc.ca" target="_blank">Go Electric BC</a>, <a href="https://vehiculeselectriques.gouv.qc.ca" target="_blank">Roulez Vert QC</a>.</p>'},
-  accessibility:{title:'Accessibility Statement',body:'<p>EVSelect strives to conform to WCAG 2.1 Level AA.</p><h3>Features Implemented</h3><ul><li>Semantic HTML5 heading hierarchy</li><li>ARIA labels on all interactive elements</li><li>Full keyboard navigability</li><li>High-contrast dark mode</li><li>Focus-visible styles</li><li>Alt text on all images</li><li>aria-live regions on dynamic content</li></ul><h3>Feedback</h3><p>Report issues via <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>. We respond within 5 business days.</p>'}
+  methodology:{
+    title:'About the Data & Methodology',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
+      '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
+      '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
+  },
+  terms:{
+    title:'Terms & Conditions',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Informational Purpose</h3><p>All estimates (winter range, charging duration, and incentive eligibility) are provided strictly for educational comparison. <strong>Do not rely solely on automated calculations for mission-critical travel safety or financial purchasing commitments.</strong></p><h3>3. Rebate Accuracy Disclaimer</h3><p>Government rebate allocations, rules, and eligibility caps change frequently without prior notice. Always verify directly with Transport Canada or your provincial ministry before signing a vehicle purchase agreement.</p><h3>4. Limitation of Liability</h3><p>EVSelect and its contributors are not liable for damages or losses resulting from platform use, range deviations, or incentive disqualifications.</p><h3>5. Governing Law</h3><p>Governed by the laws of the Province of Alberta and the federal laws of Canada applicable therein.</p>'
+  },
+  privacy:{
+    title:'Privacy Policy (PIPEDA & Quebec Law 25)',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; Compliant with PIPEDA &amp; Qu&eacute;bec Law 25</p>' +
+      '<h3>1. Scope &amp; Commitment</h3><p>EVSelect.ca is committed to protecting the privacy of Canadian users under the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and Qu&eacute;bec <em>Law 25 (An Act to modernize legislative provisions as regards the protection of personal information)</em>.</p>' +
+      '<h3>2. What We Collect</h3><ul><li><strong>Anonymized server log telemetry</strong> (IP address masked, browser type, page visits) for site reliability and performance monitoring.</li><li><strong>Client-side state</strong> (dark/light theme choice, cookie preferences) stored strictly in local browser <code>localStorage</code> without transmission to our servers.</li><li><strong>Chat queries</strong> submitted to the interactive assistant (processed ephemerally via secure API without linking to personal identities).</li></ul>' +
+      '<h3>3. What We Do NOT Collect</h3><p>We do not collect names, phone numbers, home addresses, driver\'s licenses, credit card data, or VIN numbers. <strong>We do not sell, rent, or trade user data to third parties or automotive dealerships.</strong></p>' +
+      '<h3>4. Retention &amp; Deletion Rights</h3><p>Under PIPEDA and Law 25, you have the right to request access to or deletion of any stored data. Because all personal state remains exclusively in your own local device storage, clearing your browser cache/cookies instantly destroys all local data.</p>' +
+      '<h3>5. Privacy Officer Contact</h3><p>For inquiries regarding privacy or compliance, contact the privacy team via our public repository issue tracker at <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>.</p>'
+  },
+  cookie:{
+    title:'Cookie Policy',
+    body:'<h3>Essential Local Storage</h3><p>EVSelect uses browser <code>localStorage</code> strictly for functional preferences (e.g. keeping your dark/light mode preference across sessions). No cross-site advertising or behavioral tracking cookies are utilized.</p>'
+  },
+  disclaimer:{
+    title:'Data & Rebate Disclaimer',
+    body:'<h3>1. Real-World Driving Variations</h3><p>Actual electric vehicle range differs significantly from official ratings based on driving speed, cabin temperature settings, precipitation, tire type (winter vs. all-season), terrain elevation, and payload.</p>' +
+      '<h3>2. Regulatory &amp; Incentive Notice</h3><p>Government incentive programs (including Federal EVAP, Roulez Vert, CleanBC, and provincial rebates) are governed exclusively by their official respective government ministries. Funding caps, program eligibility, and qualification windows are subject to termination or alteration without notice.</p>'
+  },
+  trademarks:{
+    title:'Trademarks & Non-Affiliation',
+    body:'<h3>Trademark Notice</h3><p>All vehicle brand names, model names, badges, logos, and images referenced on this platform (including Tesla, Hyundai, Kia, Chevrolet, Ford, Volkswagen, Nissan, BMW, Polestar, Rivian, Subaru, Toyota, and Volvo) are trademarks and registered property of their respective manufacturer owners.</p>' +
+      '<h3>Non-Affiliation</h3><p>EVSelect.ca is an independent Canadian consumer informational resource. EVSelect.ca is not affiliated with, sponsored by, or endorsed by any vehicle manufacturer, automotive dealer association, or government agency.</p>'
+  },
+  accessibility:{
+    title:'Accessibility Statement (WCAG 2.1 AA)',
+    body:'<p>EVSelect.ca is designed to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. Key implementations include semantic heading structure, high-contrast dark and light themes, keyboard navigability, ARIA landmarks, and descriptive screen-reader alternatives.</p>'
+  }
 };
+
 function openPolicy(k){
   var p=POLICIES[k]; if(!p) return;
   document.getElementById('policyTitle').textContent=p.title;

@@ -10,7 +10,7 @@
   <meta property="og:description" content="Real-time EV winter range, provincial rebates, and commute planning for Canadian buyers."/>
   <meta property="og:type" content="website"/>
   <meta name="robots" content="index,follow"/>
-  <link rel="icon" type="image/png" href="evcarslogo.png"/>
+  <link rel="icon" type="image/png" href="evcarslogo.png"/>1
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,400&display=swap" rel="stylesheet"/>
@@ -22,8 +22,8 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="EVSelect home">evselect<span>.ca</span></a>
     <div class="nav-search-wrap">
-      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search models&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
+      <svg class="nav-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="navSearchInput" type="search" class="nav-search" placeholder="Search EV make or model&#x2026;" autocomplete="off" aria-label="Search vehicles"/>
     </div>
     <div class="nav-links" id="navLinks">
       <div class="nav-dropdown-wrap" id="modelsDropdown">
@@ -35,7 +35,7 @@
           <div class="nav-dropdown-section">Browse All</div>
           <a href="vehicles.html" class="nav-dropdown-item" role="menuitem">All Electric Vehicles</a>
           <div class="nav-dropdown-divider"></div>
-          <div class="nav-dropdown-section">Models</div>
+          <div class="nav-dropdown-section">Popular Models</div>
           <a href="vehicles.html?q=Tesla+Model+Y" class="nav-dropdown-item" role="menuitem">Tesla Model Y</a>
           <a href="vehicles.html?q=Tesla+Model+3" class="nav-dropdown-item" role="menuitem">Tesla Model 3</a>
           <a href="vehicles.html?q=Hyundai+IONIQ+6" class="nav-dropdown-item" role="menuitem">Hyundai IONIQ 6</a>
@@ -68,19 +68,15 @@
           <div class="nav-dropdown-section">EV Tools</div>
           <a href="tools.html" class="nav-dropdown-item" role="menuitem">All Tools</a>
           <div class="nav-dropdown-divider"></div>
-          <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">
-            ❄️ Winter Range Calculator
-          </a>
-          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">
-            💰 Rebate Calculator
-          </a>
-          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">
-            🗺️ Route Planner
-          </a>
+          <a href="tools.html#winter" class="nav-dropdown-item" role="menuitem">❄️ Winter Range Calculator</a>
+          <a href="tools.html#rebate" class="nav-dropdown-item" role="menuitem">💰 2026 Rebate Stacker</a>
+          <a href="tools.html#route" class="nav-dropdown-item" role="menuitem">🗺️ Canada Route Planner</a>
         </div>
-      </div><a href="compare.html">Compare</a>
+      </div>
+      <a href="compare.html">Compare</a>
       <a href="vehicles.html" class="nav-cta">Browse EVs</a>
     </div>
+    <!-- Top-Right Corner Theme Toggle Button -->
     <button class="nav-theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">
       <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -91,34 +87,34 @@
   </div>
 </nav>
 
-<!-- ── HERO ──────────────────────────────────────────────── -->
+<!-- ── HERO (Centered & Prominent) ────────────────────────── -->
 <section class="hero" aria-labelledby="heroTitle">
-
   <div class="wrap hero-inner">
     <div class="eyebrow" data-reveal>evselect.ca &mdash; Canadian EV Intelligence</div>
     <h1 id="heroTitle" class="hero-title" data-reveal data-delay="1">
       Drive farther.<br>Even in February.
     </h1>
     <p class="hero-sub" data-reveal data-delay="2">
-      Real-time winter range, provincial rebate stacking, and commute planning &mdash; built for the roads Canadians actually drive.
+      Real-time winter range degradation models, 2026 Federal EVAP rebate stacking across all 13 provinces, and nationwide route planning &mdash; purpose-built for Canadian roads.
     </p>
     <div class="hero-ctas" data-reveal data-delay="3">
       <a href="vehicles.html" class="btn btn-primary">Browse Vehicles</a>
       <a href="tools.html" class="btn btn-ghost">See Winter Range Tool &rarr;</a>
     </div>
+    <!-- Static Fallback Values (Never Zero) -->
     <div class="hero-stats" data-reveal data-delay="4">
       <div class="hstat">
-        <div class="hstat-num"><span class="count" data-to="20">0</span></div>
+        <div class="hstat-num"><span class="count" data-to="20">20</span></div>
         <div class="hstat-label">EVs Tracked</div>
       </div>
       <div class="hstat-div" aria-hidden="true"></div>
       <div class="hstat">
-        <div class="hstat-num"><span class="count" data-to="487">0</span> <span class="hstat-unit">km</span></div>
+        <div class="hstat-num"><span class="count" data-to="487">487</span> <span class="hstat-unit">km</span></div>
         <div class="hstat-label">Avg Winter Range</div>
       </div>
       <div class="hstat-div" aria-hidden="true"></div>
       <div class="hstat">
-        <div class="hstat-num"><span class="hstat-unit">$</span><span class="count" data-to="9000">0</span></div>
+        <div class="hstat-num"><span class="hstat-unit">$</span><span class="count" data-to="10000">10,000</span></div>
         <div class="hstat-label">Max Rebate Stack</div>
       </div>
       <div class="hstat-div" aria-hidden="true"></div>
@@ -141,10 +137,10 @@
           No spec sheet was written<br>in January in Edmonton.
         </h2>
         <p class="wt-body" data-reveal data-delay="2">
-          EV manufacturers test range in ideal conditions. But &minus;30&deg;C can cut your real-world range by up to 35%. Cabin heating, battery thermal management, and reduced chemical efficiency all compound.
+          EV manufacturers test range in ideal conditions. But &minus;30&deg;C can cut your real-world range by up to 35%. Cabin heating draw, battery thermal management, and reduced chemical electrolyte efficiency all compound in cold weather.
         </p>
         <p class="wt-body" data-reveal data-delay="3">
-          EVSelect applies NRCan data with a verified thermal degradation model so you see your actual range, not California's.
+          EVSelect applies NRCan test ratings with a verified thermal degradation model so you see your actual range, not California's.
         </p>
         <a href="tools.html#winter" class="btn btn-ghost" data-reveal data-delay="4" style="margin-top:32px;display:inline-flex">Try the Winter Range Tool &rarr;</a>
       </div>
@@ -191,18 +187,21 @@
 <!-- ── FEATURED VEHICLES ──────────────────────────────────── -->
 <section class="section-sm featured-section" aria-labelledby="featuredTitle">
   <div class="wrap">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
-      <div>
-        <span class="eyebrow" data-reveal>Top Picks for Canada</span>
-        <h2 id="featuredTitle" class="section-title" data-reveal data-delay="1">Featured EVs</h2>
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="eyebrow" data-reveal style="margin-left:auto;margin-right:auto">Top Picks for Canada</span>
+      <h2 id="featuredTitle" class="section-title" data-reveal data-delay="1">Featured EVs</h2>
+      <p class="fg2" data-reveal data-delay="2" style="margin-top:10px;font-size:16px;max-width:540px;margin-left:auto;margin-right:auto">
+        Tested and ranked for Canadian winter performance, battery efficiency, and real-world range.
+      </p>
+      <div style="margin-top:20px" data-reveal data-delay="3">
+        <a href="vehicles.html" class="btn btn-ghost">View all 20 vehicles &rarr;</a>
       </div>
-      <a href="vehicles.html" class="btn btn-ghost" data-reveal data-delay="2">View all 20 vehicles &rarr;</a>
     </div>
     <div class="carousel" id="featuredCarousel" role="list" aria-label="Featured electric vehicles">
       <div class="carousel-item ev-card" role="listitem">
         <div class="ev-card-img-wrap"><img src="IONIQ6WM.png" alt="Hyundai IONIQ 6" class="ev-card-img" loading="lazy" onerror="this.src='evcarslogo.png';this.style.objectFit='contain';this.style.padding='32px';this.style.opacity='.3'"/></div>
         <div class="ev-card-body">
-          <div class="ev-card-meta"><span class="badge badge-g">iZEV $5k</span><span class="badge badge-b">Heat Pump</span></div>
+          <div class="ev-card-meta"><span class="badge badge-g">EVAP $5k</span><span class="badge badge-b">Heat Pump</span></div>
           <h3 class="card-title">Hyundai IONIQ 6</h3>
           <p class="fg2" style="font-size:14px;margin-top:4px">From $54,999</p>
           <div class="stat-grid" style="margin-top:12px">
@@ -226,7 +225,7 @@
       <div class="carousel-item ev-card" role="listitem">
         <div class="ev-card-img-wrap"><img src="KiaEV6WM.png" alt="Kia EV6" class="ev-card-img" loading="lazy" onerror="this.src='evcarslogo.png';this.style.objectFit='contain';this.style.padding='32px';this.style.opacity='.3'"/></div>
         <div class="ev-card-body">
-          <div class="ev-card-meta"><span class="badge badge-g">iZEV $5k</span><span class="badge badge-b">Heat Pump</span></div>
+          <div class="ev-card-meta"><span class="badge badge-g">EVAP $5k</span><span class="badge badge-b">Heat Pump</span></div>
           <h3 class="card-title">Kia EV6</h3>
           <p class="fg2" style="font-size:14px;margin-top:4px">From $47,995</p>
           <div class="stat-grid" style="margin-top:12px">
@@ -265,7 +264,7 @@
         </div>
         <div>
           <div class="tt-title">Winter Range Calculator</div>
-          <div class="tt-desc">Slide from &minus;30&deg; to +20&deg;C. Watch your real range appear in real time.</div>
+          <div class="tt-desc">Slide from &minus;30&deg; to +20&deg;C. Watch your real-world Canadian range appear in real time.</div>
         </div>
         <div class="tt-arrow">&rarr;</div>
       </a>
@@ -274,8 +273,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
         </div>
         <div>
-          <div class="tt-title">Rebate Calculator</div>
-          <div class="tt-desc">Stack federal iZEV ($5,000) with your provincial incentive. Up to $9,000 combined.</div>
+          <div class="tt-title">2026 Rebate Calculator</div>
+          <div class="tt-desc">Stack 2026 Federal EVAP ($5,000) with provincial incentives across all 13 provinces/territories. Up to $10,000 combined.</div>
         </div>
         <div class="tt-arrow">&rarr;</div>
       </a>
@@ -284,8 +283,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         </div>
         <div>
-          <div class="tt-title">Route Planner</div>
-          <div class="tt-desc">Edmonton to Calgary, Jasper mountain run, or your daily commute &mdash; with charging stops.</div>
+          <div class="tt-title">Canada Route Planner</div>
+          <div class="tt-desc">Plan routes across Canada (Trans-Canada, Coquihalla, 401 Corridor, Rockies, Atlantic) or enter custom km with winter degradation models.</div>
         </div>
         <div class="tt-arrow">&rarr;</div>
       </a>
@@ -294,26 +293,33 @@
 </section>
 
 <style>
-/* ── INDEX PAGE ── */
+/* ── INDEX PAGE SPECIFIC STYLES ── */
 .hero{
-  min-height:100svh;display:flex;align-items:center;
+  min-height:100svh;display:flex;align-items:center;justify-content:center;
   padding:calc(var(--nav-h) + 48px) 0 80px;
   position:relative;
 }
-.hero-inner{position:relative;z-index:1}
-.hero-title{margin-bottom:24px}
+.hero-inner{
+  position:relative;z-index:1;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
+.hero-title{margin-bottom:24px;max-width:820px;text-align:center}
 .hero-sub{
   font-size:clamp(17px,2.2vw,21px);color:var(--fg2);
-  max-width:560px;line-height:1.6;margin-bottom:36px;
+  max-width:620px;line-height:1.6;margin-bottom:36px;
+  text-align:center;
 }
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:64px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;justify-content:center}
 .hero-stats{
-  display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+  display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;
   padding-top:40px;border-top:1px solid var(--border);
+  width:100%;max-width:860px;margin:0 auto;
 }
+.hstat{text-align:center}
 .hstat-num{font-size:clamp(24px,3.2vw,36px);font-weight:700;letter-spacing:-.04em;color:var(--navy)}
 .hstat-unit{font-size:.6em;font-weight:400;color:var(--fg2)}
-.hstat-label{font-size:12px;color:var(--fg3);margin-top:4px;letter-spacing:.02em}
+.hstat-label{font-size:12px;color:var(--fg3);margin-top:4px;letter-spacing:.02em;text-align:center}
 .hstat-div{width:1px;height:44px;background:var(--border);flex-shrink:0}
 @media(max-width:560px){.hstat-div{display:none}.hero-stats{gap:20px}}
 .scroll-cue{
@@ -346,7 +352,10 @@
 /* featured */
 .featured-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 /* tool teasers */
-.tools-teasers{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm)}
+.tools-teasers{
+  display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--shadow-sm);max-width:840px;margin:0 auto;
+}
 .tt-card{
   display:flex;align-items:center;gap:24px;padding:26px 30px;
   background:var(--card);border:none;
@@ -366,11 +375,10 @@
 .tt-arrow{margin-left:auto;font-size:20px;color:var(--fg3);flex-shrink:0;transition:transform .2s,color .2s}
 .tt-card:hover .tt-arrow{transform:translateX(4px);color:var(--accent)}
 @media(max-width:560px){.tt-card{flex-wrap:wrap;gap:16px}.tt-arrow{display:none}}
-/* counter */
 .count{display:inline-block}
 </style>
 <script>
-// Counter animation triggered on reveal
+// Counter animation with fallback support
 (function(){
   function animateCounter(el) {
     var to = +el.dataset.to;
@@ -422,7 +430,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">evselect<span>.ca</span></div>
-        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real winters.</p>
+        <p class="footer-brand-desc">Canada&#39;s independent EV intelligence platform. Real data for real Canadian winters.</p>
       </div>
       <div>
         <div class="footer-col-title">Platform</div>
@@ -431,29 +439,31 @@
           <a href="vehicles.html">Browse EVs</a>
           <a href="tools.html">Tools</a>
           <a href="compare.html">Compare</a>
+          <button onclick="openPolicy('methodology')">About the Data &amp; Methodology</button>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Tools</div>
+        <div class="footer-col-title">EV Tools</div>
         <div class="footer-links">
-          <a href="tools.html#winter">Winter Range</a>
-          <a href="tools.html#rebate">Rebate Calculator</a>
-          <a href="tools.html#route">Route Planner</a>
+          <a href="tools.html#winter">Winter Range Calculator</a>
+          <a href="tools.html#rebate">2026 Rebate Stacker</a>
+          <a href="tools.html#route">Canada Route Planner</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Legal</div>
+        <div class="footer-col-title">Legal &amp; Compliance</div>
         <div class="footer-links">
           <button onclick="openPolicy('terms')">Terms &amp; Conditions</button>
-          <button onclick="openPolicy('privacy')">Privacy Policy</button>
+          <button onclick="openPolicy('privacy')">Privacy Policy (PIPEDA &amp; Law 25)</button>
           <button onclick="openPolicy('cookie')">Cookie Policy</button>
-          <button onclick="openPolicy('disclaimer')">Data Disclaimer</button>
+          <button onclick="openPolicy('disclaimer')">Data &amp; Rebate Disclaimer</button>
+          <button onclick="openPolicy('trademarks')">Trademarks &amp; Non-Affiliation</button>
           <button onclick="openPolicy('accessibility')">Accessibility</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Not affiliated with any manufacturer. Informational purposes only.</span>
+      <span class="footer-copy">&copy; <span id="footerYear"></span> EVSelect.ca &mdash; Vehicle names, logos, and images are trademarks and property of their respective manufacturers. Not affiliated with or endorsed by any automotive manufacturer.</span>
       <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank" rel="noopener" class="footer-copy" style="display:flex;align-items:center;gap:6px">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
         GitHub
@@ -508,7 +518,7 @@
   var fy = document.getElementById('footerYear');
   if(fy) fy.textContent = new Date().getFullYear();
 
-  // Nav search bar
+  // Nav search bar: redirect to vehicles.html with query
   var navSearch = document.getElementById('navSearchInput');
   if(navSearch){
     navSearch.addEventListener('keydown', function(e){
@@ -528,14 +538,49 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 
-// Policies
+// Comprehensive Policy Content (PIPEDA, Quebec Law 25, Methodology, Trademarks)
 var POLICIES = {
-  terms:{title:'Terms & Conditions',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Data Accuracy</h3><p>Vehicle range figures are NRCan official ratings. Winter range estimates use a simplified thermal degradation model. <strong>Do not rely solely on these estimates for critical journey safety decisions.</strong></p><h3>3. Rebate Information</h3><p>Based on publicly available government data and may be outdated. Always verify directly with Transport Canada or your provincial ministry before purchasing.</p><h3>4. No Financial Advice</h3><p>All content is for informational purposes only and does not constitute financial, legal, or purchasing advice.</p><h3>5. Limitation of Liability</h3><p>EVSelect is not liable for any damages resulting from platform use, including range errors, rebate inaccuracies, or service interruptions.</p><h3>6. Governing Law</h3><p>Governed by the laws of Alberta, Canada.</p>'},
-  privacy:{title:'Privacy Policy',body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; PIPEDA Compliant</p><h3>What We Collect</h3><ul><li>Anonymised usage data via server logs (consent-based analytics only)</li><li>AI assistant chat messages (processed by Hugging Face free API)</li><li>Cookie consent preference stored in browser localStorage</li></ul><h3>What We Do NOT Collect</h3><p>We do not collect names, emails, payment info, or government IDs. We do not sell your data.</p><h3>Your PIPEDA Rights</h3><p>You may access information we hold, request corrections, withdraw consent, or file a complaint with the Office of the Privacy Commissioner of Canada.</p>'},
-  cookie:{title:'Cookie Policy',body:'<h3>Cookies We Use</h3><table><thead><tr><th>Cookie</th><th>Purpose</th><th>Type</th></tr></thead><tbody><tr><td>evs_consent</td><td>Consent preference</td><td>Essential</td></tr><tr><td>_ga, _gid</td><td>Analytics (if enabled)</td><td>Optional</td></tr></tbody></table><h3>localStorage</h3><p>We use browser localStorage for your preference. This is not transmitted to our servers.</p>'},
-  disclaimer:{title:'Data Disclaimer',body:'<h3>Vehicle Range</h3><p>NRCan official ratings for the best available trim. Real-world range varies by temperature, speed, cargo, HVAC, and battery age.</p><h3>Winter Range Calculator</h3><p>Uses a simplified linear model (0% loss at 0&deg;C, 35% at &minus;30&deg;C). <strong>Do not use as your only planning tool for critical winter journeys.</strong></p><h3>Rebate Information</h3><p>Verify directly with: <a href="https://tc.canada.ca" target="_blank">Transport Canada iZEV</a>, <a href="https://goelectricbc.gov.bc.ca" target="_blank">Go Electric BC</a>, <a href="https://vehiculeselectriques.gouv.qc.ca" target="_blank">Roulez Vert QC</a>.</p>'},
-  accessibility:{title:'Accessibility Statement',body:'<p>EVSelect strives to conform to WCAG 2.1 Level AA.</p><h3>Features Implemented</h3><ul><li>Semantic HTML5 heading hierarchy</li><li>ARIA labels on all interactive elements</li><li>Full keyboard navigability</li><li>High-contrast dark mode</li><li>Focus-visible styles</li><li>Alt text on all images</li><li>aria-live regions on dynamic content</li></ul><h3>Feedback</h3><p>Report issues via <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>. We respond within 5 business days.</p>'}
+  methodology:{
+    title:'About the Data & Methodology',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
+      '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
+      '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
+  },
+  terms:{
+    title:'Terms & Conditions',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026</p><h3>1. Acceptance</h3><p>By accessing EVSelect.ca you accept these Terms. If you disagree, do not use this platform.</p><h3>2. Informational Purpose</h3><p>All estimates (winter range, charging duration, and incentive eligibility) are provided strictly for educational comparison. <strong>Do not rely solely on automated calculations for mission-critical travel safety or financial purchasing commitments.</strong></p><h3>3. Rebate Accuracy Disclaimer</h3><p>Government rebate allocations, rules, and eligibility caps change frequently without prior notice. Always verify directly with Transport Canada or your provincial ministry before signing a vehicle purchase agreement.</p><h3>4. Limitation of Liability</h3><p>EVSelect and its contributors are not liable for damages or losses resulting from platform use, range deviations, or incentive disqualifications.</p><h3>5. Governing Law</h3><p>Governed by the laws of the Province of Alberta and the federal laws of Canada applicable therein.</p>'
+  },
+  privacy:{
+    title:'Privacy Policy (PIPEDA & Quebec Law 25)',
+    body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Last updated: September 2026 &mdash; Compliant with PIPEDA &amp; Qu&eacute;bec Law 25</p>' +
+      '<h3>1. Scope &amp; Commitment</h3><p>EVSelect.ca is committed to protecting the privacy of Canadian users under the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and Qu&eacute;bec <em>Law 25 (An Act to modernize legislative provisions as regards the protection of personal information)</em>.</p>' +
+      '<h3>2. What We Collect</h3><ul><li><strong>Anonymized server log telemetry</strong> (IP address masked, browser type, page visits) for site reliability and performance monitoring.</li><li><strong>Client-side state</strong> (dark/light theme choice, cookie preferences) stored strictly in local browser <code>localStorage</code> without transmission to our servers.</li><li><strong>Chat queries</strong> submitted to the interactive assistant (processed ephemerally via secure API without linking to personal identities).</li></ul>' +
+      '<h3>3. What We Do NOT Collect</h3><p>We do not collect names, phone numbers, home addresses, driver\'s licenses, credit card data, or VIN numbers. <strong>We do not sell, rent, or trade user data to third parties or automotive dealerships.</strong></p>' +
+      '<h3>4. Retention &amp; Deletion Rights</h3><p>Under PIPEDA and Law 25, you have the right to request access to or deletion of any stored data. Because all personal state remains exclusively in your own local device storage, clearing your browser cache/cookies instantly destroys all local data.</p>' +
+      '<h3>5. Privacy Officer Contact</h3><p>For inquiries regarding privacy or compliance, contact the privacy team via our public repository issue tracker at <a href="https://github.com/GS-Codes0/NewEvWebsite" target="_blank">GitHub</a>.</p>'
+  },
+  cookie:{
+    title:'Cookie Policy',
+    body:'<h3>Essential Local Storage</h3><p>EVSelect uses browser <code>localStorage</code> strictly for functional preferences (e.g. keeping your dark/light mode preference across sessions). No cross-site advertising or behavioral tracking cookies are utilized.</p>'
+  },
+  disclaimer:{
+    title:'Data & Rebate Disclaimer',
+    body:'<h3>1. Real-World Driving Variations</h3><p>Actual electric vehicle range differs significantly from official ratings based on driving speed, cabin temperature settings, precipitation, tire type (winter vs. all-season), terrain elevation, and payload.</p>' +
+      '<h3>2. Regulatory &amp; Incentive Notice</h3><p>Government incentive programs (including Federal EVAP, Roulez Vert, CleanBC, and provincial rebates) are governed exclusively by their official respective government ministries. Funding caps, program eligibility, and qualification windows are subject to termination or alteration without notice.</p>'
+  },
+  trademarks:{
+    title:'Trademarks & Non-Affiliation',
+    body:'<h3>Trademark Notice</h3><p>All vehicle brand names, model names, badges, logos, and images referenced on this platform (including Tesla, Hyundai, Kia, Chevrolet, Ford, Volkswagen, Nissan, BMW, Polestar, Rivian, Subaru, Toyota, and Volvo) are trademarks and registered property of their respective manufacturer owners.</p>' +
+      '<h3>Non-Affiliation</h3><p>EVSelect.ca is an independent Canadian consumer informational resource. EVSelect.ca is not affiliated with, sponsored by, or endorsed by any vehicle manufacturer, automotive dealer association, or government agency.</p>'
+  },
+  accessibility:{
+    title:'Accessibility Statement (WCAG 2.1 AA)',
+    body:'<p>EVSelect.ca is designed to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. Key implementations include semantic heading structure, high-contrast dark and light themes, keyboard navigability, ARIA landmarks, and descriptive screen-reader alternatives.</p>'
+  }
 };
+
 function openPolicy(k){
   var p=POLICIES[k]; if(!p) return;
   document.getElementById('policyTitle').textContent=p.title;
