@@ -131,9 +131,9 @@
     if (!v) return;
 
     var modal = document.getElementById('statsSheetModal');
-    var wr15 = window.EVS.winterRange(v.range, -15);
-    var wr30 = window.EVS.winterRange(v.range, -30);
-    var loss15 = Math.round(window.EVS.thermalLoss(-15));
+    var wr15 = window.EVS.winterRange(v.range, -15, v.hp);
+    var wr30 = window.EVS.winterRange(v.range, -30, v.hp);
+    var loss15 = Math.round(window.EVS.thermalLoss(-15, v.hp));
     var evapAmt = window.EVS.calculateEvap(v, 2026);
     var netEst = v.msrp ? Math.max(0, v.msrp - evapAmt) : 0;
 

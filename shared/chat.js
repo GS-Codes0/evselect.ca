@@ -1,8 +1,9 @@
 /* EVSelect.ca — Navigation Assistant */
 'use strict';
 (function() {
-  var HF = 'mistralai/Mistral-7B-Instruct-v0.3';
-  var SYS = 'You are EVSelect.ca\'s assistant for Canadian EV buyers. Answer concisely about: EV winter range in Canada, 2026 Federal EVAP rebate ($5000 BEV, under $50k transaction value), BC rebate (currently paused since May 2025), QC rebate (Roulez Vert phasing down, $2000 in 2026), provincial stacking across all 13 provinces/territories, nationwide charging routes, heat pumps, and EVSelect platform tools. Keep responses under 3 sentences.';
+  // Chat requests are proxied through the Netlify serverless function so the
+  // NVIDIA API key is never exposed in client-side code.
+  var CHAT_API = '/.netlify/functions/chat';
   var history = [];
   var open = false;
 
@@ -155,20 +156,18 @@
     history.push({ role: 'user', content: msg });
     var reply = '';
     try {
-      var res = await fetch('https://api-inference.huggingface.co/models/' + HF + '/v1/chat/completions', {
+      // POST the last 6 turns to our secure Netlify/NVIDIA NIM proxy.
+      var res = await fetch(CHAT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: HF,
-          messages: [{ role: 'system', content: SYS }].concat(history.slice(-6)),
-          max_tokens: 160, temperature: 0.5, stream: false
-        })
+        body: JSON.stringify({ messages: history.slice(-6) })
       });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       var d = await res.json();
-      reply = (d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content || '').trim();
+      reply = (d.reply || '').trim();
       if (!reply) throw new Error('empty');
     } catch(e) {
+      // Offline, rate-limited, or any server error — fall back to local answers.
       reply = localFallback(msg);
     }
     thinking.remove();

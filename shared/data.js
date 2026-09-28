@@ -3,15 +3,33 @@
 (function(global) {
   var API = 'https://zmwmtgdzri.execute-api.us-east-1.amazonaws.com/ev-cars';
 
-  // Verified empirical thermal degradation model:
-  // 0% degradation at 0°C scaling linearly to 35% max loss at -30°C
-  function thermalLoss(t) {
-    if (t >= 0) return 0;
-    return Math.min(35, Math.abs(t) * (35 / 30));
+  // ── Hardware-Aware Thermal Degradation Model (2026) ──
+  // Differentiates Heat Pump (HP) vs Resistive PTC heaters across three temperature zones.
+  // Key calibration points:
+  //   0°C  : HP → 7.0% loss  | Resistive → 12.0% loss
+  //  -15°C : HP → 21.0% loss | Resistive → 24.0% loss
+  //  -30°C : converges near 35–38% max
+  //  < -30°C: capped at 38%
+  function thermalLoss(t, hasHp) {
+    if (t >= 20) return 0;
+    var h = hasHp ? 1 : 0;
+    var loss;
+    if (t >= 0) {
+      // Mild zone: 0°C to 20°C — gentle linear increase from 0%
+      loss = (20 - t) * (0.60 - 0.25 * h);
+    } else if (t >= -30) {
+      // Cold zone: 0°C to -30°C — piecewise with heat-pump advantage
+      loss = Math.min(38, (12 - 5 * h) + Math.abs(t) * (0.800 + 0.133 * h));
+    } else {
+      // Prairie extreme: below -30°C — hard cap
+      loss = 38;
+    }
+    return Math.round(loss * 10) / 10;
   }
 
-  function winterRange(base, t) {
-    return Math.round(base * (1 - thermalLoss(t) / 100));
+  function winterRange(base, t, hasHp) {
+    var loss = thermalLoss(t, hasHp);
+    return Math.round(base * (1 - loss / 100));
   }
 
   // ── 2026 FEDERAL EVAP CONFIG ──
@@ -188,7 +206,7 @@
     },
     {
       id:'ioniq6', name:'Hyundai IONIQ 6', make:'Hyundai', body:'sedan', msrp:54999, range:581, battery:77.4, dc:230, acc:5.1,
-      evap_eligible:true, hp:true, ca:false, img:'IONIQ6WM.png',
+      evap_eligible:false, hp:true, ca:false, img:'IONIQ6WM.png',
       hp_power:320, torque:446, fast_charge_min:18, home_charge_hrs:7.2, port:'CCS1 (800V)', supercharger:'Adapter Available',
       seats:5, cargo_l:401, frunk_l:45, towing_kg:1500, drivetrain:'HTRAC AWD / RWD', safety:'IIHS Top Safety Pick+',
       top_speed:185, efficiency:14.3, heated_seats:'Standard', heated_wheel:'Standard'

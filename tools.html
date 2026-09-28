@@ -493,8 +493,8 @@ function updateWinter() {
   }
 
   var base = vehicle ? vehicle.range : 0;
-  var loss = EVS.thermalLoss(toolTemp);
-  var wr = base ? EVS.winterRange(base, toolTemp) : 0;
+  var loss = EVS.thermalLoss(toolTemp, vehicle ? vehicle.hp : true);
+  var wr = base ? EVS.winterRange(base, toolTemp, vehicle ? vehicle.hp : true) : 0;
   var retainedPct = base ? Math.round((wr / base) * 100) : 100;
   var lossR = Math.round(loss * 10) / 10;
 
@@ -655,11 +655,11 @@ function updateRoute() {
     var nameEl = document.getElementById('routeVehName');
     if (nameEl) nameEl.textContent = vehicle.name;
     var subEl = document.getElementById('routeVehSub');
-    if (subEl) subEl.textContent = 'Winter Range: ~' + EVS.winterRange(vehicle.range, toolTemp) + ' km at ' + toolTemp + '°C';
+    if (subEl) subEl.textContent = 'Winter Range: ~' + EVS.winterRange(vehicle.range, toolTemp, vehicle.hp) + ' km at ' + toolTemp + '°C';
   }
 
   var distance = activeRoute === 'custom' ? (+document.getElementById('customKmInput').value || 450) : rData.distance;
-  var winterRange = vehicle ? EVS.winterRange(vehicle.range, toolTemp) : 320;
+  var winterRange = vehicle ? EVS.winterRange(vehicle.range, toolTemp, vehicle.hp) : 320;
   var safeLeg = Math.round(winterRange * 0.75); // 75% highway battery window
   var reqStops = Math.max(1, Math.ceil(distance / safeLeg) - 1);
   var chargePerStop = (vehicle && vehicle.fast_charge_min) ? vehicle.fast_charge_min : 25;
@@ -988,7 +988,7 @@ var POLICIES = {
     title:'About the Data & Methodology',
     body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
       '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
-      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>EVSelect uses a <strong>hardware-aware piecewise thermal model</strong> that accounts for both ambient temperature and cabin heating architecture. Degradation begins below 20°C with distinct curves for <strong>heat-pump-equipped EVs</strong> (e.g. IONIQ 5/6, Tesla, BMW i4) versus <strong>resistive PTC heaters</strong> (e.g. Bolt EV, Nissan LEAF). Key calibration benchmarks: <strong>7% vs 12% loss at 0°C</strong>, <strong>21% vs 24% at −15°C</strong>, converging near 35–38% at −30°C with a hard cap below −30°C. This models real-world lithium-ion electrolyte viscosity, regenerative braking limits, and differential heating draw sourced from Canadian fleet telemetry.</p>' +
       '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
       '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
   },

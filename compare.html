@@ -239,7 +239,7 @@ function copyShareLink() {
 }
 
 function renderCard(v, cardEl) {
-  var wr = EVS.winterRange(v.range, curTemp);
+  var wr = EVS.winterRange(v.range, curTemp, v.hp);
   var badges = [];
   if (v.evap_eligible) badges.push('<span class="badge badge-g">EVAP $5k</span>');
   if (v.hp) badges.push('<span class="badge badge-b">Heat Pump</span>');
@@ -265,7 +265,7 @@ function renderTable(vList) {
     { label: 'Base MSRP', key: 'msrp', fmt: function(v){ return '$' + v.msrp.toLocaleString('en-CA'); }, better: 'min', barMax: 110000 },
     { label: '2026 Federal EVAP', key: 'rebate', fmt: function(v){ return v.evap_eligible ? '$5,000 (Eligible)' : 'Not Eligible (>$50k cap)'; }, better: 'max', barMax: 5000 },
     { label: 'NRCan Official Range', key: 'range', fmt: function(v){ return v.range + ' km'; }, better: 'max', barMax: 650 },
-    { label: 'Winter Range (' + (curTemp > 0 ? '+' : '') + curTemp + '°C)', key: 'wRange', fmt: function(v){ return EVS.winterRange(v.range, curTemp) + ' km'; }, better: 'max', barMax: 650 },
+    { label: 'Winter Range (' + (curTemp > 0 ? '+' : '') + curTemp + '°C)', key: 'wRange', fmt: function(v){ return EVS.winterRange(v.range, curTemp, v.hp) + ' km'; }, better: 'max', barMax: 650 },
     { label: 'Usable Battery', key: 'battery', fmt: function(v){ return v.battery + ' kWh'; }, better: 'max', barMax: 140 },
     { label: 'Max DC Fast Charge', key: 'dc', fmt: function(v){ return v.dc + ' kW'; }, better: 'max', barMax: 270 },
     { label: '0–100 km/h', key: 'acc', fmt: function(v){ return v.acc ? v.acc + 's' : 'N/A'; }, better: 'min', barMax: 8 },
@@ -275,7 +275,7 @@ function renderTable(vList) {
   var html = rows.map(function(r) {
     // Find best value
     var vals = vList.map(function(v) {
-      if (r.key === 'wRange') return EVS.winterRange(v.range, curTemp);
+      if (r.key === 'wRange') return EVS.winterRange(v.range, curTemp, v.hp);
       return v[r.key];
     });
 
@@ -287,7 +287,7 @@ function renderTable(vList) {
     }
 
     var cells = vList.map(function(v) {
-      var numVal = r.key === 'wRange' ? EVS.winterRange(v.range, curTemp) : v[r.key];
+      var numVal = r.key === 'wRange' ? EVS.winterRange(v.range, curTemp, v.hp) : v[r.key];
       var isBest = false;
       if (r.better === 'max' && numVal === bestVal && numVal > 0) isBest = true;
       if (r.better === 'min' && numVal === bestVal && numVal > 0) isBest = true;
@@ -517,7 +517,7 @@ var POLICIES = {
     title:'About the Data & Methodology',
     body:'<p style="color:var(--fg3);font-size:13px;margin-bottom:16px">Independent Canadian EV Intelligence &bull; Last updated September 2026</p>' +
       '<h3>1. Official Base Range Data</h3><p>All rated range figures reflect official <strong>Natural Resources Canada (NRCan)</strong> ratings for standard Canadian-market trims under the federal 5-cycle testing protocol.</p>' +
-      '<h3>2. Thermal Degradation Model</h3><p>Standard spec sheets reflect test temperatures near 20&deg;C. EVSelect uses an empirical thermal loss curve: <strong>0% loss at 0&deg;C, scaling linearly to 35% loss at &minus;30&deg;C</strong>. This reflects real-world Canadian fleet data accounting for resistive/heat-pump cabin heating draw and electrolyte viscosity in lithium-ion cells.</p>' +
+      '<h3>2. Thermal Degradation Model</h3><p>EVSelect uses a <strong>hardware-aware piecewise thermal model</strong> that accounts for both ambient temperature and cabin heating architecture. Degradation begins below 20°C with distinct curves for <strong>heat-pump-equipped EVs</strong> (e.g. IONIQ 5/6, Tesla, BMW i4) versus <strong>resistive PTC heaters</strong> (e.g. Bolt EV, Nissan LEAF). Key calibration benchmarks: <strong>7% vs 12% loss at 0°C</strong>, <strong>21% vs 24% at −15°C</strong>, converging near 35–38% at −30°C with a hard cap below −30°C. This models real-world lithium-ion electrolyte viscosity, regenerative braking limits, and differential heating draw sourced from Canadian fleet telemetry.</p>' +
       '<h3>3. 2026 Rebate Rules (EVAP &amp; Provincial)</h3><p>Federal iZEV funding ran out on January 12, 2025. It was superseded on February 16, 2026 by the <strong>Electric Vehicle Affordability Program (EVAP)</strong> administered by Transport Canada. We verify all federal and provincial program criteria on a monthly refresh cadence directly against official ministry and utility documentation.</p>' +
       '<h3>4. Editorial Independence</h3><p>EVSelect.ca is an independent public interest platform. We do not receive sponsorship, kickbacks, or affiliate commissions from any vehicle manufacturer or dealership.</p>'
   },
