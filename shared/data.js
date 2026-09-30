@@ -182,7 +182,8 @@
   function calculateEvap(v, yr) {
     var year = yr || 2026;
     var schedule = FEDERAL_EVAP.amounts[year] || FEDERAL_EVAP.amounts[2026];
-    if (!v.evap_eligible || v.msrp > FEDERAL_EVAP.baseCapTransaction) {
+    // Simple rule: if price is over $50,000 → no EVAP. Period.
+    if (!v.msrp || v.msrp > FEDERAL_EVAP.baseCapTransaction) {
       return 0;
     }
     return schedule.bev;
@@ -364,7 +365,8 @@
       return arr.map(function(v) {
         var baseObj = getVehicle(v.car_id || v.id || v.name) || {};
         var msrpVal = +(v.msrp_cad___base_trim || v.msrp || baseObj.msrp || 0);
-        var eligible = v.evap_eligible !== undefined ? !!v.evap_eligible : (msrpVal <= 50000 && v.assembled_in_canada !== 'No');
+        // Simple rule: if MSRP > $50,000 → not eligible. No flags, no overrides.
+        var eligible = msrpVal > 0 && msrpVal <= 50000;
         return {
           id: v.car_id || v.id || baseObj.id || v.name,
           name: v.name || v.vehicle_name || baseObj.name,
